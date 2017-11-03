@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  danh_muc_id: MyString
+  ten_danh_muc: MyString
+  mota: MyText
+
+two:
+  danh_muc_id: MyString
+  ten_danh_muc: MyString
+  mota: MyText

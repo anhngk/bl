@@ -16,6 +16,11 @@
 	<div class="alert"><%= flash[:alert] %></div>
 <% end %>
 
+<%= link_to 'Log out', logout_path %> <br>
+
+<%= link_to 'Quản trị viên', admin_moderators_path %>
+<%= link_to 'Kho hàng', admin_hang_hoas_path %>
+
 <%= yield %>
 
 </body>

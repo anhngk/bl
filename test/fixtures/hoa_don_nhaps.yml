@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ma_hd_nhap: MyString
+  ngaynhap: 2017-11-02 14:03:18
+  tong_tien: 9.99
+  ghi_chu: MyText
+  tinh_trang: false
+  nha_cung_cap_id: 
+
+two:
+  ma_hd_nhap: MyString
+  ngaynhap: 2017-11-02 14:03:18
+  tong_tien: 9.99
+  ghi_chu: MyText
+  tinh_trang: false
+  nha_cung_cap_id: 

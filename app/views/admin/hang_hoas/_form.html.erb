@@ -1,0 +1,17 @@
+<%= form_for [:admin, @hang_hoa] do |f| %>
+	<p>Mã hàng: <%= f.text_field :ma_hang %></p>
+
+	<p>Tên hàng: <%= f.text_field :ten_hang %></p>
+
+	<p>Số lượng: <%= f.text_field :xuat_xu %></p>
+
+	<p>ĐVT: <%= f.text_field :dvt %></p>
+
+	<p>Xuất xứ: <%= f.text_field :quy_cach %></p>
+
+	<p>Quy cách: <%= f.text_field :ghi_chu %></p>
+
+	<p>Ghi chú: <%= f.text_field :so_luong %></p>
+	
+	<p><%= f.submit 'Thêm' %></p>
+<% end %>

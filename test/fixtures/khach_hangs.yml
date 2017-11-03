@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kh_id: MyString
+  ten_kh: MyString
+  ma_so_thue: MyString
+  dia_chi: MyString
+  dien_thoai: MyString
+  ghi_chu: MyText
+  tien_no: 9.99
+
+two:
+  kh_id: MyString
+  ten_kh: MyString
+  ma_so_thue: MyString
+  dia_chi: MyString
+  dien_thoai: MyString
+  ghi_chu: MyText
+  tien_no: 9.99

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ma_cthd_xuat: MyString
+  so_luong_xuat: 1
+  gia_ban: 1
+  hang_hoa_id: 
+  hoa_don_xuat_id: 
+
+two:
+  ma_cthd_xuat: MyString
+  so_luong_xuat: 1
+  gia_ban: 1
+  hang_hoa_id: 
+  hoa_don_xuat_id: 

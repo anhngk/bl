@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ma_hang: MyString
+  ten_hang: MyString
+  xuat_xu: MyString
+  dvt: MyString
+  quy_cach: MyString
+  ghi_chu: MyText
+  so_luong: 1
+
+two:
+  ma_hang: MyString
+  ten_hang: MyString
+  xuat_xu: MyString
+  dvt: MyString
+  quy_cach: MyString
+  ghi_chu: MyText
+  so_luong: 1
