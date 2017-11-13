@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102080828) do
+ActiveRecord::Schema.define(version: 20171109111158) do
 
   create_table "cthd_nhaps", force: :cascade do |t|
     t.string   "ma_cthd_nhap",    limit: 255
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20171102080828) do
 
   create_table "gia", force: :cascade do |t|
     t.decimal  "gia_ban",               precision: 10
-    t.datetime "ngay_ban"
     t.integer  "hang_hoa_id", limit: 4
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false

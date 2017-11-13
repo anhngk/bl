@@ -1,7 +1,7 @@
 class Admin::HangHoasController < Admin::ApplicationController
 
   def index
-    @hang_hoas = HangHoa.all
+    @hang_hoas = HangHoa.includes(:gias).all
   end
 
   def new
@@ -49,7 +49,10 @@ class Admin::HangHoasController < Admin::ApplicationController
   private
 
   def hang_hoa_params
-    params.require(:hang_hoa).permit(:ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu)
+    params.require(:hang_hoa).permit(
+      :ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu, :image,
+      gias_attributes: [ :gia_ban]
+    )
   end
 
 

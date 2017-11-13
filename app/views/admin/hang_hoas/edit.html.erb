@@ -1,2 +1,6 @@
-<h1>Admin::HangHoas#edit</h1>
-<p>Find me in app/views/admin/hang_hoas/edit.html.erb</p>
+<h1>Chỉnh sửa hàng hóa</h1>
+
+<%= render 'form' %>
+
+<% link_to 'Show', admin_hang_hoa_path(@hang_hoa) %>
+<% link_to 'Back', admin_hang_hoas_path %>
