@@ -9,7 +9,8 @@ class CreateHangHoas < ActiveRecord::Migration
       t.text :ghi_chu
       t.integer :so_luong
 
-      t.references :moderator, index: true, foreign_key:true
+      t.references :moderator, index: true, foreign_key: true
+      t.references :danh_muc, index: true, foreign_key: true
 
       t.timestamps null: false
     end

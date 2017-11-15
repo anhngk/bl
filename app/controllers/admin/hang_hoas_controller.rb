@@ -37,6 +37,7 @@ class Admin::HangHoasController < Admin::ApplicationController
 
   def show
     @hang_hoa = HangHoa.find(params[:id])
+    @gia = Gia.find(params[:id])
   end
 
   def destroy

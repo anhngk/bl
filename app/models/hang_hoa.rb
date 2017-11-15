@@ -5,9 +5,13 @@ class HangHoa < ActiveRecord::Base
 
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-	belongs_to :moderator
+	validates :ten_hang, presence: true
+	validates :so_luong, presence: true
+	validates :dvt, presence:true
 
-	has_many :danh_mucs, through: :danh_muc_hang_hoas
+	belongs_to :moderator
+	belongs_to :danh_muc
+
 	has_many :gias, dependent: :destroy
 
 	accepts_nested_attributes_for 	:gias,

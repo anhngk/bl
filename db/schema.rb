@@ -39,18 +39,7 @@ ActiveRecord::Schema.define(version: 20171109111158) do
   add_index "cthd_xuats", ["hang_hoa_id"], name: "index_cthd_xuats_on_hang_hoa_id", using: :btree
   add_index "cthd_xuats", ["hoa_don_xuat_id"], name: "index_cthd_xuats_on_hoa_don_xuat_id", using: :btree
 
-  create_table "danh_muc_hang_hoas", force: :cascade do |t|
-    t.integer  "danh_muc_id", limit: 4
-    t.integer  "hang_hoa_id", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-  end
-
-  add_index "danh_muc_hang_hoas", ["danh_muc_id"], name: "index_danh_muc_hang_hoas_on_danh_muc_id", using: :btree
-  add_index "danh_muc_hang_hoas", ["hang_hoa_id"], name: "index_danh_muc_hang_hoas_on_hang_hoa_id", using: :btree
-
   create_table "danh_mucs", force: :cascade do |t|
-    t.string   "danh_muc_id",  limit: 255
     t.string   "ten_danh_muc", limit: 255
     t.text     "mota",         limit: 65535
     t.datetime "created_at",                 null: false
@@ -75,6 +64,7 @@ ActiveRecord::Schema.define(version: 20171109111158) do
     t.text     "ghi_chu",            limit: 65535
     t.integer  "so_luong",           limit: 4
     t.integer  "moderator_id",       limit: 4
+    t.integer  "danh_muc_id",        limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "image_file_name",    limit: 255
@@ -83,6 +73,7 @@ ActiveRecord::Schema.define(version: 20171109111158) do
     t.datetime "image_updated_at"
   end
 
+  add_index "hang_hoas", ["danh_muc_id"], name: "index_hang_hoas_on_danh_muc_id", using: :btree
   add_index "hang_hoas", ["moderator_id"], name: "index_hang_hoas_on_moderator_id", using: :btree
 
   create_table "hoa_don_nhaps", force: :cascade do |t|
@@ -147,9 +138,8 @@ ActiveRecord::Schema.define(version: 20171109111158) do
   add_foreign_key "cthd_nhaps", "hoa_don_nhaps"
   add_foreign_key "cthd_xuats", "hang_hoas"
   add_foreign_key "cthd_xuats", "hoa_don_xuats"
-  add_foreign_key "danh_muc_hang_hoas", "danh_mucs"
-  add_foreign_key "danh_muc_hang_hoas", "hang_hoas"
   add_foreign_key "gia", "hang_hoas"
+  add_foreign_key "hang_hoas", "danh_mucs"
   add_foreign_key "hang_hoas", "moderators"
   add_foreign_key "hoa_don_nhaps", "nha_cung_caps"
   add_foreign_key "hoa_don_xuats", "khach_hangs"

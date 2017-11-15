@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :hang_hoas
+    resources :danh_mucs, only: [:new, :create, :destroy, :edit, :update]
     resources :sessions, only: [:new, :create, :destroy]
     resources :moderators, only: [:index, :edit, :update]
   end

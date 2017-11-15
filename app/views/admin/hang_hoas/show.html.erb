@@ -7,4 +7,10 @@
 <p><strong>Xuất xứ:</strong> <%= @hang_hoa.xuat_xu %></p>
 <p><strong>Quy cách:</strong> <%= @hang_hoa.quy_cach %></p>
 <p><strong>Ghi chú</strong> <%= @hang_hoa.ghi_chu %></p>
+
 <p><strong>Gía bán</strong> <%= @gia.gia_ban %></p>
+
+<p><strong>Ghi chú</strong> <%= @hang_hoa.ghi_chu %></p>
+<p><%= image_tag @hang_hoa.image.url(:medium)%></p>
+<p><%= link_to 'Sửa', edit_admin_hang_hoa_path(@hang_hoa) %></p>
+<p><%= link_to 'Xóa', admin_hang_hoa_path(@hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chưa?'} %></p>

@@ -13,6 +13,7 @@
 			<th>Quy cách</th>
 			<th>Ghi chú</th>
 			<th>Gía bán</th>
+			<th>Danh mục</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,6 +29,7 @@
 				<% hang_hoa.gias.each do |gia| %>
 					<td><%= gia.gia_ban %></td>
 				<% end %>
+				<td><%= hang_hoa.danh_muc.ten_danh_muc %></td>
 				<td><%= link_to 'Xem', admin_hang_hoa_path(hang_hoa) %></td>
 				<td><%= link_to 'Sửa', edit_admin_hang_hoa_path(hang_hoa) %></td>
 				<td><%= link_to 'Xóa', admin_hang_hoa_path(hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chưa?'} %></td>

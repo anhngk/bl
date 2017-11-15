@@ -17,7 +17,7 @@ class Admin::ModeratorsController < Admin::ApplicationController
 			redirect_to admin_moderators_url
 		else
 			flash[:alert] = "There was a problem updating moderator"
-			rerender 'edit'
+			render 'edit'
 		end
 	end
 
