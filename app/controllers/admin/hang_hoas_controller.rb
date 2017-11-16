@@ -5,7 +5,7 @@ class Admin::HangHoasController < Admin::ApplicationController
   end
 
   def new
-    @hang_hoa = HangHoa.new
+    @hang_hoa = HangHoa.new @danh_mucs = DanhMuc.all.map{|c| [c.ten_danh_muc, c.id]}
     @hang_hoa.gias.build.build_hang_hoa
   end
 
@@ -52,7 +52,8 @@ class Admin::HangHoasController < Admin::ApplicationController
   def hang_hoa_params
     params.require(:hang_hoa).permit(
       :ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu, :image,
-      gias_attributes: [ :gia_ban]
+      gias_attributes: [ :gia_ban],
+      danh_muc_attributes: [:ten_danh_muc, :id]
     )
   end
 

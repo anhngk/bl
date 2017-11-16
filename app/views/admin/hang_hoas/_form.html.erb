@@ -17,6 +17,8 @@
 	<%=  f.fields_for :gias do |gia| %>
 		<p>Gía bán: <%= gia.text_field :gia_ban %></p>
 	<% end %>
+	
+	<p><%= f.select_tag("danh_muc_id[]", options_for_select(DanhMuc.all.collect { |cat| [cat.ten_danh_muc, cat.danh_muc_id] }, @hang_hoa.danh_muc.collect { |cat| cat.danh_muc_id}))%> </p>
 
 	<p>Hình ảnh: <%= f.file_field :image %></p>
 
