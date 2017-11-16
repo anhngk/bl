@@ -5,7 +5,8 @@ class Admin::HangHoasController < Admin::ApplicationController
   end
 
   def new
-    @hang_hoa = HangHoa.new @danh_mucs = DanhMuc.all.map{|c| [c.ten_danh_muc, c.id]}
+    @hang_hoa = HangHoa.new
+    @danh_mucs = DanhMuc.all.map{|c| [c.ten_danh_muc, c.id]}
     @hang_hoa.gias.build.build_hang_hoa
   end
 
@@ -23,10 +24,12 @@ class Admin::HangHoasController < Admin::ApplicationController
 
   def edit
     @hang_hoa = HangHoa.find(params[:id])
+    @danh_mucs = DanhMuc.all.map{|c| [c.ten_danh_muc, c.id]}
   end
 
   def update
     @hang_hoa = HangHoa.find(params[:id])
+    @hang_hoa.danh_muc_id = params[:danh_muc_id]
     if @hang_hoa.update(hang_hoa_params)
       redirect_to admin_hang_hoas_url, notice: 'Cập nhật hàng thành công!'
     else
@@ -51,11 +54,9 @@ class Admin::HangHoasController < Admin::ApplicationController
 
   def hang_hoa_params
     params.require(:hang_hoa).permit(
-      :ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu, :image,
+      :ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu, :image, :ten_danh_muc, :danh_muc_id,
       gias_attributes: [ :gia_ban],
-      danh_muc_attributes: [:ten_danh_muc, :id]
     )
   end
-
 
 end
