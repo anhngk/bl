@@ -1,0 +1,6 @@
+<h1>Chỉnh sửa danh mục</h1>
+
+<%= form_for [:admin, @danh_muc] do |f| %>
+	<p><%= f.text_area :ten_danh_muc %></p>
+	<p><%= f.submit "Sửa danh mục" %></p>
+<% end %>
