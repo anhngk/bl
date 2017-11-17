@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'trang_chu#index', as: 'home'
+
+  get '/store' => 'cua_hang#index'
+
   get '/login' => 'admin/sessions#new'
   get '/logout' => 'admin/sessions#destroy'
 
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
     resources :moderators, only: [:index, :edit, :update]
   end
 
-  resources :hang_hoas
+  resources :hang_hoas, only: [:index, :show]
+  resources :danh_mucs, only: [:index, :show]
 
 end

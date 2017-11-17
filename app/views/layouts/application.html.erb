@@ -1,22 +1,69 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Bl</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<% if flash[:notice] %>
-	<div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<% if flash[:alert] %>
-	<div class="alert"><%= flash[:alert] %></div>
-<% end %>
-
-<%= yield %>
-
-</body>
+	<head>
+		<title>BL Store</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,900" rel="stylesheet' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-items" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+						<%= image_tag 'Logo.png', width: "60px", id: "logo-img" %>
+					</a>
+				</div>
+				<div class="contact-number"><i class="fa fa-phone"></i>  0914 0924 77 - 0918 259 412</div>
+				<div class="navbar-collapse collapse" id="navbar-collapse-items">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/">Trang chủ</a></li>
+						<li><a href="/store">Cửa hàng</a></li>
+						<li><a href="#">Liên hệ</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giỏ hàng <%= fa_icon "shopping-cart" %><span id="product-in-cart">7</span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+		<% end %>
+		<% if flash[:alert] %>
+		<div class="alert"><%= flash[:alert] %></div>
+		<% end %>
+		<%= yield %>
+	</body>
+	<footer class="footer-section row">
+			<div class="container">
+				<div class="logo-footer col-md-1">
+					<%= image_tag 'BL-White-Logo.png', width: "60px", id: "logo-img" %>
+				</div>
+				<div id="store-name" class="col-md-4">
+					<h3>Cửa hàng thiết bị lạnh công nghiệp <span style="font-weight: 600">BL</span></h3>
+					<h4>© 2017 - BLStore</h4>
+				</div>
+				<div id="store-info" class="pull-right col-md-4">
+					<h3>37 Trịnh Phong, Nha Trang, Khánh Hòa</h3>
+					<h3><span style="font-weight: 600"> HOTLINE: </span><span style="font-weight:400">0914 0924 77 - 0918 259 501</span></h3>
+					<h3>Email: <a href="baylocnt@gmail.com?subject=feedback" "email me">baylocnt@gmail.com</a></h3>
+				</div>
+			</div>
+			
+		</footer>
 </html>
