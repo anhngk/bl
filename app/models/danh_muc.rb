@@ -4,6 +4,6 @@ class DanhMuc < ActiveRecord::Base
 	validates :ten_danh_muc, presence: true
 
 	def dang_su_dung?
-		DanhMuc.exists?(id: self.id)
+		HangHoa.exists?(danh_muc_id: self.id)
 	end
 end

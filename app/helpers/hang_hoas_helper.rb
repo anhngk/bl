@@ -1,0 +1,2 @@
+module HangHoasHelper
+end

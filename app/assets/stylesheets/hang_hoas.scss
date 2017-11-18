@@ -1,0 +1,137 @@
+// Place all the styles related to the HangHoa controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-bar-section {
+	margin-top: 30px;
+}
+
+.search-bar {
+	margin: 0 auto;
+	float: none;
+}
+
+.search-bar input {
+	background-color: #e7eefd;
+	border: none;
+	color: #fff;
+	box-shadow: none;
+	font-size: 1.1em;
+}
+
+.search-bar input:focus {
+	color: #fff;
+	background-color: #4980F9;
+	transition: all 0.3s ease-in-out;
+}
+
+.input-group-addon {
+	border: none;
+	background-color: #4980F9;
+	color: #fff;
+	border-right: 2px solid #fff;
+	font-size: 1.1em;
+}
+
+.search-bar ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #81A4F7;
+}
+.search-bar :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #81A4F7;
+}
+.search-bar ::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #81A4F7;
+   opacity:  1;
+}
+.search-bar :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #81A4F7;
+}
+.search-bar ::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #81A4F7	;
+}
+
+.slider-section {
+	margin-top: 50px;
+}
+
+.product-listing-section {
+	margin-bottom: 40px;
+}
+
+.product-category h3 {
+	color: #4980F9;
+	border-bottom: 0.5px solid #4980F9;
+	font-size: 2em;
+	font-weight: 500;
+	text-align: center;
+	padding-bottom: 20px;
+	margin-top: 15px;
+}
+
+.category-list ul {
+	list-style: none;
+	padding: 0;
+}
+
+.category-list li {
+	padding: 5px 0px 5px 10px;
+	list-style-type: none;
+}
+
+.category-list a {
+	color: #737373;
+	font-size: 1.4em;
+}
+
+.category-list li:hover {
+	background-color: #e7eefd;
+	color: #4980F9;
+	border-left: 5px solid #4980F9;
+	transition: all 0.3s ease;
+}
+
+.category-title h2 {
+	margin: 12px 0 20px 0;
+	color: #4980F9;
+	font-weight: 600;
+}
+
+.product img {
+	width: 100%;
+	object-fit: cover;
+	overflow: hidden;
+	border-radius: 20px;
+	box-shadow: 0 1px 3px rgba(50,50,93,.05), 0 1px 3px rgba(0,0,0,.08)
+}
+
+.product {
+	text-align: center;
+	margin-bottom: 35px;
+	height: 19vw;
+}
+
+.product a {
+	color: #737373;
+}
+
+.product a:hover {
+	color: #b3b3b3;
+	transition: all 0.3s ease;
+}
+
+.product-name {
+	margin-top: 10px;
+	font-size: 1.2em;
+}
+
+.product-price {
+	color: #39d17c;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.product img:hover {
+	transform: translateY(-1px);
+	transition: all 0.3s ease;
+	box-shadow: 0 7px 14px rgba(50,50,93,.02), 0 6px 10px rgba(0,0,0,.08);
+}

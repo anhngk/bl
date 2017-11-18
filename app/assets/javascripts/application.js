@@ -17,3 +17,20 @@
 //= require owl.carousel.min
 //= require cocoon
 //= require_tree .
+
+
+$(".slider-section").ready(function(){
+	setTimeout(function(){
+		console.log("Hello");
+		$(".owl-carousel").owlCarousel({
+		loop: true,
+		autoWidth: true,
+		lazyLoad: true,
+		dots: true,
+		autoplay:true,
+	    autoplayTimeout:5000,
+	    autoplayHoverPause:true,
+	    autoplaySpeed:1500
+	},1500);
+	})
+});

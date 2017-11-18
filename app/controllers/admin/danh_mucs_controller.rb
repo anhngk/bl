@@ -6,7 +6,7 @@ class Admin::DanhMucsController < Admin::ApplicationController
   end
 
   def create
-    @danh_muc = DanhMuc.new(danh_mucs_params)
+    @danh_muc = DanhMuc.new(danh_muc_params)
 
     if @danh_muc.save
       redirect_to new_admin_danh_muc_url, notice: 'Thêm danh mục thành công'
@@ -22,8 +22,8 @@ class Admin::DanhMucsController < Admin::ApplicationController
 
   def update
     @danh_muc = DanhMuc.find(params[:id])
-    if @danh_muc.update danh_mucs_params
-      redirect_to new_admin_danh_muc_url, 'Chỉnh sửa danh mục thành công'
+    if @danh_muc.update(danh_muc_params)
+      redirect_to new_admin_danh_muc_url, notice: 'Chỉnh sửa danh mục thành công'
     else
       flash[:alert] = 'Có lỗi khi sửa danh mục'
       render 'edit'
@@ -42,7 +42,7 @@ class Admin::DanhMucsController < Admin::ApplicationController
 
   private
 
-  def danh_mucs_params
-    params.require(:danh_muc).permit(:ten_danh_muc)
+  def danh_muc_params
+    params.require(:danh_muc).permit(:ten_danh_muc, :id)
   end
 end

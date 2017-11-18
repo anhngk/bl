@@ -1,0 +1,55 @@
+<div class="container-fluid">
+	<div class="search-bar-section container">
+		<div class="col-md-12">
+			<div class="search-bar col-md-5">
+				<form action="/" method="get" accept-charset="utf-8">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+						<input type="text" name="item-search" class="form-control" placeholder="Tìm kiếm">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="slider-section row">
+		<div class="owl-carousel owl-theme">
+			<img src="http://via.placeholder.com/1366x300" alt="">
+			<img src="http://via.placeholder.com/1366x300" alt="">
+			<img src="http://via.placeholder.com/1366x300" alt="">
+			<img src="http://via.placeholder.com/1366x300" alt="">
+			<img src="http://via.placeholder.com/1366x300" alt="">
+		</div>
+	</div>
+	<div class="container product-listing-section">
+		<div class="product-category col-md-3">
+			<h3>Danh mục mặt hàng</h3>
+			<div class="category-list">
+				<ul">
+					<% DanhMuc.all.each do |danh_muc| %>
+					<%= link_to hang_hoas_path(danh_muc: danh_muc.ten_danh_muc) do %>
+					<li><%= danh_muc.ten_danh_muc %></li>
+					<% end %>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="product-listing col-md-9">
+			<div class="category-title">
+				<h2><%= @danh_muc.ten_danh_muc %></h2>
+			</div>
+			<div class="product-show">
+				<% @hang_hoas.each do |hang_hoa| %>
+				<div class="product col-md-3">
+					<%= link_to hang_hoa do %>
+					<%= image_tag hang_hoa.image.url(:thumb) %>
+					<div class="product-name"><%= hang_hoa.ten_hang %></div>
+					<% end %>
+					<div class="product-price">Liên hệ</div>
+				</div>
+				<% end %>
+			</div>
+			
+		</div>
+	</div>
+</div>
