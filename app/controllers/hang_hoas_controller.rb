@@ -1,4 +1,7 @@
 class HangHoasController < ApplicationController
+
+  layout 'store'
+
   def index
   	if params[:danh_muc].blank?
   		@danh_muc = DanhMuc.first
@@ -11,5 +14,6 @@ class HangHoasController < ApplicationController
   end
 
   def show
+    @hang_hoa = HangHoa.find(params[:id])
   end
 end

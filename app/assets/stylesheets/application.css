@@ -26,9 +26,12 @@ html {
 body {
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #737373;
-	margin: 0 0 149px;
 	padding: 0;
 	height: 100%;
+}
+
+.application-body {
+	margin: 0 0 149px;
 }
 
 a {

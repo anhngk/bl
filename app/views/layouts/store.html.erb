@@ -41,6 +41,18 @@
 				</div>
 			</div>
 		</nav>
+		<div class="search-bar-section container">
+			<div class="col-md-12">
+				<div class="search-bar col-md-5">
+					<form action="/" method="get" accept-charset="utf-8">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+							<input type="text" name="item-search" class="form-control" placeholder="Tìm kiếm">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 		<% if flash[:notice] %>
 		<div class="notice"><%= flash[:notice] %></div>
 		<% end %>
@@ -50,20 +62,20 @@
 		<%= yield %>
 	</body>
 	<footer class="footer-section row">
-			<div class="container">
-				<div class="logo-footer col-md-1">
-					<%= image_tag 'BL-White-Logo.png', width: "60px", id: "logo-img" %>
-				</div>
-				<div id="store-name" class="col-md-4">
-					<h3>Cửa hàng thiết bị lạnh công nghiệp <span style="font-weight: 600">BL</span></h3>
-					<h4>© 2017 - BLStore</h4>
-				</div>
-				<div id="store-info" class="pull-right col-md-4">
-					<h3>37 Trịnh Phong, Nha Trang, Khánh Hòa</h3>
-					<h3><span style="font-weight: 600"> HOTLINE: </span><span style="font-weight:400">0914 0924 77 - 0918 259 501</span></h3>
-					<h3>Email: <a href="baylocnt@gmail.com?subject=feedback" "email me">baylocnt@gmail.com</a></h3>
-				</div>
+		<div class="container">
+			<div class="logo-footer col-md-1">
+				<%= image_tag 'BL-White-Logo.png', width: "60px", id: "logo-img" %>
 			</div>
-			
-		</footer>
+			<div id="store-name" class="col-md-4">
+				<h3>Cửa hàng thiết bị lạnh công nghiệp <span style="font-weight: 600">BL</span></h3>
+				<h4>© 2017 - BLStore</h4>
+			</div>
+			<div id="store-info" class="pull-right col-md-4">
+				<h3>37 Trịnh Phong, Nha Trang, Khánh Hòa</h3>
+				<h3><span style="font-weight: 600"> HOTLINE: </span><span style="font-weight:400">0914 0924 77 - 0918 259 501</span></h3>
+				<h3>Email: <a href="baylocnt@gmail.com?subject=feedback" "email me">baylocnt@gmail.com</a></h3>
+			</div>
+		</div>
+		
+	</footer>
 </html>
