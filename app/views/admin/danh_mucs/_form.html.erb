@@ -1,4 +1,5 @@
-<%= form_for [:admin, @danh_muc] do |f| %>
-	<p><%= f.text_area :ten_danh_muc %></p>
-	<p><%= f.submit "Tạo danh mục" %></p>
+ <%= form_for [:admin, @danh_muc] do |f| %>
+	<p style="font-size: 1.5em; font-weight: 600">TẠO DANH MỤC</p>
+	<%= f.text_field :ten_danh_muc, class: "form-control", placeholder: "Tên danh mục", style: "font-size: 1.2em; padding: 5px 10px; height:auto" %>
+	<%= f.submit "Khởi tạo", class: "btn btn-success pull-right", style: "margin-top: 10px" %>
 <% end %>

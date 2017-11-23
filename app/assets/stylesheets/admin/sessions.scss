@@ -4,15 +4,28 @@
 
 /* Dashboard */
 
+.admin-body {
+	background-color: #e6eeff;
+}
+
+/* .main-board {
+	width: 83.33333333%;
+} */
 
 .dashboard-wrapper {
 	background-color: #e6eeff;
+	height: 100%;
+}
+
+.dashboard-content {
+	margin: 30px 30px 0px 30px;
 }
 
 .sidebar {
 	padding: 0;
 	background-color: #4980F9;
 	height: 100vh;
+	width: 16.66666667%;
 	box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)
 }
 
@@ -32,7 +45,7 @@
 .dashboard-menu li {
 	margin: 10px;
 	font-size: 1.2em;
-	padding: 12px 25px;
+	padding: 12px 15px;
 	font-weight: 300;
 	border-radius: 5px;
 }
@@ -44,7 +57,6 @@
 
 .dashboard-menu p {
 	margin-bottom: 0;
-	font-size: 0.9em;
 	font-weight: 300;
 }
 
@@ -147,4 +159,54 @@
 	margin: 0 20px 10px;
 	padding-top: 10px;
 	color: #999;
+}
+
+/* LOGIN */
+
+.login-body {
+	position: relative;
+	height: 100vh;
+	background-color: #4980F9;
+	color: #fff;
+}
+
+.login-wrapper {
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.login-wrapper img {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 40px;
+}
+
+.login-wrapper input {
+	margin-bottom: 20px;
+}
+
+.login-wrapper label {
+	font-weight: 400;
+	font-size: 1.2em;
+}
+
+.login-wrapper .btn {
+	display: block;
+	margin-top: 20px;
+	width: 100%;
+	font-size: 1.2em;
+}
+
+.custom-form {
+	font-size: 1.2em;
+}
+
+.custom-form label {
+	font-weight: 600;
+}
+
+.commas {
+	padding: 0 14px !important;
 }

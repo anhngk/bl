@@ -1,3 +1,11 @@
 // Place all the styles related to the admin/hang_hoas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hang-hoa-table {
+	word-wrap: break-word;
+}
+
+.hang-hoa-table th {
+	text-align: center;
+}

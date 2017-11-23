@@ -1,8 +1,12 @@
-<h1>Kho hàng</h1>
-
-<%= link_to 'Thêm hàng', new_admin_hang_hoa_path %>
-
-<table>
+<div class="function-headline">
+	<h1>Kho hàng</h1>
+</div>
+<div style="margin-bottom: 20px">
+	<%= link_to new_admin_hang_hoa_path do %>
+	<button type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>  Thêm hàng</button>
+	<% end %>
+</div>
+<table class="hang-hoa-table" width="100%">
 	<thead>
 		<tr>
 			<th>Mã hàng</th>
@@ -18,25 +22,27 @@
 	</thead>
 	<tbody>
 		<% @hang_hoas.each do |hang_hoa| %>
-			<tr>
-				<td><%= hang_hoa.ma_hang %></td>
-				<td><%= hang_hoa.ten_hang %></td>
-				<td><%= hang_hoa.so_luong %></td>
-				<td><%= hang_hoa.dvt %></td>
-				<td><%= hang_hoa.xuat_xu %></td>
-				<td><%= hang_hoa.quy_cach %></td>
-				<td><%= hang_hoa.ghi_chu %></td>
-				<% hang_hoa.gias.each do |gia| %>
-					<td><%= gia.gia_ban %></td>
-				<% end %>
-				<td><%= link_to DanhMuc.find(hang_hoa.danh_muc_id).ten_danh_muc, admin_danh_muc_path(hang_hoa.danh_muc_id) %></td>
-				<td><%= link_to 'Xem', admin_hang_hoa_path(hang_hoa) %></td>
-				<td><%= link_to 'Sửa', edit_admin_hang_hoa_path(hang_hoa) %></td>
-				<td><%= link_to 'Xóa', admin_hang_hoa_path(hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chưa?'} %></td>
-			</tr>
+		<tr>
+			<td align="center"><%= hang_hoa.ma_hang %></td>
+			<td><%= hang_hoa.ten_hang %></td>
+			<td align="center"><%= hang_hoa.so_luong %></td>
+			<td align="center"><%= hang_hoa.dvt %></td>
+			<td align="center"><%= hang_hoa.xuat_xu %></td>
+			<td align="center"><%= hang_hoa.quy_cach %></td>
+			<td><%= hang_hoa.ghi_chu %></td>
+			<td>
+				<select class="form-control">
+					<% hang_hoa.gias.each do |gia| %>
+					<option><%= gia.gia_ban %></option>
+					<% end %>
+				</select>
+			</td>
+			<td align="center"><%= link_to DanhMuc.find(hang_hoa.danh_muc_id).ten_danh_muc, admin_danh_muc_path(hang_hoa.danh_muc_id) %></td>
+			<td><%= link_to 'Xem', admin_hang_hoa_path(hang_hoa) %></td>
+			<td><%= link_to 'Sửa', edit_admin_hang_hoa_path(hang_hoa) %></td>
+			<td><%= link_to 'Xóa', admin_hang_hoa_path(hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chưa?'} %></td>
+		</tr>
 		<% end %>
 	</tbody>
 </table>
 <%= yield %>
-
-

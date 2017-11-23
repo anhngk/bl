@@ -1,6 +1,12 @@
-<h1>Chỉnh sửa danh mục</h1>
-
-<%= form_for [:admin, @danh_muc] do |f| %>
-	<p><%= f.text_area :ten_danh_muc %></p>
-	<p><%= f.submit "Sửa danh mục" %></p>
-<% end %>
+<div class="function-headline">
+	<h1>Chỉnh sửa danh mục</h1>
+</div>
+<div class="col-md-4 row">
+	<%= form_for [:admin, @danh_muc] do |f| %>
+	<p><%= f.text_field :ten_danh_muc, class: "form-control", style: "font-size: 1.4em; padding: 5px 10px; height:auto" %></p>
+	<p>
+		<%= f.submit "Sửa tên danh mục", class: "btn btn-success pull-right", style: "margin-left: 5px" %>	
+		<%= link_to 'Trở lại', new_admin_danh_muc_path, class: "btn btn-primary pull-right" %>
+	</p>
+	<% end %>
+</div>

@@ -10,7 +10,7 @@ class Admin::SessionsController < Admin::ApplicationController
 		@moderator = Moderator.find_by(username: params[:username]).try(:authenticate, params[:password])
 		if @moderator
 			session[:current_moderator_id] = @moderator.id
-			redirect_to admin_moderators_url, notice: 'Successfully logged in'
+			redirect_to admin_hang_hoas_url, notice: 'Successfully logged in'
 		else
 			flash[:alert] = 'Wrong username / password'
 			render 'new'

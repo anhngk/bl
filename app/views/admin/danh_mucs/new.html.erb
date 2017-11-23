@@ -1,31 +1,34 @@
-<h1>Tạo danh mục hàng hóa</h1>
-
-<%= render 'form' %>
-
-<table>
-	<thead>
-		<tr>
-			<th>Tên danh mục</th>
-			<th>Mô tả</th>
-			<th>Tình trạng</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @danh_mucs.each do |danh_muc| %>
-		<tr>
-			<td><%= danh_muc.ten_danh_muc %></td>
-			<td><%= danh_muc.mota %></td>
-			<td><%= true_false_converter(danh_muc.dang_su_dung?, truthy: 'Đang dùng', falsey: 'Chưa dùng')  %></td>
-			<td>
-				<%= link_to edit_admin_danh_muc_path(danh_muc) do %>
-					<button type="button">Sửa</button>		
-				<% end %>	
-			</td>
-			<td>
-				<%= create_deletable_button danh_muc %>
-			</td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+<div class="function-headline">
+	<h1>Danh mục hàng hóa</h1>
+</div>
+<div class="row">
+	
+	<div class="col-md-4">
+		<%= render 'form' %>
+	</div>
+	<div class="col-md-8 show-table">	
+		<table>
+			<thead>
+				<tr>
+					<th>Tên danh mục</th>
+					<th>Tình trạng</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @danh_mucs.each do |danh_muc| %>
+				<tr>
+					<td><%= danh_muc.ten_danh_muc %></td>
+					<td><%= true_false_converter(danh_muc.dang_su_dung?, truthy: 'Đang dùng', falsey: 'Chưa dùng')  %></td>
+					<td>
+						<%= link_to edit_admin_danh_muc_path(danh_muc) do %>
+						<button type="button" class="btn btn-warning btn-sm">Sửa</button>
+						<% end %>
+					</td>
+					<td><%= create_deletable_button danh_muc %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

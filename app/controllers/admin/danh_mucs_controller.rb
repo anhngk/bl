@@ -31,6 +31,8 @@ class Admin::DanhMucsController < Admin::ApplicationController
   end
 
   def show
+    @danh_muc = DanhMuc.find(params[:id])
+    @hang_hoas = @danh_muc.hang_hoas
   end
 
   def destroy
