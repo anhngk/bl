@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109111158) do
+ActiveRecord::Schema.define(version: 20171127160125) do
 
   create_table "cthd_nhaps", force: :cascade do |t|
     t.string   "ma_cthd_nhap",    limit: 255
@@ -103,16 +103,29 @@ ActiveRecord::Schema.define(version: 20171109111158) do
   add_index "hoa_don_xuats", ["khach_hang_id"], name: "index_hoa_don_xuats_on_khach_hang_id", using: :btree
 
   create_table "khach_hangs", force: :cascade do |t|
-    t.string   "kh_id",      limit: 255
-    t.string   "ten_kh",     limit: 255
-    t.string   "ma_so_thue", limit: 255
-    t.string   "dia_chi",    limit: 255
-    t.string   "dien_thoai", limit: 255
-    t.text     "ghi_chu",    limit: 65535
-    t.decimal  "tien_no",                  precision: 10
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.string   "kh_id",                  limit: 255
+    t.string   "ten_kh",                 limit: 255
+    t.string   "ma_so_thue",             limit: 255
+    t.string   "dia_chi",                limit: 255
+    t.string   "dien_thoai",             limit: 255
+    t.text     "ghi_chu",                limit: 65535
+    t.decimal  "tien_no",                              precision: 10
+    t.datetime "created_at",                                                       null: false
+    t.datetime "updated_at",                                                       null: false
+    t.string   "email",                  limit: 255,                  default: "", null: false
+    t.string   "encrypted_password",     limit: 255,                  default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,                    default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
   end
+
+  add_index "khach_hangs", ["email"], name: "index_khach_hangs_on_email", unique: true, using: :btree
+  add_index "khach_hangs", ["reset_password_token"], name: "index_khach_hangs_on_reset_password_token", unique: true, using: :btree
 
   create_table "moderators", force: :cascade do |t|
     t.string   "fullname",        limit: 255

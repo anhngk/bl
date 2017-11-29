@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :views
+  devise_for :khach_hangs
   root 'trang_chu#index', as: 'home'
 
   get '/store' => 'hang_hoas#index'

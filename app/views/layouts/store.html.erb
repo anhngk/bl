@@ -21,7 +21,21 @@
 						<%= image_tag 'Logo.png', width: "60px", id: "logo-img" %>
 					</a>
 				</div>
-				<div class="contact-number"><i class="fa fa-phone"></i>  0914 0924 77 - 0918 259 412</div>
+				<div class="upperline-nav">
+					<i class="fa fa-phone"></i>  <span id="contact-number">0914 0924 77 - 0918 259 412</span>
+					<span>
+						<% if khach_hang_signed_in? %>
+							<%= link_to destroy_khach_hang_session_path, method: :delete do %>
+							Đăng xuất <i class="fa fa-sign-out"></i>
+							<% end %>
+						<% else %>
+							<%= link_to 'Đăng ký', new_khach_hang_registration_path %> |
+							<%= link_to new_khach_hang_sesion_path do %>
+								Đăng nhập <i class="fa fa-sign-in"></i>
+							<% end %>						
+						<% end %>
+					</span>
+				</div>
 				<div class="navbar-collapse collapse" id="navbar-collapse-items">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/">Trang chủ</a></li>

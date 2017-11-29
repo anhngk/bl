@@ -81,16 +81,25 @@ a:hover {
 	border-radius: 15%;
 }
 
-.contact-number {
+.upperline-nav {
 	text-align: right;
-	padding-right: 15px;
+	padding-right: 3px;
 	margin-top:  10px;
 	color:  #4980F9;
 	font-size:  1.2em;
 }
 
-.contact-number i {
+.upperline-nav i {
 	margin-right:  7px;
+}
+
+.upperline-nav a {
+	margin: 0 10px;
+}
+
+#contact-number {
+	margin-right: 20px;
+	font-weight: 600;
 }
 
 /* FOOTER */

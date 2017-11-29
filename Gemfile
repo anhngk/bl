@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'fog'
 gem 'cocoon'
+gem 'devise', '~> 4.2'
 
 gem "font-awesome-rails"
 
