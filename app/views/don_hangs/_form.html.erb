@@ -1,0 +1,43 @@
+<%= form_for(@don_hang, html: { class: 'form-horizontal col-md-6 col-sm-offset-3' }) do |f| %>
+<div id="error_explanation">
+  <h2><% pluralize(@don_hang.errors.count, "error") %></h2>
+  <ul>
+    <% @don_hang.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<div class="form-group">
+  <%= f.label 'Họ và tên', class: 'col-sm-4 control-label' %>
+  <div class="col-sm-8">
+    <%= f.text_field :nguoi_nhan, autofocus: true,  class: 'form-control' %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :email, class: 'col-sm-4 control-label' %>
+  <div class="col-sm-8">
+    <%= f.email_field :email, autofocus: true,  class: 'form-control' %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label 'Địa chỉ', class: 'col-sm-4 control-label' %>
+  <div class="col-sm-8">
+    <%= f.text_field :dia_chi, autocomplete: "off", class: 'form-control' %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label 'Điện thoại', class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <%= f.text_field :sdt, autocomplete: "off", class: 'form-control'%>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label 'Phương thức thanh toán', class: "col-sm-4 control-label" %>
+  <div class="col-sm-8">
+    <%= f.select :kieu_thanh_toan, DonHang::KIEU_THANH_TOAN, {prompt: 'Chọn phương thức thanh toán'}, {class: 'form-control'} %>
+  </div>
+</div>
+<div class="col-sm-offset-4 col-sm-8" style="padding-left: 10px">
+  <%= f.submit "Đặt hàng", class: 'btn btn-success'%>
+</div>
+<% end %>

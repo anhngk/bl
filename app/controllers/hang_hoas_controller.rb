@@ -2,6 +2,10 @@ class HangHoasController < ApplicationController
 
   layout 'store'
 
+
+  include GioHangHienTai
+  before_action :set_gio_hang
+
   def index
   	if params[:danh_muc].blank?
   		@danh_muc = DanhMuc.first

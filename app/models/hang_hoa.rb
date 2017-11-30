@@ -18,6 +18,7 @@ class HangHoa < ActiveRecord::Base
 
 	has_many :gias, dependent: :destroy
 	has_many :chi_tiet_gio_hangs
+	has_many :don_hangs, through: :chi_tiet_gio_hangs
 
 	accepts_nested_attributes_for 	:gias,
 									allow_destroy: true,

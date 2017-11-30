@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   resources :chi_tiet_gio_hangs
   resources :gio_hangs
+  resources :don_hangs
   devise_for :views
   devise_for :khach_hangs
+  
   root 'trang_chu#index', as: 'home'
 
   get '/store' => 'hang_hoas#index'
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
   get '/logout' => 'admin/sessions#destroy' 
 
   namespace :admin do
+    resources :don_hangs
+    resources :khach_hangs
     resources :hang_hoas
     resources :danh_mucs
     resources :sessions, only: [:new, :create, :destroy]

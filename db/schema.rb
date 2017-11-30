@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129173542) do
+ActiveRecord::Schema.define(version: 20171130181809) do
 
   create_table "chi_tiet_gio_hangs", force: :cascade do |t|
     t.integer  "hang_hoa_id", limit: 4
@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20171129173542) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "so_luong",    limit: 4, default: 1
+    t.integer  "don_hang_id", limit: 4
   end
 
+  add_index "chi_tiet_gio_hangs", ["don_hang_id"], name: "index_chi_tiet_gio_hangs_on_don_hang_id", using: :btree
   add_index "chi_tiet_gio_hangs", ["gio_hang_id"], name: "index_chi_tiet_gio_hangs_on_gio_hang_id", using: :btree
   add_index "chi_tiet_gio_hangs", ["hang_hoa_id"], name: "index_chi_tiet_gio_hangs_on_hang_hoa_id", using: :btree
 
@@ -56,6 +58,21 @@ ActiveRecord::Schema.define(version: 20171129173542) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "don_hangs", force: :cascade do |t|
+    t.string   "nguoi_nhan",      limit: 255
+    t.string   "dia_chi",         limit: 255
+    t.string   "sdt",             limit: 255
+    t.string   "email",           limit: 255
+    t.boolean  "tinh_trang"
+    t.boolean  "thanh_toan"
+    t.string   "kieu_thanh_toan", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "khach_hang_id",   limit: 4
+  end
+
+  add_index "don_hangs", ["khach_hang_id"], name: "index_don_hangs_on_khach_hang_id", using: :btree
 
   create_table "gia", force: :cascade do |t|
     t.decimal  "gia_ban",               precision: 10
@@ -163,12 +180,14 @@ ActiveRecord::Schema.define(version: 20171129173542) do
     t.datetime "updated_at",                              null: false
   end
 
+  add_foreign_key "chi_tiet_gio_hangs", "don_hangs"
   add_foreign_key "chi_tiet_gio_hangs", "gio_hangs"
   add_foreign_key "chi_tiet_gio_hangs", "hang_hoas"
   add_foreign_key "cthd_nhaps", "hang_hoas"
   add_foreign_key "cthd_nhaps", "hoa_don_nhaps"
   add_foreign_key "cthd_xuats", "hang_hoas"
   add_foreign_key "cthd_xuats", "hoa_don_xuats"
+  add_foreign_key "don_hangs", "khach_hangs"
   add_foreign_key "gia", "hang_hoas"
   add_foreign_key "hang_hoas", "danh_mucs"
   add_foreign_key "hang_hoas", "moderators"

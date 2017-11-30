@@ -1,7 +1,8 @@
 <div class="container">
-	
+	<% if notice %>
 	<p id="notice"><%= notice %></p>
-	<h2>GIỎ HÀNG</h2>
+	<% end %>
+	<h2>Giỏ hàng</h2>
 	<table>
 		<% @gio_hang.chi_tiet_gio_hangs.each do |chi_tiet| %>
 		<tr>
@@ -16,6 +17,5 @@
 		</tr>
 	</table>
 
-		
-	</ul>
+	<%= link_to 'Trở lại', :back %> | <%= link_to 'Đặt hàng', new_don_hang_path, method: :get %>
 </div>
