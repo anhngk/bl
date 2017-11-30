@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127160125) do
+ActiveRecord::Schema.define(version: 20171129173542) do
+
+  create_table "chi_tiet_gio_hangs", force: :cascade do |t|
+    t.integer  "hang_hoa_id", limit: 4
+    t.integer  "gio_hang_id", limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "so_luong",    limit: 4, default: 1
+  end
+
+  add_index "chi_tiet_gio_hangs", ["gio_hang_id"], name: "index_chi_tiet_gio_hangs_on_gio_hang_id", using: :btree
+  add_index "chi_tiet_gio_hangs", ["hang_hoa_id"], name: "index_chi_tiet_gio_hangs_on_hang_hoa_id", using: :btree
 
   create_table "cthd_nhaps", force: :cascade do |t|
     t.string   "ma_cthd_nhap",    limit: 255
@@ -54,6 +65,11 @@ ActiveRecord::Schema.define(version: 20171127160125) do
   end
 
   add_index "gia", ["hang_hoa_id"], name: "index_gia_on_hang_hoa_id", using: :btree
+
+  create_table "gio_hangs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hang_hoas", force: :cascade do |t|
     t.string   "ma_hang",            limit: 255
@@ -147,6 +163,8 @@ ActiveRecord::Schema.define(version: 20171127160125) do
     t.datetime "updated_at",                              null: false
   end
 
+  add_foreign_key "chi_tiet_gio_hangs", "gio_hangs"
+  add_foreign_key "chi_tiet_gio_hangs", "hang_hoas"
   add_foreign_key "cthd_nhaps", "hang_hoas"
   add_foreign_key "cthd_nhaps", "hoa_don_nhaps"
   add_foreign_key "cthd_xuats", "hang_hoas"

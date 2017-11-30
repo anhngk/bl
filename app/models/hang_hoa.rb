@@ -1,4 +1,8 @@
 class HangHoa < ActiveRecord::Base
+
+	before_destroy :ensure_not_referenced_by_any_line_item
+
+
 	has_attached_file 	:image,
 						 styles: { large: "500x500>", medium: "300x300>", thumb: "183x183#"},
 						 default_url: "/images/:style/missing.png"
@@ -13,8 +17,19 @@ class HangHoa < ActiveRecord::Base
 	belongs_to :danh_muc
 
 	has_many :gias, dependent: :destroy
+	has_many :chi_tiet_gio_hangs
 
 	accepts_nested_attributes_for 	:gias,
 									allow_destroy: true,
 									reject_if: proc { |att| att['gia_ban'].blank? }
+
+	private 
+		def ensure_not_referenced_by_any_line_item
+			if chi_tiet_gio_hangs.empty?
+				return true
+			else
+				errors.add(:base, 'Tồn tại chi tiết giỏ hàng!')
+				return false
+			end
+		end
 end

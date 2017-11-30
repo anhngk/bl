@@ -9,7 +9,7 @@
 				<div class="product-description col-md-12"><h2><%= @hang_hoa.ghi_chu %></h2></div>
 			</div>
 			<div class="product-detail-spec">
-				
+				<%= button_to 'Thêm vào giỏ hàng', chi_tiet_gio_hangs_path(hang_hoa_id: @hang_hoa) %>
 			</div>
 		</div>
 	</div>

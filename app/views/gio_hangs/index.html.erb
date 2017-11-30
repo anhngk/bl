@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gio Hangs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gio_hangs.each do |gio_hang| %>
+      <tr>
+        <td><%= link_to 'Show', gio_hang %></td>
+        <td><%= link_to 'Edit', edit_gio_hang_path(gio_hang) %></td>
+        <td><%= link_to 'Destroy', gio_hang, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gio hang', new_gio_hang_path %>

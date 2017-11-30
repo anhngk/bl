@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Chi Tiet Gio Hangs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hang hoa</th>
+      <th>Gio hang</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chi_tiet_gio_hangs.each do |chi_tiet_gio_hang| %>
+      <tr>
+        <td><%= chi_tiet_gio_hang.hang_hoa %></td>
+        <td><%= chi_tiet_gio_hang.gio_hang %></td>
+        <td><%= link_to 'Show', chi_tiet_gio_hang %></td>
+        <td><%= link_to 'Edit', edit_chi_tiet_gio_hang_path(chi_tiet_gio_hang) %></td>
+        <td><%= link_to 'Destroy', chi_tiet_gio_hang, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chi tiet gio hang', new_chi_tiet_gio_hang_path %>

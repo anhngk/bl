@@ -1,0 +1,25 @@
+<%= form_for(@chi_tiet_gio_hang) do |f| %>
+  <% if @chi_tiet_gio_hang.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@chi_tiet_gio_hang.errors.count, "error") %> prohibited this chi_tiet_gio_hang from being saved:</h2>
+
+      <ul>
+      <% @chi_tiet_gio_hang.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hang_hoa_id %><br>
+    <%= f.text_field :hang_hoa_id %>
+  </div>
+  <div class="field">
+    <%= f.label :gio_hang_id %><br>
+    <%= f.text_field :gio_hang_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

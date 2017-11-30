@@ -1,0 +1,9 @@
+vn:
+  number:
+    currency:
+      format:
+        unit: 'đ'
+        delimited: ','
+        separator: '.'
+        precision: 0
+        format: '%n%u'

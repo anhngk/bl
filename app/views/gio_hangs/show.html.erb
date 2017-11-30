@@ -1,0 +1,21 @@
+<div class="container">
+	
+	<p id="notice"><%= notice %></p>
+	<h2>GIỎ HÀNG</h2>
+	<table>
+		<% @gio_hang.chi_tiet_gio_hangs.each do |chi_tiet| %>
+		<tr>
+			<td><%= chi_tiet.so_luong %> &times;</td>
+			<td><%= chi_tiet.hang_hoa.ten_hang %></td>
+			<td><%= number_to_currency(chi_tiet.tong_cong, locale: :vn) %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td colspan="2">Tổng cộng</td>
+			<td><%= number_to_currency(@gio_hang.tong_cong, locale: :vn)%></td>
+		</tr>
+	</table>
+
+		
+	</ul>
+</div>

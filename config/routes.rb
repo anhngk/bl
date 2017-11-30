@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :chi_tiet_gio_hangs
+  resources :gio_hangs
   devise_for :views
   devise_for :khach_hangs
   root 'trang_chu#index', as: 'home'
