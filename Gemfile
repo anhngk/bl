@@ -37,6 +37,9 @@ gem 'fog'
 gem 'cocoon'
 gem 'devise', '~> 4.2'
 gem 'jquery-turbolinks'
+gem 'mailcatcher'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 gem "font-awesome-rails"
 

@@ -64,4 +64,5 @@
 			<td align="right"><strong><%= number_to_currency(@don_hang.tong_cong, locale: :vn)%></strong></td>
 		</tr>
 	</table>
+	<%= link_to "Cập nhật đơn hàng", edit_admin_don_hang_path(@don_hang), class: 'btn btn-primary' %>
 </div>

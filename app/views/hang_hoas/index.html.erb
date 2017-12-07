@@ -33,11 +33,15 @@
 							<%= image_tag hang_hoa.image.url(:thumb) %>
 							<div class="product-name"><%= hang_hoa.ten_hang %></div>
 						<% end %>
-						<div class="product-price">Liên hệ</div>
+						<div class="product-price"><%= number_to_currency(hang_hoa.gias.last[:gia_ban], locale: :vn) %></div>
 					</div>
 				<% end %>
 			</div>
-			
+			<div class="product-pagination col-md-12">
+				<div class="pull-right">
+					<%= paginate @hang_hoas, theme: 'twitter-bootstrap-3' %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

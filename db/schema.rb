@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171130181809) do
+ActiveRecord::Schema.define(version: 20171207195025) do
 
   create_table "chi_tiet_gio_hangs", force: :cascade do |t|
     t.integer  "hang_hoa_id", limit: 4
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20171130181809) do
     t.string   "dia_chi",         limit: 255
     t.string   "sdt",             limit: 255
     t.string   "email",           limit: 255
-    t.boolean  "tinh_trang"
+    t.string   "tinh_trang",      limit: 255
     t.boolean  "thanh_toan"
     t.string   "kieu_thanh_toan", limit: 255
     t.datetime "created_at",                  null: false
@@ -155,8 +155,12 @@ ActiveRecord::Schema.define(version: 20171130181809) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
     t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "khach_hangs", ["confirmation_token"], name: "index_khach_hangs_on_confirmation_token", unique: true, using: :btree
   add_index "khach_hangs", ["email"], name: "index_khach_hangs_on_email", unique: true, using: :btree
   add_index "khach_hangs", ["reset_password_token"], name: "index_khach_hangs_on_reset_password_token", unique: true, using: :btree
 

@@ -15,12 +15,20 @@ class Admin::DonHangsController < Admin::ApplicationController
 	def edit
 	end
 
+	def update
+		if @don_hang.update(don_hang_params)
+			redirect_to admin_don_hangs_url, notice: 'Cập nhật đơn hàng thành công'
+		else
+      		flash[:alert] = 'Có lỗi khi cập nhật đơn hàng'
+      		render 'edit'
+    end
+	end
+
 	def new
 		if @gio_hang.chi_tiet_gio_hangs.empty?
 			redirect_to store_url, notice: "Giỏ hàng của bạn chưa có sản phẩm nào"
 			return
 		end
-
 		@don_hang = DonHang.new
 	end
 

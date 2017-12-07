@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Xin chào <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Quý khách đã đăng ký tài khoản trên cửa hàng BL, để sử dụng tài khoản xin vui lòng</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Nhấn vào đây để xác nhận thông tin và kích hoạt tài khoản', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -4,6 +4,6 @@ class KhachHang < ActiveRecord::Base
 
   	has_many :don_hangs
   	
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 end

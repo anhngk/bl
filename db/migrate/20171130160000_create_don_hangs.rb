@@ -5,7 +5,7 @@ class CreateDonHangs < ActiveRecord::Migration
       t.string :dia_chi
       t.string :sdt
       t.string :email
-      t.boolean :tinh_trang
+      t.string :tinh_trang
       t.boolean :thanh_toan
       t.string :kieu_thanh_toan
 

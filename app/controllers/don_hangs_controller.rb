@@ -19,8 +19,9 @@ class DonHangsController < ApplicationController
 			redirect_to store_url, notice: "Giỏ hàng của bạn chưa có sản phẩm nào"
 			return
 		end
-
+		@khach_hang = current_khach_hang
 		@don_hang = DonHang.new
+
 	end
 
 
@@ -28,14 +29,15 @@ class DonHangsController < ApplicationController
 		@don_hang = DonHang.new(don_hang_params)
 		@don_hang.them_chi_tiet_tu_gio_hang(@gio_hang)
 		@don_hang.khach_hang_id = current_khach_hang.id
+		@khach_hang = current_khach_hang
 
 		if @don_hang.save
 			GioHang.destroy(session[:gio_hang_id])
 			session[:gio_hang_id] = nil
-			redirect_to store_url
+			redirect_to don_hang_url(@don_hang), notice: "Bạn đã đặt hàng thành công!"
 		else
-	        format.html { render action: 'new' }
-	        format.json { render json: @order.errors, status: :unprocessable_entity }
+	        flash[:alert] = "Hãy điền thông tin đầy để chúng tôi có thể xử lý đơn hàng"
+			render 'new'
       	end
 
 	end
