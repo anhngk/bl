@@ -1,0 +1,66 @@
+<div class="container">
+	<h2>Chi tiết đơn hàng</h2>
+	<div class="customer-info">
+		<table class="table table-bordered">
+			<tr>
+				<th>Email</th>
+				<td><%= @don_hang.khach_hang.email if @don_hang.khach_hang %></td>
+			</tr>
+			<tr>
+				<th>Tên khách hàng</th>
+				<td><%= @don_hang.khach_hang.ten_kh if @don_hang.khach_hang %></td>
+			</tr>
+			<tr>
+				<th>Địa chỉ nhận hàng</th>
+				<td><%= @don_hang.dia_chi %></td>
+			</tr>
+			<tr>
+				<th>Điện thoại liên lạc</th>
+				<td><%= @don_hang.sdt %></td>
+			</tr>
+			<tr>
+				<th>Tên người nhận</th>
+				<td><%= @don_hang.nguoi_nhan %></td>
+			</tr>
+			<tr>
+				<th>Kiểu thanh toán</th>
+				<td><%= @don_hang.kieu_thanh_toan %></td>
+			</tr>
+			<tr>
+				<th>Đặt hàng lúc</th>
+				<td><%= @don_hang.created_at %></td>
+			</tr>
+			<tr>
+				<th>Giao hàng</th>
+				<td><%= @don_hang.tinh_trang %></td>
+			</tr>
+			<tr>
+				<th>Thanh toán</th>
+				<td><%= @don_hang.thanh_toan %></td>
+			</tr>
+		</table>
+		
+		<table class="table table-bordered">
+			<thead>
+				<th>Tên hàng hóa</th>
+				<th>Số lượng</th>
+				<th>ĐVT</th>
+				<th>Đơn giá</th>
+				<th>Thành tiền</th>
+			</thead>
+			<% @don_hang.chi_tiet_gio_hangs.each do |chi_tiet| %>
+			<tr>
+				<td><%= chi_tiet.hang_hoa.ten_hang %></td>
+				<td><%= chi_tiet.so_luong %></td>
+				<td><%= chi_tiet.hang_hoa.dvt %></td>
+				<td align="right"><%= number_to_currency(chi_tiet.gia_ban, locale: :vn) %></td>
+				<td align="right"><%= number_to_currency(chi_tiet.tong_cong, locale: :vn) %></td>
+			</tr>
+			<% end %>
+			<tr>
+				<td colspan="4" align="right"><strong>TỔNG CỘNG</strong></td>
+				<td align="right"><strong><%= number_to_currency(@don_hang.tong_cong, locale: :vn)%></strong></td>
+			</tr>
+		</table>
+	</div>
+</div>

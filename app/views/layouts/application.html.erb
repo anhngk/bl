@@ -22,17 +22,31 @@
 					</a>
 				</div>
 				<div class="upperline-nav">
-					<i class="fa fa-phone"></i>  <span>0914 0924 77 - 0918 259 412</span>
+					<i class="fa fa-phone"></i><span class="contact-number">0914 0924 77 - 0918 259 412</span>
 					<span>
 						<% if khach_hang_signed_in? %>
-							<%= link_to destroy_khach_hang_session_path, method: :delete do %>
-							Đăng xuất <i class="fa fa-sign-out"></i>
-							<% end %>
+						<div class="dropdown" style="display: inline-block">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Chào <strong><%= current_khach_hang.ten_kh.partition(' ').last %></strong> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<ul class="dropdown-menu pull-right">
+								<li><%= link_to 'Thông tin tài khoản', edit_khach_hang_registration_path %></li>
+
+								<li><%= link_to 'Quản lý đơn hàng', don_hangs_path %></li>
+								<li role="separator" class="divider"></li>
+								<li>
+									<%= link_to destroy_khach_hang_session_path, method: :delete do %>
+									Thoát tài khoản</i>
+									<% end %>
+								</li>
+							</ul>
+						</div>
+							
 						<% else %>
-							<%= link_to 'Đăng ký', new_khach_hang_registration_path %> |
+						<span class="sign-in-up">
+							<%= link_to 'Đăng ký', new_khach_hang_registration_path %><span class="separate-line">|</span>
 							<%= link_to new_khach_hang_session_path do %>
 								Đăng nhập <i class="fa fa-sign-in"></i>
 							<% end %>
+						</span>
 						<% end %>
 					</span>
 				</div>
@@ -41,18 +55,10 @@
 						<li><a href="/">Trang chủ</a></li>
 						<li><a href="/store">Cửa hàng</a></li>
 						<li><a href="#">Liên hệ</a></li>
-						<!-- <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giỏ hàng <%= fa_icon "shopping-cart" %><span id="product-in-cart">7</span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul>
-						</li> -->
-						<li>
-							<%= link_to 'Giỏ hàng', gio_hang_path(@gio_hang) %>
+						<li id="shopping-cart">
+							<%= link_to gio_hang_path(@gio_hang) do %>
+								<i class="fa fa-shopping-cart"></i> Giỏ hàng
+							<% end %>
 						</li>
 
 					</ul>

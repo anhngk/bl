@@ -24,5 +24,14 @@ module Bl
     config.active_record.raise_in_transactional_callbacks = true
 
     config.paperclip_defaults = { storage: :fog, fog_credentials: { provider: "Local", local_root: "#{Rails.root}/public"}, fog_directory: "", fog_host: ""}
+  
+    config.to_prepare do
+        Devise::SessionsController.layout "devise"
+        Devise::RegistrationsController.layout "devise"
+        Devise::ConfirmationsController.layout "devise"
+        Devise::UnlocksController.layout "devise"            
+        Devise::PasswordsController.layout "devise"   
+    end
+
   end
 end

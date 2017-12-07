@@ -6,7 +6,7 @@
 	<button type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>  Thêm hàng</button>
 	<% end %>
 </div>
-<table class="hang-hoa-table" width="100%">
+<table class="table table-bordered" width="100%">
 	<thead>
 		<tr>
 			<th>Mã hàng</th>
@@ -16,8 +16,9 @@
 			<th>Xuất xứ</th>
 			<th>Quy cách</th>
 			<th>Ghi chú</th>
-			<th>Gía bán</th>
+			<th>Giá bán</th>
 			<th>Danh mục</th>
+			<th colspan="3"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,7 +34,7 @@
 			<td>
 				<select class="form-control">
 					<% hang_hoa.gias.each do |gia| %>
-					<option><%= gia.gia_ban %></option>
+					<option><%= number_to_currency(gia.gia_ban, locale: :vn) %></option>
 					<% end %>
 				</select>
 			</td>

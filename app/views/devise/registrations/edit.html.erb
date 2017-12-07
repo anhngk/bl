@@ -1,43 +1,76 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div class="container user-auth">
+  <h2>CẬP NHẬT THÔNG TIN TÀI KHOẢN</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal col-md-6 col-sm-offset-3' }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+  <div class="form-group">
+    <%= f.label "Họ và tên", class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= f.text_field :ten_kh, autocomplete: "off", class: 'form-control' , input_html: { value: :ten_kh } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email", class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= f.text_field :email, autocomplete: "off", class: 'form-control' , input_html: { value: :email }, readonly: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Điện thoại", class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= f.text_field :dien_thoai, autocomplete: "off", class: 'form-control'%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Địa chỉ", class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= f.text_field :dia_chi, autocomplete: "off", class: 'form-control' , input_html: { value: :dia_chi } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Mã số thuế", class: 'col-sm-4 control-label' %>
+    <div class="col-sm-8">
+      <%= f.text_field :ma_so_thue, autocomplete: "off", class: 'form-control' , input_html: { value: :ma_so_thue } %>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label "Mật khẩu hiện tại", class: 'col-sm-4 control-label' do %>
+    <span>Mật khẩu hiện tại (*)</span><br>
+    <p style="font-weight: 400">Nhập mật khẩu hiện tại để xác nhận cập nhật</p>
     <% end %>
+    <div class="col-sm-8">
+      <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="editpassword" id="edit-password-checkbox" value="0"> Thay đổi mật khẩu
+        </label>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div id="edit-password" style="display: none">
+    <div class="form-group">
+      <%= f.label "Mật khẩu mới", class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Tối thiểu 6 ký tự" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label "Lặp lại mật khẩu mới", class: 'col-sm-4 control-label' %>
+      <div class="col-sm-8">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="col-sm-offset-4 col-sm-8" style="padding-left: 10px">
+    <%= f.submit "Cập nhật", class: 'btn btn-lg btn-primary' %>
   </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <% end %>
+</div>

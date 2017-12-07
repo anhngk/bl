@@ -1,0 +1,25 @@
+<div class="container">
+	<h2>ĐƠN HÀNG CỦA TÔI</h2>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Mã đơn hàng</th>
+				<th>Ngày đặt hàng</th>
+				<th>Tổng tiền</th>
+				<th>Trạng thái</th>
+				<th colspan="3"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @don_hangs.each do |don_hang| %>
+			<tr>
+				<td><%= don_hang.id %></td>
+				<td><%= don_hang.created_at %></td>
+				<td><%= number_to_currency(don_hang.tong_cong, locale: :vn)%></td>
+				<td><%= don_hang.tinh_trang %></td>
+				<td><%= link_to 'Xem đơn hàng', don_hang_path(don_hang)%> </td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

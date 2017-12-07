@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap.min
@@ -18,19 +19,26 @@
 //= require cocoon
 //= require_tree .
 
+$(document).on('turbolinks:load', function() {
+  $("#edit-password-checkbox").change(function(){
+		console.log("!!")
+		if (this.checked) 
+			$("#edit-password").fadeIn();
+		else
+			$("#edit-password").fadeOut();
+	});
 
-$(".slider-section").ready(function(){
-	setTimeout(function(){
-		console.log("Hello");
-		$(".owl-carousel").owlCarousel({
-		loop: true,
-		autoWidth: true,
-		lazyLoad: true,
-		dots: true,
-		autoplay:true,
-	    autoplayTimeout:5000,
-	    autoplayHoverPause:true,
-	    autoplaySpeed:1500
-	},1500);
-	})
+  	setTimeout(function(){
+  		$(".owl-carousel").owlCarousel({
+			loop: true,
+			autoWidth: true,
+			lazyLoad: true,
+			dots: true,
+			autoplay:true,
+			stopOnHover : true,
+		    autoplayTimeout:5000,
+		    autoplayHoverPause:true,
+		    autoplaySpeed:1500,
+		});
+  	},10);
 });

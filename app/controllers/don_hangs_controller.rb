@@ -1,14 +1,14 @@
 class DonHangsController < ApplicationController
 
 	include GioHangHienTai
-	before_action :set_gio_hang, only: [:new, :create]
+	before_action :set_gio_hang, only: [:index, :show, :new, :create]
 	before_action :set_don_hang, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@don_hangs = DonHang.all
+		@don_hangs = current_khach_hang.don_hangs
 	end
 
-	def show	
+	def show
 	end
 
 	def edit

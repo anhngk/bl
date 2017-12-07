@@ -1,5 +1,5 @@
 class GioHangsController < ApplicationController
-  before_action :set_gio_hang, only: [:show, :edit, :update, :destroy]
+  before_action :set_gio_hang, only: [:edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :gio_hang_khong_ton_tai
 
   # GET /gio_hangs
@@ -11,6 +11,7 @@ class GioHangsController < ApplicationController
   # GET /gio_hangs/1
   # GET /gio_hangs/1.json
   def show
+    @gio_hang = GioHang.find(params[:id])
   end
 
   # GET /gio_hangs/new

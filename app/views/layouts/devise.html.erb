@@ -22,11 +22,11 @@
 					</a>
 				</div>
 				<div class="upperline-nav">
-					<i class="fa fa-phone"></i><span class="contact-number">0914 0924 77 - 0918 259 412</span>
+					<i class="fa fa-phone"></i>  <span>0914 0924 77 - 0918 259 412</span>
 					<span>
 						<% if khach_hang_signed_in? %>
 						<div class="dropdown" style="display: inline-block">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Chào <strong><%= current_khach_hang.ten_kh.partition(' ').last %></strong> <i class="fa fa-caret-down" aria-hidden="true"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle"></i> Chào <strong><%= current_khach_hang.ten_kh.partition(' ').last %></strong> <i class="fa fa-caret-down" aria-hidden="true"></i></span></a>
 							<ul class="dropdown-menu pull-right">
 								<li><%= link_to 'Thông tin tài khoản', edit_khach_hang_registration_path %></li>
 								<li><%= link_to 'Quản lý đơn hàng', don_hangs_path %></li>
@@ -53,43 +53,16 @@
 						<li><a href="/">Trang chủ</a></li>
 						<li><a href="/store">Cửa hàng</a></li>
 						<li><a href="#">Liên hệ</a></li>
-						<!-- <li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giỏ hàng <%= fa_icon "shopping-cart" %><span id="product-in-cart">7</span></a>
-								<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-								</ul>
-						</li> -->
-						<li id="shopping-cart">
-							<%= link_to gio_hang_path(@gio_hang) do %>
-								<i class="fa fa-shopping-cart"></i> Giỏ hàng
-							<% end %>
-						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<div class="search-bar-section container">
-			<div class="col-md-12">
-				<div class="search-bar col-md-5">
-					<form action="/" method="get" accept-charset="utf-8">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-							<input type="text" name="item-search" class="form-control" placeholder="Tìm kiếm">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<% if flash[:notice] %>
+		<!-- 		<% if flash[:notice] %>
 		<div class="notice"><%= flash[:notice] %></div>
 		<% end %>
 		<% if flash[:alert] %>
 		<div class="alert"><%= flash[:alert] %></div>
-		<% end %>
+		<% end %> -->
 		<%= yield %>
 	</body>
 	<footer class="footer-section row">
