@@ -11,12 +11,16 @@
 			<th>Thành tiền</th>
 		</thead>
 		<% @gio_hang.chi_tiet_gio_hangs.each do |chi_tiet| %>
-		<tr>
-			<td><%= chi_tiet.hang_hoa.ten_hang %></td>
-			<td><%= chi_tiet.so_luong %></td>
-			<td><%= number_to_currency(chi_tiet.hang_hoa.gias.last[:gia_ban], locale: :vn) %></td>
-			<td><%= number_to_currency(chi_tiet.tong_cong, locale: :vn) %></td>
-		</tr>
+			<%= form_for (chi_tiet) do |f| %>
+			<tr>
+				<td><%= chi_tiet.hang_hoa.ten_hang %></td>
+				<td><%= f.number_field :so_luong, value: chi_tiet.so_luong %></td>
+				<td><%= number_to_currency(chi_tiet.hang_hoa.gias.last[:gia_ban], locale: :vn) %></td>
+				<td><%= number_to_currency(chi_tiet.tong_cong, locale: :vn) %></td>
+				<td><%= submit_tag "Cập nhật" %></td>
+				<td><%= link_to "Xóa", chi_tiet_gio_hang_path(chi_tiet), method: :delete %></td>
+			</tr>
+			<% end %>
 		<% end %>
 		<tr>
 			<td colspan="3" style="text-align: right;"><strong>TỔNG CỘNG</strong></td>
@@ -28,5 +32,4 @@
 		<%= link_to 'Trở lại', :back, class: 'btn btn-default' %>  
 		<%= link_to 'Đặt hàng', new_don_hang_path, method: :get, class: 'btn btn-success' %>
 	</div>
-	
 </div>	

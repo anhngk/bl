@@ -22,7 +22,7 @@
 			<td><%= kh.dien_thoai %></td>
 			<td><%= kh.ma_so_thue %></td>
 			<td align="center"><%= kh.sign_in_count %></td>
-			<td><%= time_ago_in_words(kh.last_sign_in_at) %> ago</td>
+			<td><%= time_ago_in_words(kh.last_sign_in_at) unless kh.last_sign_in_at.blank?%> ago</td>
 		</tr>
 		<% end %>
 	</tbody>

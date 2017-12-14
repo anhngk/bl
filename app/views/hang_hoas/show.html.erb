@@ -1,16 +1,36 @@
 <div class="container">
 	<div class="product-detail-section row">
 		<div class="product-detail-img col-md-5">
-			<%= image_tag @hang_hoa.image.url(:large)%>	
+			<%= image_tag @hang_hoa.image.url(:large)%>
 		</div>
 		<div class="product-detail-info col-md-7">
-			<div class="product-detail-name"><h1><%= @hang_hoa.ten_hang %></h1></div>
+			<div class="product-detail-name"><h2><%= @hang_hoa.ten_hang %></h2></div>
 			<div class="row">
-				<div class="product-description col-md-12"><h2><%= @hang_hoa.ghi_chu %></h2></div>
+				<div class="product-description col-md-12"><h4><%= @hang_hoa.ghi_chu %></h4></div>
 			</div>
 			<div class="product-detail-spec">
-				<%= button_to 'Thêm vào giỏ hàng', chi_tiet_gio_hangs_path(hang_hoa_id: @hang_hoa) %>
+				<div class="product-detail-dimension row">
+					<div class="product-detail-title col-md-3"><span class="">Quy cách</span></div>
+					<div class="product-detail-content col-md-6"><%= @hang_hoa.quy_cach %></div>
+				</div>
+				<div class="product-detail-origin row">
+					<div class="product-detail-title col-md-3"><span class="">Xuất xứ</span></div>
+					<div class="product-detail-content col-md-6"><%= @hang_hoa.xuat_xu %></div>
+				</div>
+				<div class="product-detail-dvt row">
+					<div class="product-detail-title col-md-3"><span class="">Đơn vị tính</span></div>
+					<div class="product-detail-content col-md-6"><%= @hang_hoa.dvt %></div>
+				</div>
 			</div>
+			<br>
+			<div class="row">
+				<div class="product-detail-price col-md-6"> <h2>	<%= number_to_currency(@hang_hoa.gias.last[:gia_ban], locale: :vn)%></h2></div>
+			</div>
+			<br>
+			<%= form_tag chi_tiet_gio_hangs_path(hang_hoa_id: @hang_hoa) do %>
+				<%= number_field_tag :so_luong, params[:so_luong], value:  1%>
+				<%= submit_tag "Thêm vào giỏ hàng", class: 'btn btn-success' %> 
+			<% end %>
 		</div>
 	</div>
 </div>

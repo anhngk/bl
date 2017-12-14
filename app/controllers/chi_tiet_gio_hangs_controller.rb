@@ -1,7 +1,7 @@
 class ChiTietGioHangsController < ApplicationController
   include GioHangHienTai
 
-  before_action :set_gio_hang, only: [:create]
+  before_action :set_gio_hang, only: [:create, :edit, :update]
   before_action :set_chi_tiet_gio_hang, only: [:show, :edit, :update, :destroy]
 
   # GET /chi_tiet_gio_hangs
@@ -22,14 +22,19 @@ class ChiTietGioHangsController < ApplicationController
 
   # GET /chi_tiet_gio_hangs/1/edit
   def edit
+    hang_hoa = HangHoa.find(params[:hang_hoa_id])
+    so_luong = params[:so_luong]
+    @gia = Gia.find(params[:hang_hoa_id])
+    @chi_tiet_gio_hang = @gio_hang.them_hang_hoa(hang_hoa.id, so_luong)
   end
 
   # POST /chi_tiet_gio_hangs
   # POST /chi_tiet_gio_hangs.json
   def create
     hang_hoa = HangHoa.find(params[:hang_hoa_id])
+    so_luong = params[:so_luong]
     @gia = Gia.find(params[:hang_hoa_id])
-    @chi_tiet_gio_hang = @gio_hang.them_hang_hoa(hang_hoa.id)
+    @chi_tiet_gio_hang = @gio_hang.them_hang_hoa(hang_hoa.id, so_luong)
 
     respond_to do |format|
       if @chi_tiet_gio_hang.save
@@ -45,9 +50,10 @@ class ChiTietGioHangsController < ApplicationController
   # PATCH/PUT /chi_tiet_gio_hangs/1
   # PATCH/PUT /chi_tiet_gio_hangs/1.json
   def update
+    chi_tiet = ChiTietGioHang.find(params[:id])
     respond_to do |format|
-      if @chi_tiet_gio_hang.update(chi_tiet_gio_hang_params)
-        format.html { redirect_to @chi_tiet_gio_hang, notice: 'Giỏ hàng đã được cập nhật' }
+      if @chi_tiet_gio_hang.update(update_chi_tiet_gio_hang_params)
+        format.html { redirect_to :back, notice: 'Giỏ hàng đã được cập nhật' }
         format.json { render :show, status: :ok, location: @chi_tiet_gio_hang }
       else
         format.html { render :edit }
@@ -59,9 +65,10 @@ class ChiTietGioHangsController < ApplicationController
   # DELETE /chi_tiet_gio_hangs/1
   # DELETE /chi_tiet_gio_hangs/1.json
   def destroy
+
     @chi_tiet_gio_hang.destroy
     respond_to do |format|
-      format.html { redirect_to chi_tiet_gio_hangs_url, notice: 'Hàng hóa đã được xóa khỏi giỏ hàng' }
+      format.html { redirect_to gio_hang_path(set_gio_hang), notice: 'Hàng hóa đã được xóa khỏi giỏ hàng' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +81,10 @@ class ChiTietGioHangsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chi_tiet_gio_hang_params
-      params.require(:chi_tiet_gio_hang).permit(:hang_hoa_id)
+      params.require(:chi_tiet_gio_hang).permit(:hang_hoa_id, :so_luong)
+    end
+
+    def update_chi_tiet_gio_hang_params
+      params.require(:chi_tiet_gio_hang).permit(:so_luong)
     end
 end

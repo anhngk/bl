@@ -18,6 +18,7 @@ class HangHoasController < ApplicationController
   end
 
   def show
+    @chi_tiet_gio_hang = ChiTietGioHang.new
     @hang_hoa = HangHoa.find(params[:id])
     @gia = Gia.find(params[:id])
   end
