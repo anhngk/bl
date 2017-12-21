@@ -90,7 +90,9 @@
 		<% if flash[:alert] %>
 		<div class="alert"><%= flash[:alert] %></div>
 		<% end %>
-		<%= yield %>
+		<div class="margin-btm">
+			<%= yield %>
+		</div>
 	</body>
 	<footer class="footer-section row">
 		<div class="container">

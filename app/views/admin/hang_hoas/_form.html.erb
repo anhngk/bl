@@ -44,12 +44,14 @@
 		<%= f.text_field :quy_cach, class: 'form-control' %>
 	</div>
 </div>
+<br>
 <div class="form-group">
 	<%= f.label "Ghi chú", class: 'control-label col-md-3' %>
 	<div class="col-md-9">
-		<%= f.text_field :ghi_chu, class: 'form-control' %>
+		<%= f.text_area :ghi_chu, class: 'form-control wysihtml5', as: :wysihtml5%>
 	</div>
 </div>
+<br>
 <div class="form-group">
 	<%= f.label "Danh mục", class: 'control-label col-md-3' %>
 	<div class="col-md-9">
@@ -63,8 +65,14 @@
 	</div>
 </div>
 <div class="form-group">
+	<%= f.label "Chi tiết sản phẩm", class: 'control-label col-md-3' %>
+	<div class="col-md-9">
+		<%= f.text_area :chi_tiet, class: 'form-control wysihtml5', as: :wysihtml5 %>
+	</div>
+</div>
+<div class="form-group">
 	<div class="col-md-offset-3 col-md-9">
-		<%= f.submit "Thêm hàng hóa", class: 'btn btn-success pull-right' %>
+		<%= f.submit "Cập nhật", class: 'btn btn-success pull-right' %>
 	</div>
 </div>
 <% end %>

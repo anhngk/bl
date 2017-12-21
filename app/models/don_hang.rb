@@ -2,6 +2,7 @@ class DonHang < ActiveRecord::Base
 
 	belongs_to :khach_hang
 	
+	before_create :tong_cong, unless: :persisted?
 	after_initialize :set_defaults, unless: :persisted?
 	has_many :chi_tiet_gio_hangs, dependent: :destroy
 
@@ -23,6 +24,6 @@ class DonHang < ActiveRecord::Base
 	end
 
 	def tong_cong
-		chi_tiet_gio_hangs.to_a.sum {|chi_tiet| chi_tiet.tong_cong}
+		self.tong_cong = chi_tiet_gio_hangs.to_a.sum {|chi_tiet| chi_tiet.tong_cong}
 	end
 end

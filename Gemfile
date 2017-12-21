@@ -40,6 +40,9 @@ gem 'jquery-turbolinks'
 gem 'mailcatcher'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'groupdate'
+gem "bootstrap-wysihtml5-rails"
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 gem "font-awesome-rails"
 

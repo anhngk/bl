@@ -101,7 +101,7 @@
 	object-fit: cover;
 	overflow: hidden;
 	border-radius: 20px;
-	box-shadow: 0 1px 3px rgba(50,50,93,.05), 0 1px 3px rgba(0,0,0,.08)
+	box-shadow: 0 1px 3px rgba(50,50,93,.05), 0 1px 3px rgba(0,0,0,.01)
 }
 
 .product {
@@ -148,6 +148,33 @@
 	overflow: hidden;
 	border-radius: 5px;
 	border: 1px solid #e6e6e6;
+}
+
+.product-detail-price h2 {
+	font-size:  2em;
+	margin-top: 0;
+	color: #39d17c;
+	font-weight: 600;
+}
+
+.product-detail-spec {
+	margin-top: 30px;
+	font-size: 1.2em;
+}
+
+.product-detail-spec div {
+	margin-bottom: 2px;
+}
+
+.product-detail {
+	margin-top: 30px;
+	padding: 15px 40px;
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+.product-detail-info {
+	margin-left: 15px;
 }
 
 /* END PRODUCT DETAIL */

@@ -15,6 +15,11 @@
 						<div class="dashboard-store-logo"><%= image_tag 'BL-White-Logo.png', width: "30%"%></div>
 						<div class="dashboard-menu">
 							<ul>
+								<%= link_to admin_thong_kes_path do %>
+								<li>
+									<i class="fa fa-bar-chart" aria-hidden="true"></i>
+									<p>Thống kê</p>
+									<% end %>
 								<%= link_to admin_hang_hoas_path do %>
 								<li>
 									<i class="fa fa-home" aria-hidden="true"></i>
@@ -52,24 +57,26 @@
 					
 					
 					<div class="col-md-10">
-						<% if flash[:notice] %>
-						<div class="notice"><%= flash[:notice] %></div>
-						<% end %>
-						<% if flash[:alert] %>
-						<div class="alert"><%= flash[:alert] %></div>
-						<% end %>
 						<div class="main-board">
 							<div class="dashboard-navbar navbar row">
 								<div class="container-fluid">
 									<!-- <div class="navbar-header">
-														<button type="button" class="navbar-toggle collapsed" dât-toggle="collapse" dât-target="#navbar-collapse-items" ẩi-expanded="false">
-														<span class="sr-only">Toggle navigation</span>
-														<span class="icon-bả"></span>
-														<span class="icon-bả"></span>
-														<span class="icon-bả"></span>
-														</button>
-														<h3>Tổng quan</h3>
+																<button type="button" class="navbar-toggle collapsed" dât-toggle="collapse" dât-target="#navbar-collapse-items" ẩi-expanded="false">
+																<span class="sr-only">Toggle navigation</span>
+																<span class="icon-bả"></span>
+																<span class="icon-bả"></span>
+																<span class="icon-bả"></span>
+																</button>
+																<h3>Tổng quan</h3>
 									</div> -->
+									<div class="col-md-4">
+										<% if flash[:notice] %>
+										<div class="alert alert-info"><%= flash[:notice] %></div>
+										<% end %>
+										<% if flash[:alert] %>
+										<div class="alert alert-warning"><%= flash[:alert] %></div>
+										<% end %>
+									</div>
 									<div class="navbar-collapse collapse" id="navbar-collapse-items">
 										<ul class="nav navbar-nav navbar-right">
 											<li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a></li>

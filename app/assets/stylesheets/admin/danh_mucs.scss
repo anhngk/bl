@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.function-headline {
-	margin-top: -105px;
+.function-headline h1 {
+	/* margin-top: -105px; */
 	margin-bottom: 30px;
-	position: absolute;
+	/* position: absolute; */
+	margin-top: 0;
 }
 
 .show-table {

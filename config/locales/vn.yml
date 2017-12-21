@@ -2,8 +2,8 @@ vn:
   number:
     currency:
       format:
-        unit: 'đ'
-        delimited: ','
+        unit: '₫'
+        delimiter: '.'
         separator: '.'
         precision: 0
         format: '%n%u'

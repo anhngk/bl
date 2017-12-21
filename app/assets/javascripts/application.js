@@ -17,6 +17,9 @@
 //= require bootstrap.min
 //= require owl.carousel.min
 //= require cocoon
+//= require bootstrap-wysihtml5
+//= require datatables.min
+//= require responsive.bootstrap.min
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -32,6 +35,7 @@ $(document).on('turbolinks:load', function() {
   		$(".owl-carousel").owlCarousel({
 			loop: true,
 			autoWidth: true,
+			autoHeight: true,
 			lazyLoad: true,
 			dots: true,
 			autoplay:true,
@@ -40,5 +44,35 @@ $(document).on('turbolinks:load', function() {
 		    autoplayHoverPause:true,
 		    autoplaySpeed:1500,
 		});
-  	},10);
+
+		$('#don_hang_table').DataTable({
+    	});
+
+    	$('.data-tables').DataTable({
+			"fixedHeader": true,
+			"ordering": false,
+			"language": {
+	            "lengthMenu": "Hiển thị _MENU_ sản phẩm mỗi trang",
+	            "zeroRecords": "Chưa có dữ liệu",
+	            "info": "Showing page _PAGE_ of _PAGES_",
+	            "infoEmpty": "Không tìm thấy dữ liệu",
+	            "infoFiltered": "(Lọc ra từ _MAX_ dữ liệu)",
+	            "search": "Tìm kiếm:",
+	            "info": "Trang _PAGE_ / _PAGES_",
+	            "paginate": {
+			        "first":      "Đầu",
+			        "last":       "Cuối",
+			        "next":       "Tiếp theo",
+			        "previous":   "Quay lại"
+			    },
+        	}
+    	});
+  	},100);
+
+  	$('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5({
+      	toolbar:{ "fa": true }
+      });
+    });
+
 });

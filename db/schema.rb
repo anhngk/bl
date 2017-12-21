@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207195025) do
+ActiveRecord::Schema.define(version: 20171221025156) do
 
   create_table "chi_tiet_gio_hangs", force: :cascade do |t|
     t.integer  "hang_hoa_id", limit: 4
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20171207195025) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "khach_hang_id",   limit: 4
+    t.integer  "tong_cong",       limit: 4
   end
 
   add_index "don_hangs", ["khach_hang_id"], name: "index_don_hangs_on_khach_hang_id", using: :btree
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20171207195025) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+    t.text     "chi_tiet",           limit: 65535
   end
 
   add_index "hang_hoas", ["danh_muc_id"], name: "index_hang_hoas_on_danh_muc_id", using: :btree

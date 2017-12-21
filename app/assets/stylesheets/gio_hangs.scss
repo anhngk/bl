@@ -1,0 +1,61 @@
+// Place all the styles related to the GioHangs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.cart-total-number {
+	font-size: 1.6em;
+	color: #cc3300;
+	text-align: right;
+	font-weight: 600;
+}
+
+.cart-left-col {
+	border-radius: 5px;
+	background-color: #fff;
+	padding: 30px 15px 0 15px;
+}
+
+.cart-right-col {
+	
+	width: 23%;
+	margin-left: 2%;
+}
+
+.cart-total {
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 15px 5px;
+}
+
+.cart-total-btn div {
+	padding: 0;
+	margin-left: 0;
+	margin-top: 15px;
+}
+
+#order-btn a {
+	font-size: 1.2em;
+}
+
+.line-item {
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.item-qty, .item-f5-btn {
+	margin-top: 2%;
+}
+
+.item-del-btn {
+	margin-top: 2.7%;
+}
+
+.item-name, .item-price {
+	margin-top: 2.7%;
+	font-size: 1.2em;
+}
+
+.item-img img{
+	border-radius: 5px;
+	margin: 15px 0;
+}

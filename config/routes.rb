@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/logout' => 'admin/sessions#destroy' 
 
   namespace :admin do
+    resources :thong_kes, only: [:index]
     resources :don_hangs
     resources :khach_hangs
     resources :hang_hoas

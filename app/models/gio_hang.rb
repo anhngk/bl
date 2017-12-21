@@ -7,6 +7,7 @@ class GioHang < ActiveRecord::Base
 			current_item.so_luong += so_luong.to_i
 		else
 			current_item = chi_tiet_gio_hangs.build(hang_hoa_id: hang_hoa_id)
+			current_item.so_luong += so_luong.to_i - 1
 		end
 		current_item
 	end

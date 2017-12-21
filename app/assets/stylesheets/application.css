@@ -14,6 +14,9 @@
  *= require owl.carousel.min
  *= require owl.theme.default.min
  *= require font-awesome
+ *= require bootstrap-wysihtml5
+ *= require datatables.min
+ *= require responsive.bootstrap.min
  *= require_tree .
  *= require_self
  */
@@ -32,6 +35,11 @@ body {
 
 .application-body {
 	margin: 0 0 149px;
+	background-color: #f4f4f4;
+}
+
+.margin-btm {
+	margin-bottom: 30px;
 }
 
 a {
@@ -56,7 +64,7 @@ a:hover {
 }
 
 .nav>li>a:hover {
-	background-color: #fff;
+	background-color: #f4f4f4;
 	color: #4980F9 !important;
 }
 
@@ -169,4 +177,8 @@ a:hover {
 	font-size: 1.2em;
 	font-weight: 300;
 	margin-top: 5px;
+}
+
+.owl-carousel .owl-item{
+    height:300px;
 }

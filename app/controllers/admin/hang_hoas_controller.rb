@@ -54,7 +54,7 @@ class Admin::HangHoasController < Admin::ApplicationController
 
   def hang_hoa_params
     params.require(:hang_hoa).permit(
-      :ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu, :image, :ten_danh_muc, :danh_muc_id,
+      :ma_hang, :ten_hang, :so_luong, :dvt, :xuat_xu, :quy_cach, :ghi_chu, :chi_tiet, :image, :ten_danh_muc, :danh_muc_id,
       gias_attributes: [ :gia_ban],
     )
   end
