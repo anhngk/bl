@@ -40,10 +40,10 @@
 						</div>
 						<% else %>
 						<span class="sign-in-up">
-						<%= link_to 'Đăng ký', new_khach_hang_registration_path %> |
-						<%= link_to new_khach_hang_session_path do %>
-						Đăng nhập <i class="fa fa-sign-in"></i>
-						<% end %>
+							<%= link_to 'Đăng ký', new_khach_hang_registration_path %> |
+							<%= link_to new_khach_hang_session_path do %>
+							Đăng nhập <i class="fa fa-sign-in"></i>
+							<% end %>
 						</span>
 						<% end %>
 					</span>
@@ -54,42 +54,48 @@
 						<li><a href="/store">Cửa hàng</a></li>
 						<li><a href="#">Liên hệ</a></li>
 						<!-- <li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giỏ hàng <%= fa_icon "shopping-cart" %><span id="product-in-cart">7</span></a>
-								<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a href="#">Separated link</a></li>
-								</ul>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giỏ hàng <%= fa_icon "shopping-cart" %><span id="product-in-cart">7</span></a>
+									<ul class="dropdown-menu">
+												<li><a href="#">Action</a></li>
+												<li><a href="#">Another action</a></li>
+												<li><a href="#">Something else here</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a href="#">Separated link</a></li>
+									</ul>
 						</li> -->
 						<li id="shopping-cart">
 							<%= link_to gio_hang_path(@gio_hang) do %>
-								<i class="fa fa-shopping-cart"></i> Giỏ hàng
+							<i class="fa fa-shopping-cart"></i> Giỏ hàng
 							<% end %>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<div class="search-bar-section container">
+		<div class="search-bar-section container margin-btm">
 			<div class="col-md-12">
 				<div class="search-bar col-md-5">
-					<form action="/" method="get" accept-charset="utf-8">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-							<input type="text" name="item-search" class="form-control" placeholder="Tìm kiếm">
-						</div>
-					</form>
+					<%= form_tag(hang_hoas_path, method: :get) do %>
+					<div class="input-group">
+						<%= text_field_tag :search, "", class: "form-control", placeholder: "Tìm kiếm" %>
+						<span class="input-group-btn" id="search-btn">
+							<%= button_tag type: 'submit', class: "btn btn-primary" do %>
+							<i class="fa fa-search" aria-hidden="true"></i>
+							<% end %>
+						</span>
+					</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
-		<% if flash[:notice] %>
-		<div class="notice"><%= flash[:notice] %></div>
-		<% end %>
-		<% if flash[:alert] %>
-		<div class="alert"><%= flash[:alert] %></div>
-		<% end %>
+		<div class="container">
+			<% if flash[:notice] %>
+			<div class="alert alert-success"><%= flash[:notice] %></div>
+			<% end %>
+			<% if flash[:alert] %>
+			<div class="alert alert-danger"><%= flash[:alert] %></div>
+			<% end %>
+		</div>
 		<div class="margin-btm">
 			<%= yield %>
 		</div>

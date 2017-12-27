@@ -26,4 +26,15 @@ class DonHang < ActiveRecord::Base
 	def tong_cong
 		self.tong_cong = chi_tiet_gio_hangs.to_a.sum {|chi_tiet| chi_tiet.tong_cong}
 	end
+
+	def self.doanh_thu_thang
+		@don_hangs = DonHang.where('tinh_trang LIKE ?', 'Giao hàng thành công').group('month(updated_at)').order('updated_at desc')
+		@doanh_thu_thang = @don_hangs.sum('tong_cong')
+	end
+
+	def self.doanh_thu_nam
+		@don_hangs = DonHang.select('year(updated_at)').where('tinh_trang LIKE ?', 'Giao hàng thành công').group('year(updated_at)')
+		@doanh_thu_nam = @don_hangs.sum('tong_cong')
+	end
+
 end

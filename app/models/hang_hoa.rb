@@ -24,6 +24,10 @@ class HangHoa < ActiveRecord::Base
 									allow_destroy: true,
 									reject_if: proc { |att| att['gia_ban'].blank? }
 
+	def self.tim_kiem search
+		where("ten_hang LIKE ? OR xuat_xu LIKE ?", "%#{search}%", "%#{search}%")
+	end
+
 	private 
 		def ensure_not_referenced_by_any_line_item
 			if chi_tiet_gio_hangs.empty?

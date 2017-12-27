@@ -14,7 +14,7 @@
 			<div class="category-list">
 				<ul">
 					<% DanhMuc.all.each do |danh_muc| %>
-					<%= link_to hang_hoas_path(danh_muc: danh_muc.ten_danh_muc) do %>
+					<%= link_to hang_hoas_path(danh_muc_id: danh_muc.id) do %>
 					<li><%= danh_muc.ten_danh_muc %></li>
 					<% end %>
 					<% end %>
@@ -23,8 +23,7 @@
 		</div>
 		
 		<div class="product-listing col-md-9">
-			<div class="category-title">
-				<h2><%= @danh_muc.ten_danh_muc %></h2>
+			<div class="category-title" style="margin-bottom: 30px">
 			</div>
 			<div class="product-show">
 				<% @hang_hoas.each do |hang_hoa| %>

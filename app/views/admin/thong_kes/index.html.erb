@@ -1,7 +1,6 @@
 <div class="function-headline">
 	<h1>Thống kê</h1>
 </div>
-
 <div class="row dashboard-icome-static">
 	<div class="daily-income col-lg-3 col-md-6 col-sm-6">
 		<div class="card">
@@ -9,19 +8,69 @@
 				<i class="fa fa-usd" aria-hidden="true"></i>
 			</div>
 			<div class="card-content">
-				<p class="card-category">Doanh thu tháng 12</p>
-				<h3 class="card-static">57.000.000<small>đ</small></h3>
+				<p class="card-category">Doanh thu tháng này</p>
+				<h3 class="card-static"><%= number_to_currency(@doanh_thu_thang.to_a.first[1], locale: :vn) %></h3>
 			</div>
 			<div class="card-footer">
 				<div class="card-footer-info">
-					<p>12/2017</p>
+					<p>Tháng <%= @doanh_thu_thang.to_a.first[0]%>/<%= Time.current.year%></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="yearly-income col-lg-3 col-md-6 col-sm-6">
+		<div class="card">
+			<div class="card-header">
+				<i class="fa fa-calendar" aria-hidden="true"></i>
+			</div>
+			<div class="card-content">
+				<p class="card-category">Doanh thu năm nay</p>
+				<h3 class="card-static"><%= number_to_currency(@doanh_thu_nam.to_a.first[1], locale: :vn) %></h3>
+			</div>
+			<div class="card-footer">
+				<div class="card-footer-info">
+					<p>Năm <%= @doanh_thu_nam.to_a.first[0] %></p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-
+<div class="row">
+	<div class="col-md-3">
+		<h3>DOANH THU THÁNG</h3>
+		<table class="table table-bordered table-ui" width="100%">
+			<thead>
+				<th>Tháng</th>
+				<th>Doanh thu</th>
+			</thead>
+			<tbody>
+				<% @doanh_thu_thang.each do |dt| %>
+				<tr>
+					<td align="center"><%= dt.first %></td>
+					<td align="right"><%= number_to_currency(dt.second, locale: :vn) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-3">
+		<h3>DOANH THU NĂM</h3>
+		<table class="table table-bordered table-ui" width="100%">
+			<thead>
+				<th>Năm</th>
+				<th>Doanh thu</th>
+			</thead>
+			<tbody>
+				<% @doanh_thu_nam.each do |dt| %>
+				<tr>
+					<td align="center"><%= dt.first %></td>
+					<td align="right"><%= number_to_currency(dt.second, locale: :vn) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
 <h3>TOP KHÁCH HÀNG</h3>
 <div class="col-md-6 row">
 	<table class="table table-bordered table-ui" width="100%">
@@ -43,4 +92,3 @@
 		</tbody>
 	</table>
 </div>
-
