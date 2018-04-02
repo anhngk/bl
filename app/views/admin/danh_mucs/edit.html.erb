@@ -5,7 +5,10 @@
 	<%= form_for [:admin, @danh_muc] do |f| %>
 	<p><%= f.text_field :ten_danh_muc, class: "form-control", style: "font-size: 1.4em; padding: 5px 10px; height:auto" %></p>
 	<p>
-		<%= f.submit "Sửa tên danh mục", class: "btn btn-success pull-right", style: "margin-left: 5px" %>	
+		<%= f.label 'Chọn hình đại diện' %>
+		<%= f.file_field :avatar, class: "form-control" %>
+		<br>
+		<%= f.submit "Sửa danh mục", class: "btn btn-success pull-right", style: "margin-left: 5px" %>
 		<%= link_to 'Trở lại', new_admin_danh_muc_path, class: "btn btn-primary pull-right" %>
 	</p>
 	<% end %>

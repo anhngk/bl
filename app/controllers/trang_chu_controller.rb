@@ -4,5 +4,6 @@ class TrangChuController < ApplicationController
 	before_action :set_gio_hang
 
   def index
+  	@danh_mucs = DanhMuc.all.limit(9)
   end
 end

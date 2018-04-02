@@ -45,6 +45,6 @@ class Admin::DanhMucsController < Admin::ApplicationController
   private
 
   def danh_muc_params
-    params.require(:danh_muc).permit(:ten_danh_muc, :id)
+    params.require(:danh_muc).permit(:ten_danh_muc, :id, :avatar)
   end
 end
