@@ -15,7 +15,7 @@
 				<ul">
 					<% DanhMuc.all.each do |danh_muc| %>
 					<%= link_to hang_hoas_path(danh_muc_id: danh_muc.id) do %>
-					<li><%= danh_muc.ten_danh_muc %></li>
+					<li class="<%= active_category(hang_hoas_path(danh_muc_id: danh_muc.id)) %>"><%= danh_muc.ten_danh_muc %></li>
 					<% end %>
 					<% end %>
 				</ul>
@@ -30,7 +30,7 @@
 					<div class="product col-md-3">
 						<%= link_to hang_hoa do %>
 							<%= image_tag hang_hoa.image.url(:thumb) %>
-							<div class="product-name"><%= hang_hoa.ten_hang %></div>
+							<div class="product-name"><%= truncate(hang_hoa.ten_hang, length: 80) %></div>
 						<% end %>
 						<div class="product-price"><%= number_to_currency(hang_hoa.gias.last[:gia_ban], locale: :vn) %></div>
 					</div>

@@ -6,4 +6,8 @@ module ApplicationHelper
 			falsey
 		end
 	end
+
+	def active_category(link_path)
+		current_page?(link_path) ? "active-category" : ""
+	end
 end

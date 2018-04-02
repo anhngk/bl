@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', function() {
 			    },
         	}
     	});
-  	},100);
+  	},200);
 
   	$('.wysihtml5').each(function(i, elem) {
       $(elem).wysihtml5({
