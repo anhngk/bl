@@ -3,12 +3,14 @@ class KhachHang < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   	has_many :don_hangs
-  	
+    has_many :hoa_don_xuats
+    ratyrate_rater
   	devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
     accepts_nested_attributes_for 	:don_hangs,
 									allow_destroy: true
+
 
 	def self.top_khach_hang
 		KhachHang.joins(:don_hangs)

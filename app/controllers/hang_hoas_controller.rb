@@ -10,11 +10,9 @@ class HangHoasController < ApplicationController
 
     if params[:search].present?
       @hang_hoas = HangHoa.tim_kiem(params[:search]).page(params[:page]).per(8)
-
   	elsif params[:danh_muc_id].blank?
   		@danh_muc = DanhMuc.first
   		@hang_hoas = @danh_muc.hang_hoas.page(params[:page]).per(8)
-
   	else
   		@danh_muc_id = DanhMuc.find_by(id: params[:danh_muc_id]).id
   		@danh_muc = DanhMuc.find_by(id: params[:danh_muc_id])
@@ -27,4 +25,13 @@ class HangHoasController < ApplicationController
     @hang_hoa = HangHoa.find(params[:id])
     @gia = Gia.find(params[:id])
   end
+
+  def recommend
+    ids = params[:recommend_ids]
+    @recommend_products = HangHoa.where(id: ids)
+    respond_to do |format|
+      format.js { render :file => "hang_hoas/recommend.js.erb" }
+    end
+  end
+
 end

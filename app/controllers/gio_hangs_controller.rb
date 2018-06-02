@@ -1,7 +1,7 @@
 class GioHangsController < ApplicationController
   before_action :set_gio_hang, only: [:edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :gio_hang_khong_ton_tai
-
+  layout 'store'
   # GET /gio_hangs
   # GET /gio_hangs.json
   def index

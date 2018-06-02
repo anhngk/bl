@@ -1,16 +1,16 @@
 <div class="container-fluid">
 	<div class="slider-section row">
 		<div class="owl-carousel owl-theme">
-			<%= image_tag 'slider/about-us-banner.jpg', alt: "Ông đồng" %>
-			<%= image_tag 'slider/300.jpg', alt: "Ông đồng" %>
-			<%= image_tag 'slider/Danfoss.jpg', alt: "Ông đồng" %>
-			<%= image_tag 'slider/HVAC.jpg', alt: "Ông đồng" %>
+			<%= image_tag 'slider/Banner1.png', alt: "Danfoss" %>
+			<%= image_tag 'slider/Banner2.png', alt: "Ông đồng" %>
+			<%= image_tag 'slider/Banner3.png', alt: "Ông đồng" %>
 			<img src="http://via.placeholder.com/1366x300" alt="">
 		</div>
 	</div>
 	<div class="container product-listing-section">
 		<div class="product-category col-md-3">
-			<h3>Danh mục mặt hàng</h3>
+
+			<h3><i class="fas fa-bars"></i> DANH MỤC HÀNG HÓA</h3>
 			<div class="category-list">
 				<ul">
 					<% DanhMuc.all.each do |danh_muc| %>
@@ -21,7 +21,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div class="product-listing col-md-9">
 			<div class="category-title" style="margin-bottom: 30px">
 			</div>
@@ -30,7 +30,7 @@
 					<div class="product col-md-3">
 						<%= link_to hang_hoa do %>
 							<%= image_tag hang_hoa.image.url(:thumb) %>
-							<div class="product-name"><%= truncate(hang_hoa.ten_hang, length: 80) %></div>
+							<div class="product-name" title="<%= hang_hoa.ten_hang %>"><%= truncate(hang_hoa.ten_hang, length: 60) %></div>
 						<% end %>
 						<div class="product-price"><%= number_to_currency(hang_hoa.gias.last[:gia_ban], locale: :vn) %></div>
 					</div>

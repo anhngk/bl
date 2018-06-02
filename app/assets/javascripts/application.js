@@ -20,52 +20,52 @@
 //= require bootstrap-wysihtml5
 //= require datatables.min
 //= require responsive.bootstrap.min
+//= require js-routes
+//= require jquery.raty
+//= require ratyrate
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
   $("#edit-password-checkbox").change(function(){
-		console.log("!!")
-		if (this.checked) 
+		if (this.checked)
 			$("#edit-password").fadeIn();
 		else
 			$("#edit-password").fadeOut();
 	});
 
-  	setTimeout(function(){
-  		$(".owl-carousel").owlCarousel({
-			loop: true,
-			autoWidth: true,
-			autoHeight: true,
-			lazyLoad: true,
-			dots: true,
-			autoplay:true,
-			stopOnHover : true,
-		    autoplayTimeout:5000,
-		    autoplayHoverPause:true,
-		    autoplaySpeed:1500,
-		});
+	setTimeout(function(){
+		$(".owl-carousel").owlCarousel({
+		loop: true,
+		autoWidth: true,
+		autoHeight: true,
+		lazyLoad: true,
+		dots: true,
+		autoplay:true,
+		stopOnHover : true,
+	    autoplayTimeout:5000,
+	    autoplayHoverPause:true,
+	    autoplaySpeed:1500,
+	  });
 
-		$('#don_hang_table').DataTable({
-    	});
-
+		$('#don_hang_table').DataTable();
     	$('.data-tables').DataTable({
 			"fixedHeader": true,
 			"ordering": false,
 			"language": {
-	            "lengthMenu": "Hiển thị _MENU_ sản phẩm mỗi trang",
-	            "zeroRecords": "Chưa có dữ liệu",
-	            "info": "Showing page _PAGE_ of _PAGES_",
-	            "infoEmpty": "Không tìm thấy dữ liệu",
-	            "infoFiltered": "(Lọc ra từ _MAX_ dữ liệu)",
-	            "search": "Tìm kiếm:",
-	            "info": "Trang _PAGE_ / _PAGES_",
-	            "paginate": {
-			        "first":      "Đầu",
-			        "last":       "Cuối",
-			        "next":       "Tiếp theo",
-			        "previous":   "Quay lại"
-			    },
-        	}
+        "lengthMenu": "Hiển thị _MENU_ sản phẩm mỗi trang",
+        "zeroRecords": "Chưa có dữ liệu",
+        "info": "Showing page _PAGE_ of _PAGES_",
+        "infoEmpty": "Không tìm thấy dữ liệu",
+        "infoFiltered": "(Lọc ra từ _MAX_ dữ liệu)",
+        "search": "Tìm kiếm:",
+        "info": "Trang _PAGE_ / _PAGES_",
+        "paginate": {
+	        "first":      "Đầu",
+	        "last":       "Cuối",
+	        "next":       "Tiếp theo",
+	        "previous":   "Quay lại"
+         },
+      	}
     	});
   	},200);
 
@@ -75,4 +75,31 @@ $(document).on('turbolinks:load', function() {
       });
     });
 
+    // function getIdFromUrl() {
+    //   var urlArray;
+    //   urlArray = window.location.href.split('/');
+    //   return urlArray[4];
+    // };
+
+    // $.get('http://127.0.0.1:5000/?item_id=' + getIdFromUrl(), function(data){
+    //   $.ajax({
+    //     url: '/recommend',
+    //     type: 'POST',
+    //     data: {
+    //       recommend_ids: data.recommend_ids
+    //     }
+    //   }).done(function(data) {
+    //   });
+    // });
 });
+
+
+
+
+
+
+
+
+
+
+

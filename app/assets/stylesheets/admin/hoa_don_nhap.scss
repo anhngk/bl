@@ -1,0 +1,163 @@
+.bill-form {
+  padding: 30px;
+  margin: 20px 2px 30px 2px;
+  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.bill-form input {
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 3px
+}
+
+.bill-form table {
+  width: 100%;
+}
+
+.bill-form tr > th:first-child {
+  width: 25px;
+}
+
+/* .bill-form tr > th:nth-child(3) {
+  width: 50px;
+  margin-right: 30px;
+}
+.bill-form tr > td:nth-child(3) input {
+  width: 100px;
+} */
+
+.bill-form .input-group-addon {
+  border: none;
+  background-color: transparent;
+}
+
+.bill-form select {
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  background-color: transparent;
+  padding-bottom: 3px;
+}
+
+.bill-form select.dropdown:focus {
+  outline-width: 0;
+}
+
+.bill-form label.wrap {
+    width:300px;
+    overflow: hidden;
+    height: 50px;
+    position: relative;
+    display: block;
+}
+
+.bill-form select.dropdown{
+    width: 300px;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 10px;
+}
+.bill-form label.wrap:after {
+    content:"\f0d7";
+    font-family: "Font Awesome 5 Free";
+    color: #000;
+    position: absolute;
+    right: -12px;
+    top: 2px;
+    z-index: 1;
+    width: 10%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bill-form label.cthd-wrap {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin-bottom: 0;
+}
+
+.bill-form select.cthd-dropdown{
+    width: 180px;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 10px;
+}
+.bill-form label.cthd-wrap:after {
+    content:"\f0d7";
+    font-family: "Font Awesome 5 Free";
+    color: #000;
+    position: relative;
+    right: 14px;
+    top: 2px;
+    z-index: 1;
+    width: 10%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bill-form table {
+  border-collapse:separate;
+  border-spacing:0 15px;
+}
+
+.bill-form #ncc-select {
+  width: 300px;
+}
+.bill-form {
+
+}
+
+.bill-form .remove-cthd-btn {
+  border: none;
+  background-color: #ccc;
+  border-radius: 50%;
+  padding: 3px 7px;
+  margin-left: 10px;
+}
+
+.bill-form h1 {
+  font-weight: 900;
+}
+
+.bill-form textarea {
+  border-radius: 2px;
+  border: 1px solid #ccc;
+}
+
+.total-bill {
+  text-align: right;
+  display: contents;
+}
+
+.total-bill div {
+  color: #4980F9;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.total-bill h4 {
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.btn-add-cthd {
+  display: block;
+  margin: 0 auto;
+  font-size: 0.9em;
+  font-weight: 900;
+  width: 60px;
+  border: none;
+  background-color: #4980F9;
+  color: #fff;
+}
+
+.btn-save {
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #4980F9;
+}

@@ -37,14 +37,17 @@ gem 'fog'
 gem 'cocoon'
 gem 'devise', '~> 4.2'
 gem 'jquery-turbolinks'
-gem 'mailcatcher'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'groupdate'
 gem "bootstrap-wysihtml5-rails"
 gem 'jquery-datatables-rails', '~> 3.4.0'
-
-gem "font-awesome-rails"
+gem 'mailcatcher'
+gem 'webpacker', '~> 3.5', '>= 3.5.3'
+gem 'font-awesome-sass', '~> 5.0.13'
+gem 'quiet_assets'
+gem 'slim-rails', '~> 3.1', '>= 3.1.1'
+gem 'ratyrate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,8 +57,9 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+gem "js-routes"
 

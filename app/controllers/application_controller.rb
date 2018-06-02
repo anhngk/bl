@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
   		devise_parameter_sanitizer.permit(:account_update, keys: [:ten_kh, :password, :password_confirmation, :dien_thoai, :current_password, :dia_chi, :ma_so_thue])
   	end
 
+    def current_user
+      current_khach_hang
+    end
+
+    helper_method :current_user
+
 end

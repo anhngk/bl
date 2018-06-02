@@ -2,9 +2,9 @@
 <html>
 	<head>
 		<title>BL Store</title>
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-		<%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,900" rel="stylesheet' %>
+		<%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Muli:300,400,700,900&amp;subset=vietnamese" rel="stylesheet' %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_pack_tag 'application' %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body class="application-body">
@@ -53,16 +53,6 @@
 						<li><a href="/">Trang chủ</a></li>
 						<li><a href="/store">Cửa hàng</a></li>
 						<li><a href="#">Liên hệ</a></li>
-						<!-- <li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giỏ hàng <%= fa_icon "shopping-cart" %><span id="product-in-cart">7</span></a>
-									<ul class="dropdown-menu">
-												<li><a href="#">Action</a></li>
-												<li><a href="#">Another action</a></li>
-												<li><a href="#">Something else here</a></li>
-												<li role="separator" class="divider"></li>
-												<li><a href="#">Separated link</a></li>
-									</ul>
-						</li> -->
 						<li id="shopping-cart">
 							<%= link_to gio_hang_path(@gio_hang) do %>
 							<i class="fa fa-shopping-cart"></i> Giỏ hàng
@@ -110,11 +100,11 @@
 				<h4>© 2017 - BLStore</h4>
 			</div>
 			<div id="store-info" class="pull-right col-md-4">
-				<h3>37 Trịnh Phong, Nha Trang, Khánh Hòa</h3>
+				<h3>37 Trịnh Phong - Nha Trang - Khánh Hòa</h3>
 				<h3><span style="font-weight: 600"> HOTLINE: </span><span style="font-weight:400">0914 0924 77 - 0918 259 501</span></h3>
-				<h3>Email: <a href="baylocnt@gmail.com?subject=feedback" "email me">baylocnt@gmail.com</a></h3>
+				<h3>Email: <a href="baylocnt@gmail.com?subject=feedback" "email me">example@gmail.com</a></h3>
 			</div>
 		</div>
-		
 	</footer>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
 </html>

@@ -1,0 +1,76 @@
+<%= content_tag :div,
+  id: "hoa-don-nhap-form",
+  data: {
+    id: hoa_don_nhap.id,
+    hoa_don_nhap: hoa_don_nhap.to_json,
+    cthd_nhaps_attributes: hoa_don_nhap.cthd_nhaps.to_json,
+  } do %>
+  <h1>HÓA ĐƠN NHẬP</h1>
+  <br>
+  <label>NGÀY NHẬP</label><br>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="far fa-calendar-alt"></i>
+    </span>
+    <input type="date" v-model="hoa_don_nhap.ngaynhap" placeholder ="<%Time.now%>">
+  </div>
+  <br>
+  <label>NHÀ CUNG CẤP</label><br>
+  <label class="wrap">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="fas fa-dolly"></i>
+      </span>
+      <%= select_tag(:nha_cung_cap_id, options_for_select(@nha_cung_caps.collect{ |ncc| [ncc.ten_ncc, ncc.id] }), { "v-model" => "hoa_don_nhap.nha_cung_cap_id", class: "dropdown", id:"ncc-select"}) %>
+    </div>
+  </label>
+  <h5>CHI TIẾT HÓA ĐƠN</h5>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Tên hàng hóa</th>
+          <th>Số lượng</th>
+          <th>Giá nhập</th>
+          <th>Giá bán</th>
+          <th>Thành tiền</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(cthd_nhap, index) in hoa_don_nhap.cthd_nhaps_attributes">
+          <td>{{index + 1}}</td>
+          <td>
+            <label class="cthd-wrap">
+              <%= select_tag(:hang_hoa_id, options_for_select(@hang_hoas.collect{ |hh| [hh.ten_hang, hh.id] }), { "v-model" => "cthd_nhap.hang_hoa_id", class: "cthd-dropdown"}) %>
+            </label>
+          </td>
+          <td><input type="number" v-model.number="cthd_nhap.so_luong_nhap"></td>
+          <td><input type="text" v-model="cthd_nhap.gia_nhap" style="text-align: right"></td>
+          <td>
+            <input type="text" v-model="cthd_nhap.gia_ban" style="text-align: right">
+          </td>
+          <td style="text-align: right">{{ formatPrice(cthd_nhap.thanh_tien = cthd_nhap.gia_nhap * cthd_nhap.so_luong_nhap) }}đ</td>
+          <td><button class="remove-cthd-btn" v-on:click="removeCthd(index)" title="Xóa chi tiết"><i class="fas fa-minus"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button v-on:click="addCthd" class="btn btn-default btn-add-cthd" title="Thêm chi tiết" ><i class="fas fa-plus"></i></button>
+  <div class="total-bill pull-right">
+    <h4>TỔNG CỘNG</h4>
+    <div>{{ formatPrice(hoa_don_nhap.tong_tien = totalBill) }}đ</div>
+  </div>
+<label>TÌNH TRẠNG THANH TOÁN</label><br>
+<div class="input-group">
+  <span class="input-group-addon">
+    <i class="far fa-money-bill-alt"></i>
+  </span>
+  <%= select_tag(:tinh_trang, options_for_select(HoaDonNhap::TINH_TRANG_THANH_TOAN),{"v-model" => "hoa_don_nhap.tinh_trang"}) %>
+</div>
+<br>
+<label>GHI CHÚ</label><br>
+<textarea type="text" v-model="hoa_don_nhap.ghi_chu"></textarea>
+<button v-on:click="saveBill" class="btn btn-default btn-save pull-right" title="">SAVE</button>
+<% end %>

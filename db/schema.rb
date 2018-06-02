@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171221025156) do
+ActiveRecord::Schema.define(version: 20180602122133) do
+
+  create_table "average_caches", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "avg",           limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chi_tiet_gio_hangs", force: :cascade do |t|
     t.integer  "hang_hoa_id", limit: 4
@@ -34,6 +43,7 @@ ActiveRecord::Schema.define(version: 20171221025156) do
     t.integer  "hang_hoa_id",     limit: 4
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
+    t.integer  "thanh_tien",      limit: 4
   end
 
   add_index "cthd_nhaps", ["hang_hoa_id"], name: "index_cthd_nhaps_on_hang_hoa_id", using: :btree
@@ -47,16 +57,21 @@ ActiveRecord::Schema.define(version: 20171221025156) do
     t.integer  "hoa_don_xuat_id", limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "thanh_tien",      limit: 4
   end
 
   add_index "cthd_xuats", ["hang_hoa_id"], name: "index_cthd_xuats_on_hang_hoa_id", using: :btree
   add_index "cthd_xuats", ["hoa_don_xuat_id"], name: "index_cthd_xuats_on_hoa_don_xuat_id", using: :btree
 
   create_table "danh_mucs", force: :cascade do |t|
-    t.string   "ten_danh_muc", limit: 255
-    t.text     "mota",         limit: 65535
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "ten_danh_muc",        limit: 255
+    t.text     "mota",                limit: 65535
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   create_table "don_hangs", force: :cascade do |t|
@@ -185,6 +200,39 @@ ActiveRecord::Schema.define(version: 20171221025156) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "overall_avg",   limit: 24,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer  "rater_id",      limit: 4
+    t.integer  "rateable_id",   limit: 4
+    t.string   "rateable_type", limit: 255
+    t.float    "stars",         limit: 24,  null: false
+    t.string   "dimension",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.integer  "cacheable_id",   limit: 4
+    t.string   "cacheable_type", limit: 255
+    t.float    "avg",            limit: 24,  null: false
+    t.integer  "qty",            limit: 4,   null: false
+    t.string   "dimension",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   add_foreign_key "chi_tiet_gio_hangs", "don_hangs"
   add_foreign_key "chi_tiet_gio_hangs", "gio_hangs"

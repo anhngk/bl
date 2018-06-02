@@ -1,0 +1,32 @@
+<div class="function-headline">
+	<h1>Nhà cung cấp</h1>
+</div>
+<div style="margin-bottom: 20px">
+	<%= link_to new_admin_nha_cung_cap_path do %>
+	<button type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>  Thêm nhà cung cấp</button>
+	<% end %>
+</div>
+<table class="table table-bordered data-tables" width="100%">
+	<thead>
+		<tr>
+			<th>Tên nhà cung cấp</th>
+			<th>Điện thoại</th>
+			<th>Mã số thuế</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @nha_cung_caps.each do |ncc| %>
+		<tr>
+			<td><%= ncc.ten_ncc %></td>
+			<td align="center"><%= ncc.dien_thoai %></td>
+			<td align="center"><%= ncc.ma_so_thue %></td>
+			<td align="center"><%= link_to 'Xem', admin_nha_cung_cap_path(ncc) %></td>
+			<td align="center"><%= link_to 'Sửa', edit_admin_nha_cung_cap_path(ncc) %></td>
+			<td align="center"><%= link_to 'Xóa', admin_nha_cung_cap_path(ncc), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'} %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

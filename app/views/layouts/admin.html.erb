@@ -4,7 +4,8 @@
 		<title>BL - Quản Lý</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,900" rel="stylesheet' %>
+		<%= stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Muli:300,400,700,900&amp;subset=vietnamese" rel="stylesheet' %>
+    <%= javascript_pack_tag 'hello_vue' %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body class="admin-body">
@@ -17,89 +18,106 @@
 							<ul>
 								<%= link_to admin_thong_kes_path do %>
 								<li>
-									<i class="fa fa-bar-chart" aria-hidden="true"></i>
+									<i class="fas fa-chart-bar fa-fw" aria-hidden="true"></i>
 									<p>Thống kê</p>
 									<% end %>
-								<%= link_to admin_hang_hoas_path do %>
-								<li>
-									<i class="fa fa-home" aria-hidden="true"></i>
-									<p>Kho hàng</p>
-									<% end %>
-									<%= link_to new_admin_danh_muc_path do %>
+									<%= link_to admin_hang_hoas_path do %>
 									<li>
-										<i class="fa fa-list" aria-hidden="true"></i>
-										<p>Danh mục hàng</p>
-									</li>
-									<% end %>
-									<%= link_to admin_moderators_path do %>
-									<li>
-										<i class="fa fa-user-secret" aria-hidden="true"></i>
-										<p>Quản trị viên</p>
-									</li>
-									<% end %>
-									<%= link_to admin_don_hangs_path do %>
-									<li>
-										<i class="fa fa-file-text" aria-hidden="true"></i>
-										<p>Đơn hàng</p>
-									</li>
-									<% end %>
-									<%= link_to admin_khach_hangs_path do %>
-									<li>
-										<i class="fa fa-user" aria-hidden="true"></i>
-										<p>Khách hàng</p>
-									</li>
-									<% end %>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					<div class="col-md-10">
-						<div class="main-board">
-							<div class="dashboard-navbar navbar row">
-								<div class="container-fluid">
-									<!-- <div class="navbar-header">
-																<button type="button" class="navbar-toggle collapsed" dât-toggle="collapse" dât-target="#navbar-collapse-items" ẩi-expanded="false">
-																<span class="sr-only">Toggle navigation</span>
-																<span class="icon-bả"></span>
-																<span class="icon-bả"></span>
-																<span class="icon-bả"></span>
-																</button>
-																<h3>Tổng quan</h3>
-									</div> -->
-									<div class="col-md-4">
-										<% if flash[:notice] %>
-										<div class="alert alert-info"><%= flash[:notice] %></div>
+										<i class="fas fa-warehouse fa-fw"  aria-hidden="true"></i>
+										<p>Kho hàng</p>
 										<% end %>
-										<% if flash[:alert] %>
-										<div class="alert alert-warning"><%= flash[:alert] %></div>
+										<%= link_to new_admin_danh_muc_path do %>
+										<li>
+											<i class="fas fa-list-ul fa-fw" aria-hidden="true"></i>
+											<p>Danh mục hàng</p>
+										</li>
 										<% end %>
-									</div>
-									<div class="navbar-collapse collapse" id="navbar-collapse-items">
-										<ul class="nav navbar-nav navbar-right">
-											<li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
-											<li class="dropdown">
-												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kỳ Anh <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-												<ul class="dropdown-menu">
-													<li><a href="#">Action</a></li>
-													<li><a href="#">Another action</a></li>
-													<li><a href="#">Something else here</a></li>
-													<li role="separator" class="divider"></li>
-													<li><a href="#">Separated link</a></li>
-												</ul>
-											</li>
-											<li><%= link_to 'Đăng xuất', logout_path %> <br></li>
+										<%= link_to admin_don_hangs_path do %>
+										<li>
+											<i class="fas fa-clipboard-list fa-fw" aria-hidden="true"></i>
+											<p>Đơn hàng</p>
+										</li>
+										<% end %>
+                    <%= link_to admin_hoa_don_nhaps_path do %>
+                    <li>
+                      <i class="fas fa-plus-square fa-fw" aria-hidden="true"></i>
+                      <p>Hóa đơn nhập</p>
+                    </li>
+                    <% end %>
+                    <%= link_to admin_hoa_don_xuats_path do %>
+                    <li>
+                      <i class="fas fa-minus-square fa-fw" aria-hidden="true"></i>
+                      <p>Hóa đơn xuất</p>
+                    </li>
+                    <% end %>
+										<%= link_to admin_khach_hangs_path do %>
+										<li>
+											<i class="fa fa-user-tie fa-fw" aria-hidden="true"></i>
+											<p>Khách hàng</p>
+										</li>
+										<% end %>
+										<%= link_to admin_nha_cung_caps_path do %>
+										<li>
+											<i class="fas fa-dolly fa-fw" aria-hidden="true"></i>
+											<p>Nhà cung cấp</p>
+											<% end %>
+                    <%= link_to admin_moderators_path do %>
+                    <li>
+                      <i class="fa fa-user-astronaut fa-fw" aria-hidden="true"></i>
+                      <p>Quản trị viên</p>
+                    </li>
+                    <% end %>
 										</ul>
 									</div>
 								</div>
-								<div class="dashboard-content">
-									<%= yield %>
+							</div>
+
+
+
+							<div class="col-md-10">
+								<div class="main-board">
+									<div class="dashboard-navbar navbar row">
+										<div class="container-fluid">
+											<!-- <div class="navbar-header">
+																			<button type="button" class="navbar-toggle collapsed" dât-toggle="collapse" dât-target="#navbar-collapse-items" ẩi-expanded="false">
+																			<span class="sr-only">Toggle navigation</span>
+																			<span class="icon-bả"></span>
+																			<span class="icon-bả"></span>
+																			<span class="icon-bả"></span>
+																			</button>
+																			<h3>Tổng quan</h3>
+											</div> -->
+											<div class="col-md-4">
+												<% if flash[:notice] %>
+												<div class="alert alert-info"><%= flash[:notice] %></div>
+												<% end %>
+												<% if flash[:alert] %>
+												<div class="alert alert-warning"><%= flash[:alert] %></div>
+												<% end %>
+											</div>
+											<div class="navbar-collapse collapse" id="navbar-collapse-items">
+												<ul class="nav navbar-nav navbar-right">
+													<li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a></li>
+													<li class="dropdown">
+														<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kỳ Anh <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+														<ul class="dropdown-menu">
+															<li><a href="#">Action</a></li>
+															<li><a href="#">Another action</a></li>
+															<li><a href="#">Something else here</a></li>
+															<li role="separator" class="divider"></li>
+															<li><a href="#">Separated link</a></li>
+														</ul>
+													</li>
+													<li><%= link_to 'Đăng xuất', logout_path %> <br></li>
+												</ul>
+											</div>
+										</div>
+										<div class="dashboard-content">
+											<%= yield %>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</body>
-		</html>
+					</body>
+				</html>

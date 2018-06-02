@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="product-detail-section">
-		<div class="product-detail-img col-md-5 row">
+		<div class="product-detail-img col-md-4 row">
 			<%= image_tag @hang_hoa.image.url(:large)%>
 		</div>
-		<div class="product-detail-info col-md-7">
+		<div class="product-detail-info col-md-6">
 			<div class="product-detail-name"><h2><%= @hang_hoa.ten_hang %></h2></div>
 			<div class="row">
 				<div class="product-description col-md-8"><p><%= @hang_hoa.ghi_chu.html_safe %></p></div>
@@ -23,22 +23,28 @@
 				</div>
 			</div>
 			<br>
+      <div class="row">
+        <div class="product-detail-rating col-md-12">
+          <%= rating_for @hang_hoa, 'chat_luong', enable_half: true, half_show: true %>
+        </div>
+      </div>
+      <br>
 			<div class="row">
 				<div class="product-detail-price col-md-6"> <h2>	<%= number_to_currency(@hang_hoa.gias.last[:gia_ban], locale: :vn)%></h2></div>
 			</div>
-			<br>
+      <br>
 			<div class="row">
 			<%= form_tag chi_tiet_gio_hangs_path(hang_hoa_id: @hang_hoa) do %>
-				<%= submit_tag "Thêm vào giỏ hàng", class: 'btn btn-danger' %> 
+				<%= submit_tag "Thêm vào giỏ hàng", class: 'btn btn-danger' %>
 				<div class="col-md-3">
 					<%= number_field_tag :so_luong, params[:so_luong], class: 'form-control', placeholder: '1' %>
 				</div>
 			<% end %>
 			</div>
 		</div>
-		<div class="product-detail col-md-12">
-			<h2>Thông tin hàng hóa</h2><br>
-			<%= @hang_hoa.chi_tiet.html_safe %>
-		</div>
-	</div>
+    <div class="col-md-2">
+      <div class="recommend-products-section">
+      </div>
+    </div>
+  </div>
 </div>
