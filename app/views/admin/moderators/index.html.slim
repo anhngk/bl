@@ -1,0 +1,25 @@
+.function-headline
+  h1
+    | Quản trị viên
+table.index-table.table.table-hover.data-tables[width="100%"]
+  thead
+    tr
+      th
+        | Họ và tên
+      th
+        | Tên tài khoản
+      th
+        | Ngày đăng kí
+      th
+  tbody
+    - @moderators.each do |moderator|
+      tr
+        td
+          = moderator.fullname
+        td
+          = moderator.username
+        td[align="center"]
+          = time_ago_in_words(moderator.created_at, locale: :en)
+          |  ago
+        td
+          = link_to 'Sửa', edit_admin_moderator_path(moderator)

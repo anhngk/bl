@@ -1,10 +1,3 @@
-/* eslint no-console: 0 */
-// Run this example by adding <%= javascript_pack_tag 'hello_vue' %> (and
-// <%= stylesheet_pack_tag 'hello_vue' %> if you have styles in your component)
-// to the head of your layout file,
-// like app/views/layouts/application.html.erb.
-// All it does is render <div>Hello Vue</div> at the bottom of the page.
-
 import Vue from 'vue/dist/vue.esm'
 import TurbolinksAdapter from 'vue-turbolinks'
 import VueResource from 'vue-resource'
@@ -27,7 +20,7 @@ document.addEventListener('turbolinks:load', () => {
     var app = new Vue({
       el: element,
       data: function() {
-        return { hoa_don_nhap: hoa_don_nhap }
+        return { id: id, hoa_don_nhap: hoa_don_nhap }
       },
 
       computed: {
@@ -51,19 +44,32 @@ document.addEventListener('turbolinks:load', () => {
         },
 
         removeCthd: function(index) {
-          this.hoa_don_nhap.cthd_nhaps_attributes.splice(index,1)
+          var cthd = this.hoa_don_nhap.cthd_nhaps_attributes[index]
+
+          if (cthd.id == null) {
+            this.hoa_don_nhap.cthd_nhaps_attributes.splice(index,1)
+          } else {
+            this.hoa_don_nhap.cthd_nhaps_attributes[index]._destroy = "1"
+          }
+        },
+
+        undoRemove: function(index) {
+          this.hoa_don_nhap.cthd_nhaps_attributes[index]._destroy = null
         },
 
         saveBill: function() {
+          console.log(this.id)
+          // Create a new bill
           if (this.id == null) {
             this.$http.post('/admin/hoa_don_nhaps', { hoa_don_nhap: this.hoa_don_nhap }).then(response => {
-              console.log(response)
+              Turbolinks.visit(`/admin/hoa_don_nhaps/`)
             }, response => {
               console.log(response)
             })
+          // Edit an existing bill
           } else {
-            this.$http.put('/admin/hoa_don_nhaps/${this.id}', { hoa_don_nhap: this.hoa_don_nhap }).then(response => {
-              Turbolinks.visit('/admin/hoa_don_nhaps/${response.body.id}')
+            this.$http.put(`/admin/hoa_don_nhaps/${this.id}`, { hoa_don_nhap: this.hoa_don_nhap }).then(response => {
+              Turbolinks.visit(`/admin/hoa_don_nhaps/`)
             }, response => {
               console.log(response)
             })

@@ -1,0 +1,38 @@
+.function-headline.row
+  .col-md-8
+    h1 Danh sách khách hàng
+table.index-table.table.table-hover.data-tables[width="100%"]
+  thead
+    th
+      | STT
+    th
+      | Tên KH
+    th
+      | Email
+    th
+      | Điện thoại
+    th
+      | Mã số thuế
+    th
+      | Lần đăng nhập
+    th
+      | Lần cuối
+  tbody
+    - @khach_hangs.each do |kh|
+      tr
+        td[align="center"]
+          = kh.id
+        td
+          = kh.ten_kh
+        td
+          = kh.email
+        td
+          = kh.dien_thoai
+        td
+          = kh.ma_so_thue
+        td[align="center"]
+          = kh.sign_in_count
+        td
+          - if kh.last_sign_in_at. present?
+            = time_ago_in_words(kh.last_sign_in_at, locale: :en)
+            |  ago

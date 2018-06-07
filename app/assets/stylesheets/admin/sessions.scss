@@ -7,30 +7,32 @@
 .admin-body {
 }
 
-/* .main-board {
-	width: 83.33333333%;
-} */
-
 .dashboard-wrapper {
 	height: 100%;
 }
 
 .dashboard-content {
-	margin: 5px 30px 0px 30px;
+	margin: 85px 40px 30px 30px;
 }
 
 .sidebar {
 	padding: 0;
-	background-color: #4980F9;
-	height: 100vh;
+	background-color: #fff;
+	height: calc(100vh - 55px);
+  top: 55px;
 	width: 16.66666667%;
-	box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.42), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)
+	-webkit-box-shadow: 0px 0px 20px 1px rgba(92,92,92,0.15);
+  -moz-box-shadow: 0px 0px 20px 1px rgba(92,92,92,0.15);
+  box-shadow: 0px 0px 20px 1px rgba(92,92,92,0.15);
+
 }
 
-.dashboard-store-logo {
-	padding: 25px 0;
-	text-align: center;
-	margin: 0 25px;
+.navbar-brand-logo {
+	width: 12%;
+}
+
+.dashboard-navbar .navbar-brand {
+  padding-left: 30px;
 }
 
 .dashboard-menu ul {
@@ -59,7 +61,7 @@
 
 .dashboard-menu a {
 	text-decoration: none;
-	color: #fff;
+	color: #8b8fa1;
 }
 
 .dashboard-menu a:hover {
@@ -81,14 +83,17 @@
 
 .dashboard-menu i {
 	float: left;
-	font-size: 1.6em;
+	font-size: 1.2em;
 	margin-right: 15px;
 	text-align: center;
 	vertical-align: middle;
 }
 
 .dashboard-navbar {
-	background-color: transparent;
+	background-color: #fff;
+  -webkit-box-shadow: 0px 0px 2px 1px rgba(92,92,92,0.1);
+  -moz-box-shadow: 0px 0px 2px 1px rgba(92,92,92,0.1);
+  box-shadow: 0px 0px 2px 1px rgba(92,92,92,0.1);
 }
 
 .dashboard-navbar .navbar-header {
@@ -97,6 +102,11 @@
 
 .dashboard-navbar .navbar-right {
 	margin: 15px 0 0 0 !important;
+  font-size: 1.1em;
+}
+
+.dashboard-navbar {
+  margin-bottom: 0;
 }
 
 .dashboard-navbar .nav>li>a:hover {

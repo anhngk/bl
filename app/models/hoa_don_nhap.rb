@@ -3,8 +3,7 @@ class HoaDonNhap < ActiveRecord::Base
 
   has_many :cthd_nhaps, dependent: :destroy
 
-  accepts_nested_attributes_for :cthd_nhaps, allow_destroy: true,
-                                reject_if: proc { |attr| attr['cthd_nhap'].blank? }
+  accepts_nested_attributes_for :cthd_nhaps, allow_destroy: true
 
   TINH_TRANG_THANH_TOAN = [ "Chưa thanh toán", "Đã thanh toán" ]
 end

@@ -2,7 +2,7 @@ class Admin::HoaDonNhapsController < Admin::ApplicationController
   before_action :set_hoa_don_nhap, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hoa_don_nhaps = HoaDonNhap.all
+    @hoa_don_nhaps = HoaDonNhap.all.order(id: :desc)
   end
 
   def show
@@ -20,7 +20,7 @@ class Admin::HoaDonNhapsController < Admin::ApplicationController
     respond_to do |format|
       if @hoa_don_nhap.save
         format.html { redirect_to @hoa_don_nhap, notice: 'Thêm hóa đơn thành công' }
-        format.json { redirect_to admin_hoa_don_nhaps_url }
+        format.json { render :show, status: :created, location: admin_hoa_don_nhap_url(@hoa_don_nhap) }
       else
         format.html { render :new }
         format.json { render json: @hoa_don_nhap.errors, status: :unprocessable_entity }
@@ -29,13 +29,15 @@ class Admin::HoaDonNhapsController < Admin::ApplicationController
   end
 
   def edit
+    @nha_cung_caps = NhaCungCap.all
+    @hang_hoas = HangHoa.all
   end
 
   def update
     respond_to do |format|
       if @hoa_don_nhap.update(hoa_don_nhap_params)
         format.html { redirect_to admin_hoa_don_nhaps_url, notice: 'Cập nhật hóa đơn thành công!' }
-        format.json { render :show, status: :ok, location: @hoa_don_nhap }
+        format.json { render :show, status: :ok, location: admin_hoa_don_nhap_url(@hoa_don_nhap) }
       else
         format.html { render :edit }
         format.json { render json: @hoa_don_nhap.errors, status: :unprocessable_entity }
@@ -58,7 +60,7 @@ private
   end
 
   def hoa_don_nhap_params
-    params.require(:hoa_don_nhap).permit(:id, :ngaynhap, :tong_tien, :ghi_chu, :tinh_trang, :nha_cung_cap_id, cthd_nhaps_attributes: [:id, :so_luong_nhap, :hang_hoa_id, :gia_nhap])
+    params.require(:hoa_don_nhap).permit(:ngaynhap, :tong_tien, :ghi_chu, :tinh_trang, :nha_cung_cap_id, cthd_nhaps_attributes: [:id, :so_luong_nhap, :hang_hoa_id, :gia_nhap, :_destroy, :thanh_tien])
   end
 
 

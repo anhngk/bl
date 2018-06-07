@@ -1,0 +1,43 @@
+.function-headline.row
+  .col-md-4
+    h1 Nhà cung cấp
+  .col-md-4.pull-right.headline-btn
+    = link_to new_admin_nha_cung_cap_path do
+    button.btn.btn-success[type="button"]
+      i.fa.fa-plus[aria-hidden="true"]
+      |  Thêm nhà cung cấp
+
+table.index-table.table.table-hover.data-tables[width="100%"]
+  thead
+    tr
+      th
+      th
+        | Tên nhà cung cấp
+      th
+        | Điện thoại
+      th
+        | Mã số thuế
+      th
+  tbody
+    - @nha_cung_caps.each do |ncc|
+      tr
+        td
+          = ncc.id
+        td
+          strong
+            = ncc.ten_ncc
+        td[align="center"]
+          = ncc.dien_thoai
+        td[align="center"]
+          = ncc.ma_so_thue
+        td[align="center"]
+          .dropdown
+            button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              span ...
+            ul.dropdown-menu.dropdown-menu-right
+              li
+                = link_to 'Xem', admin_nha_cung_cap_path(ncc)
+              li
+                = link_to 'Sửa', edit_admin_nha_cung_cap_path(ncc)
+              li
+                = link_to 'Xóa', admin_nha_cung_cap_path(ncc), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}

@@ -1,0 +1,47 @@
+.function-headline
+  h1
+    = @danh_muc.ten_danh_muc
+.product-category-listing
+  table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
+    thead
+      tr
+        th Tên hàng
+        th Số lượng
+        th ĐVT
+        th Xuất xứ
+        th Quy cách
+        th Giá bán
+        th Danh mục
+        th
+    tbody
+      - @hang_hoas.each do |hang_hoa|
+        tr
+          td
+            strong
+              = hang_hoa.ten_hang
+          td[align="center"]
+            = hang_hoa.so_luong
+          td[align="center"]
+            = hang_hoa.dvt
+          td[align="center"]
+            = hang_hoa.xuat_xu
+          td[align="center"]
+            = hang_hoa.quy_cach
+          td[align="right"]
+            select.form-control
+              - hang_hoa.gias.each do |gia|
+                option
+                  = number_to_currency(gia.gia_ban, locale: :vn)
+          td[align="center"]
+            = link_to DanhMuc.find(hang_hoa.danh_muc_id).ten_danh_muc, admin_danh_muc_path(hang_hoa.danh_muc_id)
+          td[align="center"]
+            .dropdown
+              button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                span ...
+              ul.dropdown-menu.dropdown-menu-right
+                li
+                  = link_to 'Xem', admin_hang_hoa_path(hang_hoa)
+                li
+                  = link_to 'Sửa', edit_admin_hang_hoa_path(hang_hoa)
+                li
+                  = link_to 'Xóa', admin_hang_hoa_path(hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}

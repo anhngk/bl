@@ -1,0 +1,101 @@
+doctype html
+html
+  head
+    title
+      | BL - Quản Lý
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Muli:300,400,700,900&subset=vietnamese'
+    = javascript_pack_tag 'hello_vue'
+    = csrf_meta_tags
+  body.admin-body
+    nav.navbar.navbar-fixed-top.dashboard-navbar
+      .container-fluid
+          .navbar-header.col-md-3
+            a.navbar-brand[href="#"]
+              = image_tag 'BL-White-Logo.png', class: "navbar-brand-logo"
+          .col-md-4
+            - if flash[:notice]
+              .alert.alert-info
+                = flash[:notice]
+            - if flash[:alert]
+              .alert.alert-warning
+                = flash[:alert]
+          ul.nav.navbar-nav.navbar-right
+            li
+              a[href="#"]
+                i.fa.fa-bell[aria-hidden="true"]
+            li.dropdown
+              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                | Kỳ Anh
+                i.fa.fa-user-circle-o[aria-hidden="true"]
+              ul.dropdown-menu
+                li
+                  a[href="#"]
+                    | Action
+                li
+                  a[href="#"]
+                    | Another action
+                li
+                  a[href="#"]
+                    | Something else here
+                li.divider[role="separator"]
+                li
+                  a[href="#"]
+                    | Separated link
+            li
+              = link_to 'Đăng xuất', logout_path
+    .container-fluid
+      .row
+        .col-md-2
+          .sidebar.affix.row
+            .dashboard-menu
+              ul
+                = link_to admin_thong_kes_path do
+                  li
+                    i.fas.fa-chart-bar.fa-fw[aria-hidden="true"]
+                    p
+                      | Thống kê
+                = link_to admin_hang_hoas_path do
+                  li
+                    i.fas.fa-warehouse.fa-fw[aria-hidden="true"]
+                    p
+                      | Kho hàng
+                = link_to new_admin_danh_muc_path do
+                  li
+                    i.fas.fa-list-ul.fa-fw[aria-hidden="true"]
+                    p
+                      | Danh mục hàng
+                = link_to admin_don_hangs_path do
+                  li
+                    i.fas.fa-clipboard-list.fa-fw[aria-hidden="true"]
+                    p
+                      | Đơn hàng
+                = link_to admin_hoa_don_nhaps_path do
+                  li
+                    i.fas.fa-plus-square.fa-fw[aria-hidden="true"]
+                    p
+                      | Hóa đơn nhập
+                = link_to admin_hoa_don_xuats_path do
+                  li
+                    i.fas.fa-minus-square.fa-fw[aria-hidden="true"]
+                    p
+                      | Hóa đơn xuất
+                = link_to admin_khach_hangs_path do
+                  li
+                    i.fa.fa-user-tie.fa-fw[aria-hidden="true"]
+                    p
+                      | Khách hàng
+                = link_to admin_nha_cung_caps_path do
+                  li
+                    i.fas.fa-dolly.fa-fw[aria-hidden="true"]
+                    p
+                      | Nhà cung cấp
+                = link_to admin_moderators_path do
+                  li
+                    i.fa.fa-user-astronaut.fa-fw[aria-hidden="true"]
+                    p
+                      | Quản trị viên
+        .col-md-10
+          .dashboard-content
+            = yield

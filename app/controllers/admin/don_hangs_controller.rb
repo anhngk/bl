@@ -5,11 +5,11 @@ class Admin::DonHangsController < Admin::ApplicationController
 	before_action :set_don_hang, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@don_hangs = DonHang.all
+		@don_hangs = DonHang.all.order(id: :desc)
 	end
 
 	def show
-		
+
 	end
 
 	def edit

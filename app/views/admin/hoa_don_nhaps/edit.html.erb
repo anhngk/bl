@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-9">
+    <%= link_to admin_hoa_don_nhaps_path, class: 'back-btn' do %>
+      <i class="fas fa-chevron-left"></i>
+      <span>Hóa đơn nhập</span>
+    <% end %>
+    <div class="function-headline">
+      <h3>Chỉnh sửa hóa đơn</h3>
+    </div>
+  </div>
+</div>
+<div class="row bill-form">
+  <div class="col-md-12">
+  <%= render partial: 'form', locals: { hoa_don_nhap: @hoa_don_nhap } %>
+  </div>
+</div>

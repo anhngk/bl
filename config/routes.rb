@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/store' => 'hang_hoas#index'
   get '/login' => 'admin/sessions#new'
   get '/logout' => 'admin/sessions#destroy'
+  get '/admin' => 'admin/hang_hoas#index'
   post '/recommend' => 'hang_hoas#recommend'
   post '/rate' => 'rater#create', :as => 'rate'
 

@@ -1,7 +1,7 @@
 class Admin::HangHoasController < Admin::ApplicationController
 
   def index
-    @hang_hoas = HangHoa.includes(:gias).all
+    @hang_hoas = HangHoa.includes(:gias).all.order(id: :desc)
   end
 
   def new

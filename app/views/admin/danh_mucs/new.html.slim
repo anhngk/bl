@@ -1,0 +1,23 @@
+.function-headline
+  h1
+    | Danh mục hàng hóa
+.row
+  .col-md-4
+    = render 'form'
+  .col-md-8.show-table
+    table
+      thead
+        tr
+          th Danh mục
+          th Tình trạng
+          th
+      tbody
+        - @danh_mucs.each do |danh_muc|
+          tr
+            td = link_to admin_danh_muc_path(danh_muc) do
+                = danh_muc.ten_danh_muc
+            td = true_false_converter(danh_muc.dang_su_dung?, truthy: 'Đang dùng', falsey: 'Chưa dùng')
+            td = link_to edit_admin_danh_muc_path(danh_muc) do
+                button.btn.btn-warning.btn-sm[type="button"]
+                  | Sửa
+            td = create_deletable_button danh_muc
