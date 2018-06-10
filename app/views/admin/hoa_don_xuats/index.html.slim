@@ -1,0 +1,45 @@
+.function-headline.row
+  .col-md-4
+    h1 Hóa đơn xuất
+  .col-md-4.pull-right.headline-btn
+    = link_to new_admin_hoa_don_xuat_path do
+      button.btn.btn-success[type="button"]
+        i.fa.fa-plus[aria-hidden="true"]
+        |  Tạo hóa đơn
+
+table.index-table.table.table-hover.data-tables[width="100%"]
+  thead
+    tr
+      th
+      th Ngày xuất
+      th Khách hàng
+      th Tổng tiền
+      th Tình trạng
+      th
+  tbody
+    - @hoa_don_xuats.each do |hoa_don|
+      tr
+        td
+          strong
+            = hoa_don.id
+        td[align="center"]
+          - if hoa_don.ngay_xuat.present?
+            = hoa_don.ngay_xuat.strftime("%d/%m/%Y")
+        td[align="center"]
+          - if hoa_don.khach_hang_id.present?
+            = KhachHang.find(hoa_don.khach_hang_id).ten_kh
+        td[align="center"]
+          = number_to_currency(hoa_don.tong_tien, locale: :vn)
+        td[align="center"]
+          = tinh_trang_hoa_don(hoa_don.tinh_trang)
+        td[align="center"]
+          .dropdown
+            button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              span ...
+            ul.dropdown-menu.dropdown-menu-right
+              li
+                = link_to 'Xem', admin_hoa_don_xuat_path(hoa_don)
+              li
+                = link_to 'Sửa', edit_admin_hoa_don_xuat_path(hoa_don)
+              li
+                = link_to 'Xóa', admin_hoa_don_xuat_path(hoa_don), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}

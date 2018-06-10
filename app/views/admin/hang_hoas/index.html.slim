@@ -11,10 +11,9 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
   thead
     tr
       th Tên hàng
-      th Số lượng
+      th Số lượng tồn kho
       th ĐVT
       th Xuất xứ
-      th Quy cách
       th Giá bán
       th Danh mục
       th
@@ -30,8 +29,6 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
           = hang_hoa.dvt
         td[align="center"]
           = hang_hoa.xuat_xu
-        td[align="center"]
-          = hang_hoa.quy_cach
         td[align="right"]
           select.form-control
             - hang_hoa.gias.each do |gia|

@@ -24,11 +24,16 @@ document.addEventListener('turbolinks:load', () => {
       },
 
       computed: {
+
         totalBill: function() {
           return this.hoa_don_nhap.cthd_nhaps_attributes.reduce(function(total, cthd_nhap){
             return total + cthd_nhap.thanh_tien;
           },0);
-        }
+        },
+
+        valid: function() {
+          return hoa_don_nhap.ngaynhap != null && hoa_don_nhap.nha_cung_cap_id != null
+        },
       },
 
       methods: {
@@ -58,9 +63,8 @@ document.addEventListener('turbolinks:load', () => {
         },
 
         saveBill: function() {
-          console.log(this.id)
           // Create a new bill
-          if (this.id == null) {
+          if (this.id == "null") {
             this.$http.post('/admin/hoa_don_nhaps', { hoa_don_nhap: this.hoa_don_nhap }).then(response => {
               Turbolinks.visit(`/admin/hoa_don_nhaps/`)
             }, response => {
@@ -81,7 +85,6 @@ document.addEventListener('turbolinks:load', () => {
           return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
         },
       },
-
     })
   }
 })

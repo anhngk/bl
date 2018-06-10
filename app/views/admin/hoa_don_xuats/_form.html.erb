@@ -1,0 +1,78 @@
+<%= content_tag :div,
+  id: "hoa-don-xuat-form",
+  data: {
+    id: hoa_don_xuat.id,
+    hoa_don_xuat: hoa_don_xuat.to_json(except: [:created_at, :updated_at]),
+    cthd_xuats_attributes: hoa_don_xuat.cthd_xuats.to_json(except: [:created_at, :updated_at]),
+  } do %>
+  <h1>HÓA ĐƠN XUẤT</h1>
+    <br>
+    <label>NGÀY XUẤT</label><br>
+    <div class="input-group">
+      <span class="input-group-addon">
+        <i class="far fa-calendar-alt"></i>
+      </span>
+      <input type="date" v-model="hoa_don_xuat.ngay_xuat" value="<%=Time.now.strftime("%Y-%m-%d")%>">
+    </div>
+    <div class="form-error" v-if="hoa_don_xuat.ngay_xuat == null">
+      <i class="fas fa-exclamation-circle"></i> Hãy chọn Ngày xuất
+    </div>
+    <br>
+    <label>KHÁCH HÀNG</label><br>
+    <label class="wrap">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fas fa-dolly"></i>
+        </span>
+        <%= select_tag(:khach_hang_id, options_for_select(@khach_hangs.collect{ |kh| [kh.ten_kh, kh.id] }), { "v-model" => "hoa_don_xuat.khach_hang_id", class: "dropdown", id:"kh-select"}) %>
+      </div>
+    </label>
+    <div class="form-error" v-if="hoa_don_xuat.khach_hang_id == null">
+      <i class="fas fa-exclamation-circle"></i> Hãy chọn Khách hàng
+    </div>
+    <h5>CHI TIẾT HÓA ĐƠN</h5>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Tên hàng hóa</th>
+            <th>Số lượng</th>
+            <th>Giá bán</th>
+            <th>Thành tiền</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(cthd_xuat, index) in hoa_don_xuat.cthd_xuats_attributes">
+            <td>{{index + 1}}</td>
+            <td>
+              <label class="cthd-wrap">
+                <%= select_tag(:hang_hoa_id, options_for_select(@hang_hoas.collect{ |hh| [hh.ten_hang, hh.id] }), { "v-model" => "cthd_xuat.hang_hoa_id", class: "cthd-dropdown"}) %>
+              </label>
+            </td>
+            <td><input type="number" v-model.number="cthd_xuat.so_luong_xuat"></td>
+            <td><input type="text" v-model="cthd_xuat.gia_ban" style="text-align: right"></td>
+            <td style="text-align: right">{{ formatPrice(cthd_xuat.thanh_tien = cthd_xuat.gia_ban * cthd_xuat.so_luong_xuat) }}đ</td>
+            <td><button class="remove-cthd-btn" v-on:click="removeCthd(index)" title="Xóa chi tiết"><i class="fas fa-minus"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button v-on:click="addCthd" class="btn btn-default btn-add-cthd" title="Thêm chi tiết" ><i class="fas fa-plus"></i></button>
+    <div class="total-bill pull-right">
+      <h4>TỔNG CỘNG</h4>
+      <div>{{ formatPrice(hoa_don_xuat.tong_tien = totalBill) }}đ</div>
+    </div>
+  <label>TÌNH TRẠNG THANH TOÁN</label><br>
+  <div class="input-group">
+    <span class="input-group-addon">
+      <i class="far fa-money-bill-alt"></i>
+    </span>
+    <%= select_tag(:tinh_trang, options_for_select([["Chưa thanh toán", "0"], ["Đã thanh toán", "1"]],0),{"v-model" => "hoa_don_xuat.tinh_trang"}) %>
+  </div>
+  <br>
+  <label>GHI CHÚ</label><br>
+  <textarea type="text" v-model="hoa_don_xuat.ghi_chu"></textarea>
+  <button v-on:click="saveBill" class="btn btn-default btn-save pull-right" :disabled="!valid">SAVE</button>
+<% end %>

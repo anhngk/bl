@@ -1,11 +1,10 @@
 class KhachHang < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-
-  	has_many :don_hangs
+    has_many :don_hangs
     has_many :hoa_don_xuats
     ratyrate_rater
-  	devise :database_authenticatable, :registerable, :confirmable,
+    devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
     accepts_nested_attributes_for 	:don_hangs,
@@ -20,4 +19,9 @@ class KhachHang < ActiveRecord::Base
 				.order('total desc')
 				.limit(10)
 	end
+
+  def tien_no
+    self.tien_no = hoa_don_xuats.where(tinh_trang: false).sum(:tong_tien)
+  end
+
 end

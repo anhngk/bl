@@ -10,7 +10,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.1', '>= 4.1.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -34,12 +34,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'fog'
-gem 'cocoon'
 gem 'devise', '~> 4.2'
 gem 'jquery-turbolinks'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-gem 'groupdate'
 gem "bootstrap-wysihtml5-rails"
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'mailcatcher'
@@ -48,6 +46,8 @@ gem 'font-awesome-sass', '~> 5.0.13'
 gem 'quiet_assets'
 gem 'slim-rails', '~> 3.1', '>= 3.1.1'
 gem 'ratyrate'
+gem 'jquery-validation-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

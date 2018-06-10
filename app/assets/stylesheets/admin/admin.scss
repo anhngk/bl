@@ -27,6 +27,17 @@
 
 }
 
+.dropdown:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 8px;
+    left: 15px;
+    right: 0;
+}
+
 .navbar-brand-logo {
 	width: 12%;
 }

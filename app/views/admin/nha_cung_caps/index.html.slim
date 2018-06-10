@@ -2,42 +2,51 @@
   .col-md-4
     h1 Nhà cung cấp
   .col-md-4.pull-right.headline-btn
-    = link_to new_admin_nha_cung_cap_path do
-    button.btn.btn-success[type="button"]
-      i.fa.fa-plus[aria-hidden="true"]
-      |  Thêm nhà cung cấp
+    = link_to new_admin_nha_cung_cap_path, class: 'btn btn-success', 'data-toggle' => 'modal', 'data-target' => '#new_ncc_modal' do
+        i.fa.fa-plus[aria-hidden="true"]
+        |  Thêm nhà cung cấp
 
 table.index-table.table.table-hover.data-tables[width="100%"]
   thead
     tr
       th
-      th
-        | Tên nhà cung cấp
-      th
-        | Điện thoại
-      th
-        | Mã số thuế
+      th Tên nhà cung cấp
+      th Điện thoại
+      th Mã số thuế
+      th Nợ
       th
   tbody
     - @nha_cung_caps.each do |ncc|
       tr
-        td
-          = ncc.id
-        td
-          strong
-            = ncc.ten_ncc
-        td[align="center"]
+        td = ncc.id
+        td data-link= "#{admin_nha_cung_cap_path(ncc)}"
+          strong = ncc.ten_ncc
+        td[align="center" data-link= "#{admin_nha_cung_cap_path(ncc)}"]
           = ncc.dien_thoai
-        td[align="center"]
+        td[align="center" data-link= "#{admin_nha_cung_cap_path(ncc)}"]
           = ncc.ma_so_thue
+        td[align="right" data-link= "#{admin_nha_cung_cap_path(ncc)}"]
+          = number_to_currency(ncc.tien_no, locale: :vn)
         td[align="center"]
           .dropdown
             button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               span ...
             ul.dropdown-menu.dropdown-menu-right
-              li
-                = link_to 'Xem', admin_nha_cung_cap_path(ncc)
-              li
-                = link_to 'Sửa', edit_admin_nha_cung_cap_path(ncc)
-              li
-                = link_to 'Xóa', admin_nha_cung_cap_path(ncc), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
+              li = link_to 'Sửa', edit_admin_nha_cung_cap_path(ncc)
+              li = link_to 'Xóa', admin_nha_cung_cap_path(ncc), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
+
+.modal.fade#new_ncc_modal[tabindex="-1" role="dialog"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h3.modal-title
+          strong
+            | Thêm nhà cung cấp
+      .modal-body
+        = render 'new'
+
+javascript:
+  DataTables.init()

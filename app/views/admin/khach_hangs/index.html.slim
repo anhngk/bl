@@ -4,35 +4,27 @@
 table.index-table.table.table-hover.data-tables[width="100%"]
   thead
     th
-      | STT
-    th
-      | Tên KH
-    th
-      | Email
-    th
-      | Điện thoại
-    th
-      | Mã số thuế
-    th
-      | Lần đăng nhập
-    th
-      | Lần cuối
+    th Tên KH
+    th Email
+    th Điện thoại
+    th Mã số thuế
+    th Tiền nợ
   tbody
     - @khach_hangs.each do |kh|
       tr
-        td[align="center"]
-          = kh.id
-        td
-          = kh.ten_kh
-        td
+        td[align="center"] = kh.id
+        td data-link= "#{admin_khach_hang_path(kh)}"
+          strong
+            = kh.ten_kh
+        td data-link= "#{admin_khach_hang_path(kh)}"
           = kh.email
-        td
+        td data-link= "#{admin_khach_hang_path(kh)}"
           = kh.dien_thoai
-        td
+        td data-link= "#{admin_khach_hang_path(kh)}"
           = kh.ma_so_thue
-        td[align="center"]
-          = kh.sign_in_count
-        td
-          - if kh.last_sign_in_at. present?
-            = time_ago_in_words(kh.last_sign_in_at, locale: :en)
-            |  ago
+        td[align="right" data-link= "#{admin_khach_hang_path(kh)}"]
+          strong
+            = number_to_currency(kh.tien_no, locale: :vn)
+
+javascript:
+  DataTables.init()

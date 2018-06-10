@@ -12,8 +12,12 @@
       <span class="input-group-addon">
         <i class="far fa-calendar-alt"></i>
       </span>
-      <input type="date" v-model="hoa_don_nhap.ngaynhap" value="<%=Time.now.strftime("%Y-%m-%d")%>">
+      <input name="ngaynhap" type="date" v-model="hoa_don_nhap.ngaynhap" value="<%=Time.now.strftime("%Y-%m-%d")%>">
     </div>
+    <div class="form-error" v-if="hoa_don_nhap.ngaynhap == null">
+      <i class="fas fa-exclamation-circle"></i> Hãy chọn Ngày nhập
+    </div>
+
     <br>
     <label>NHÀ CUNG CẤP</label><br>
     <label class="wrap">
@@ -21,9 +25,12 @@
         <span class="input-group-addon">
           <i class="fas fa-dolly"></i>
         </span>
-        <%= select_tag(:nha_cung_cap_id, options_for_select(@nha_cung_caps.collect{ |ncc| [ncc.ten_ncc, ncc.id] }), { "v-model" => "hoa_don_nhap.nha_cung_cap_id", class: "dropdown", id:"ncc-select"}) %>
+        <%= select_tag(:nha_cung_cap_id, options_for_select(@nha_cung_caps.collect{ |ncc| [ncc.ten_ncc, ncc.id] }), { "v-model" => "hoa_don_nhap.nha_cung_cap_id", class: "dropdown", id:"ncc-select", name:"nha_cung_cap"}) %>
       </div>
     </label>
+    <div class="form-error" v-if="hoa_don_nhap.nha_cung_cap_id == null">
+      <i class="fas fa-exclamation-circle"></i> Hãy chọn Nhà cung cấp
+    </div>
     <h5>CHI TIẾT HÓA ĐƠN</h5>
     <div>
       <table>
@@ -67,10 +74,10 @@
     <span class="input-group-addon">
       <i class="far fa-money-bill-alt"></i>
     </span>
-    <%= select_tag(:tinh_trang, options_for_select([["Chưa thanh toán", "0"], ["Đã thanh toán", "1"]],0),{"v-model" => "hoa_don_nhap.tinh_trang"}) %>
+    <%= select_tag(:tinh_trang, options_for_select([["Chưa thanh toán", "0"], ["Đã thanh toán", "1"]],["Chưa thanh toán", "0"]),{"v-model" => "hoa_don_nhap.tinh_trang"}) %>
   </div>
   <br>
   <label>GHI CHÚ</label><br>
   <textarea type="text" v-model="hoa_don_nhap.ghi_chu"></textarea>
-  <button v-on:click="saveBill" class="btn btn-default btn-save pull-right" title="">SAVE</button>
+  <button v-on:click="saveBill" class="btn btn-default btn-save pull-right" :disabled="!valid">SAVE</button>
 <% end %>

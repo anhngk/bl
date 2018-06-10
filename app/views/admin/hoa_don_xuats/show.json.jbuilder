@@ -1,0 +1,1 @@
+json.partial! "admin/hoa_don_xuats/hoa_don_xuat", hoa_don_xuat: @hoa_don_xuat

@@ -4,4 +4,8 @@ class Admin::KhachHangsController < Admin::ApplicationController
 		@khach_hangs = KhachHang.all
 	end
 
+  def show
+    @khach_hang = KhachHang.find(params[:id])
+  end
+
 end

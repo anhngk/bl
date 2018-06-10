@@ -16,13 +16,13 @@
 //= require turbolinks
 //= require bootstrap.min
 //= require owl.carousel.min
-//= require cocoon
 //= require bootstrap-wysihtml5
 //= require datatables.min
 //= require responsive.bootstrap.min
 //= require js-routes
 //= require jquery.raty
 //= require ratyrate
+//= require jquery.validate
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
@@ -52,7 +52,7 @@ $(document).on('turbolinks:load', function() {
 			"fixedHeader": true,
 			"ordering": false,
 			"language": {
-        "lengthMenu": "Hiển thị _MENU_ sản phẩm mỗi trang",
+        "lengthMenu": "Hiển thị _MENU_ dòng mỗi trang",
         "zeroRecords": "Chưa có dữ liệu",
         "info": "Showing page _PAGE_ of _PAGES_",
         "infoEmpty": "Không tìm thấy dữ liệu",

@@ -54,7 +54,6 @@ class Admin::HoaDonNhapsController < Admin::ApplicationController
   end
 
 private
-
   def set_hoa_don_nhap
     @hoa_don_nhap = HoaDonNhap.find(params[:id])
   end
@@ -62,6 +61,5 @@ private
   def hoa_don_nhap_params
     params.require(:hoa_don_nhap).permit(:ngaynhap, :tong_tien, :ghi_chu, :tinh_trang, :nha_cung_cap_id, cthd_nhaps_attributes: [:id, :so_luong_nhap, :hang_hoa_id, :gia_nhap, :_destroy, :thanh_tien])
   end
-
 
 end

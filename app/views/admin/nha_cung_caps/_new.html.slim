@@ -1,0 +1,14 @@
+= form_for [:admin, nha_cung_cap = NhaCungCap.new], html: { multipart: true, class: 'form-horizontal custom-form', style: 'padding: 20px 40px' } do |f|
+  .form-group
+    = f.text_field :ten_ncc, class: 'form-control', placeholder: 'Tên nhà cung cấp'
+  .form-group
+    = f.text_field :dia_chi, class: 'form-control', placeholder: "Địa chỉ"
+  .form-group
+    = f.text_field :dien_thoai, class: 'form-control', placeholder: "Điện thoại"
+  .form-group
+    = f.text_field :ma_so_thue, class: 'form-control', placeholder: "Mã số thuế"
+  .form-group
+    = f.text_area :ghi_chu, class: 'form-control', placeholder: "Ghi chú"
+  br
+  .form-group
+    = f.submit "Hoàn tất", class: 'btn btn-success pull-right'

@@ -21,14 +21,6 @@
   width: 25px;
 }
 
-/* .bill-form tr > th:nth-child(3) {
-  width: 50px;
-  margin-right: 30px;
-}
-.bill-form tr > td:nth-child(3) input {
-  width: 100px;
-} */
-
 .bill-form .input-group-addon {
   border: none;
   background-color: transparent;
@@ -41,6 +33,10 @@
   padding-bottom: 3px;
 }
 
+.bill-form h5 {
+  margin-top: 20px;
+}
+
 .bill-form select.dropdown:focus {
   outline-width: 0;
 }
@@ -48,7 +44,7 @@
 .bill-form label.wrap {
     width:300px;
     overflow: hidden;
-    height: 50px;
+    height: 30px;
     position: relative;
     display: block;
 }
@@ -160,4 +156,9 @@
   font-size: 1.2em;
   color: #fff;
   background-color: #4980F9;
+}
+
+.form-error {
+  color: #ff6666;
+  margin: 5px 0 5px 37px;
 }

@@ -1,0 +1,10 @@
+.row
+  .col-lg-9
+    = link_to admin_hoa_don_nhaps_path, class: 'back-btn' do
+      i.fas.fa-chevron-left
+      span Hóa đơn nhập
+    .function-headline
+      h3 Chỉnh sửa hóa đơn
+.row.bill-form
+  .col-md-12
+    = render partial: 'form', locals: { hoa_don_nhap: @hoa_don_nhap }

@@ -1,0 +1,48 @@
+.row
+  .col-lg-9
+    = link_to admin_hoa_don_nhaps_path, class: 'back-btn' do
+      i.fas.fa-chevron-left
+      span Danh sách hóa đơn nhập
+    .function-headline
+      h3 Xem hóa đơn
+.row.bill-form
+  .col-md-12
+    h1
+     | HÓA ĐƠN NHẬP #
+     = @hoa_don_nhap.id
+  .bill-date
+    h5
+      strong NGÀY NHẬP
+    - if @hoa_don_nhap.ngaynhap.present?
+      = @hoa_don_nhap.ngaynhap.strftime("%d-%m-%Y")
+  .bill-owner
+    h5
+      strong NHÀ CUNG CẤP
+    = NhaCungCap.find(@hoa_don_nhap.nha_cung_cap_id).ten_ncc
+  .bill-details
+    h5
+      strong CHI TIẾT HÓA ĐƠN
+    table
+      thead
+        tr
+          th
+          th Tên hàng hóa
+          th Số lượng
+          th Giá nhập
+          th Giá bán
+          th Thành tiền
+      tbody
+        - @hoa_don_nhap.cthd_nhaps.each do |cthd|
+          tr
+            td
+              strong
+            td
+              = HangHoa.find(cthd.hang_hoa_id).ten_hang
+            td[align="center"]
+              = cthd.so_luong_nhap
+            td[align="right"]
+              = number_to_currency(cthd.gia_nhap, locale: :vn)
+            td[align="right"]
+              =
+            td[align="right"]
+              = number_to_currency(cthd.thanh_tien, locale: :vn)
