@@ -10,18 +10,11 @@ class KhachHang < ActiveRecord::Base
     accepts_nested_attributes_for 	:don_hangs,
 									allow_destroy: true
 
-
-	def self.top_khach_hang
-		KhachHang.joins(:don_hangs)
-				.select('SUM(tong_cong) as total', 'khach_hangs.id', 'khach_hangs.email', 'khach_hangs.ten_kh')
-				.where("don_hangs.tinh_trang like ?", "Giao hàng thành công")
-				.group(:email)
-				.order('total desc')
-				.limit(10)
-	end
-
   def tien_no
     self.tien_no = hoa_don_xuats.where(tinh_trang: false).sum(:tong_tien)
   end
 
+  def self.top_khach_hang
+    KhachHang.joins(:hoa_don_xuats).select('SUM(tong_tien) as total', 'khach_hangs.id', 'khach_hangs.email', 'khach_hangs.ten_kh').group(:khach_hang_id).order('total desc').limit(10)
+  end
 end

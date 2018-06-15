@@ -1,0 +1,51 @@
+.function-headline
+  h2 Chi tiết đơn hàng
+.customer-info
+  table.table.table-bordered
+    tr
+      th Email
+      td = @don_hang.khach_hang.email if @don_hang.khach_hang
+    tr
+      th Tên khách hàng
+      td = @don_hang.khach_hang.ten_kh if @don_hang.khach_hang
+    tr
+      th Địa chỉ nhận hàng
+      td = @don_hang.dia_chi
+    tr
+      th Điện thoại liên lạc
+      td = @don_hang.sdt
+    tr
+      th Tên người nhận
+      td = @don_hang.nguoi_nhan
+    tr
+      th Kiểu thanh toán
+      td = @don_hang.kieu_thanh_toan
+    tr
+      th Đặt hàng lúc
+      td = @don_hang.created_at
+    tr
+      th Giao hàng
+      td = @don_hang.tinh_trang
+    tr
+      th Thanh toán
+      td = @don_hang.thanh_toan
+  table.table.table-bordered
+    thead
+      th Tên hàng hóa
+      th Số lượng
+      th ĐVT
+      th Đơn giá
+      th Thành tiền
+    - @don_hang.chi_tiet_gio_hangs.each do |chi_tiet|
+      tr
+        td = chi_tiet.hang_hoa.ten_hang
+        td = chi_tiet.so_luong
+        td = chi_tiet.hang_hoa.dvt
+        td[align="right"] = number_to_currency(chi_tiet.gia_ban, locale: :vn)
+        td[align="right"] = number_to_currency(chi_tiet.tong_cong, locale: :vn)
+    tr
+      td[colspan="4" align="right"]
+        strong TỔNG CỘNG
+      td[align="right"]
+        strong = number_to_currency(@don_hang.tong_cong, locale: :vn)
+  = link_to "Cập nhật đơn hàng", edit_admin_don_hang_path(@don_hang), class: 'btn btn-primary'

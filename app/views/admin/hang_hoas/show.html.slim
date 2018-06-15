@@ -1,0 +1,98 @@
+.row
+  .col-lg-9
+    = link_to admin_hang_hoas_path, class: 'back-btn' do
+      i.fas.fa-chevron-left
+      span Danh sách hàng hóa
+.row.bill-form
+  h1 THÔNG TIN HÀNG HÓA
+  br
+  .row
+    .col-md-6
+      .info-row
+        span.info-label Tên hàng hóa
+        span.info
+          strong = @hang_hoa.ten_hang
+      .info-row
+        span.info-label Số lượng tồn
+        span.info
+          strong = @hang_hoa.so_luong
+      .info-row
+        span.info-label Đơn vị tính
+        span.info
+          strong = @hang_hoa.dvt
+      .info-row
+        span.info-label Xuất xứ
+        span.info
+          strong = @hang_hoa.xuat_xu
+      .info-row
+        span.info-label Quy cách
+        span.info
+          strong = @hang_hoa.quy_cach
+      .info-row
+        span.info-label Giá bán tham khảo
+        span.info
+          strong = number_to_currency(@gia.gia_ban, locale: :vn)
+    .col-md-6
+      = image_tag @hang_hoa.image.url(:medium)
+  br
+  h4
+    strong NHẬP
+  table.index-table.table.table-hover.data-tables[width="100%"]
+    thead
+      th
+      th Ngày nhập
+      th Nhà cung cấp
+      th Giá nhập
+      th Số lượng
+      th
+    tbody
+      - @cthd_nhaps.each do |cthd|
+        tr
+          - @hoa_don_nhap = HoaDonNhap.find(cthd.hoa_don_nhap_id)
+          td[align="center"] = cthd.hoa_don_nhap_id
+          td data-link= "#{admin_hoa_don_nhap_path(@hoa_don_nhap)}"
+            - if @hoa_don_nhap.ngaynhap.present?
+              strong
+                = @hoa_don_nhap.ngaynhap.strftime("%d/%m/%Y")
+          td[data-link= "#{admin_hoa_don_nhap_path(@hoa_don_nhap)}"]
+            - if @hoa_don_nhap.nha_cung_cap_id.present?
+              = NhaCungCap.find(@hoa_don_nhap.nha_cung_cap_id).ten_ncc
+          td[align="right" data-link= "#{admin_hoa_don_nhap_path(@hoa_don_nhap)}"]
+            - if cthd.gia_nhap.present?
+              strong = number_to_currency(cthd.gia_nhap, locale: :vn)
+          td[align="center" data-link= "#{admin_hoa_don_nhap_path(@hoa_don_nhap)}"]
+            strong
+              | +
+              = cthd.so_luong_nhap
+  br
+  h5
+    strong XUẤT
+  table.index-table.table.table-hover.data-tables[width="100%"]
+    thead
+      th
+      th Ngày xuất
+      th Khách hàng
+      th Giá bán
+      th Số lượng
+      th
+    tbody
+      - @cthd_xuats.each do |cthd|
+        tr
+          - @hoa_don_xuat = HoaDonXuat.find(cthd.hoa_don_xuat_id)
+          td[align="center"] = cthd.hoa_don_xuat_id
+          td data-link= "#{admin_hoa_don_xuat_path(@hoa_don_xuat)}"
+            - if @hoa_don_xuat.ngay_xuat.present?
+              strong
+                = @hoa_don_xuat.ngay_xuat.strftime("%d/%m/%Y")
+          td[data-link= "#{admin_hoa_don_xuat_path(@hoa_don_xuat)}"]
+            - if @hoa_don_xuat.khach_hang_id.present?
+              = KhachHang.find(@hoa_don_xuat.khach_hang_id).ten_kh
+          td[align="right" data-link= "#{admin_hoa_don_xuat_path(@hoa_don_xuat)}"]
+            - if cthd.gia_ban.present?
+              strong = number_to_currency(cthd.gia_ban, locale: :vn)
+          td[align="center" data-link= "#{admin_hoa_don_xuat_path(@hoa_don_xuat)}"]
+            strong
+              | -
+              = cthd.so_luong_xuat
+javascript:
+  DataTables.init()

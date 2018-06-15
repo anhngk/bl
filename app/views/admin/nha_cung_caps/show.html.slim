@@ -6,27 +6,27 @@
 .row.bill-form
   h1 THÔNG TIN NHÀ CUNG CẤP
   brCẤP
-  div.info-row
+  .info-row
     span.info-label Tên nhà cung cấp
     span.info
       strong = @nha_cung_cap.ten_ncc
-  div.info-row
+  .info-row
     span.info-label Điện thoại
     span.info
       strong = @nha_cung_cap.dien_thoai
-  div.info-row
+  .info-row
     span.info-label Địa chỉ
     span.info
       strong = @nha_cung_cap.dia_chi
-  div.info-row
+  .info-row
     span.info-label Mã số thuế
     span.info
       strong = @nha_cung_cap.ma_so_thue
-  div.info-row
+  .info-row
     span.info-label Ghi chú
     span.info
       strong = @nha_cung_cap.ghi_chu
-  div.info-row.pull-right
+  .info-row.pull-right
     span.info-label
       strong Nợ nhà cung cấp
     span.info
@@ -59,9 +59,7 @@
               button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                 span ...
               ul.dropdown-menu.dropdown-menu-right
-                li
-                  = link_to 'Sửa', edit_admin_hoa_don_nhap_path(hoa_don)
-                li
-                  = link_to 'Xóa', admin_hoa_don_nhap_path(hoa_don), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
+                li = link_to 'Sửa', edit_admin_hoa_don_nhap_path(hoa_don)
+                li = link_to 'Xóa', admin_hoa_don_nhap_path(hoa_don), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
 javascript:
   DataTables.init()

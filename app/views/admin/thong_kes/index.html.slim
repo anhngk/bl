@@ -1,0 +1,103 @@
+.function-headline
+  h1 Thống kê
+.row.dashboard-icome-static
+  .daily-income.col-lg-4.col-md-4.col-sm-4
+    .card
+      .card-header
+        i.far.fa-calendar aria-hidden="true"
+      .card-content
+        p.card-category Doanh thu hôm nay
+        h3.card-static
+          strong= number_to_currency(@doanh_thu_hom_nay, locale: :vn)
+      .card-footer
+        .card-footer-info
+          p
+            | #{Date.today.strftime("%d/%m/%Y")}
+  .monthly-income.col-lg-4.col-md-4.col-sm-4
+    .card
+      .card-header
+        i.far.fa-calendar aria-hidden="true"
+      .card-content
+        p.card-category Doanh thu tháng này
+        h3.card-static
+          strong= number_to_currency(@doanh_thu_theo_thang.to_a.first[1], locale: :vn)
+      .card-footer
+        .card-footer-info
+          p
+            | Tháng #{@doanh_thu_theo_thang.to_a.first[0]}/#{Time.current.year}
+  .yearly-income.col-lg-4.col-md-4.col-sm-4
+    .card
+      .card-header
+        i.far.fa-calendar-alt aria-hidden="true"
+      .card-content
+        p.card-category Doanh thu năm nay
+        h3.card-static
+          strong= number_to_currency(@doanh_thu_nam.to_a.last[1], locale: :vn)
+      .card-footer
+        .card-footer-info
+          p
+            | Năm #{@doanh_thu_nam.to_a.last[0]}
+
+.row.owe
+  .owe-supplier.col-md-6
+    .card
+      .card-header
+        i.far.fa-calendar aria-hidden="true"
+      .card-content
+        p.card-category Nợ nhà cung cấp
+        h3.card-static
+          strong= number_to_currency(@no_nha_cung_cap, locale: :vn)
+      .card-footer
+        .card-footer-info
+          p
+            | Tính đến #{Date.today.strftime("%d/%m/%Y")}
+  .owe-customer.col-md-6
+    .card
+      .card-header
+        i.far.fa-calendar aria-hidden="true"
+      .card-content
+        p.card-category Khách hàng nợ
+        h3.card-static
+          strong= number_to_currency(@khach_hang_no, locale: :vn)
+      .card-footer
+        .card-footer-info
+          p
+            | Tính đến #{Date.today.strftime("%d/%m/%Y")}
+.row
+  .col-md-6
+    h3 DOANH THU THÁNG
+    table.table.table-bordered.table-ui width="100%"
+      thead
+        th Tháng
+        th Doanh thu
+      tbody
+        - @doanh_thu_theo_thang.each do |dt|
+          tr
+            td align="center" = dt.first
+            td align="right" = number_to_currency(dt.second, locale: :vn)
+  .col-md-6
+    h3 DOANH THU NĂM
+    table.table.table-bordered.table-ui width="100%"
+      thead
+        th Năm
+        th Doanh thu
+      tbody
+        - @doanh_thu_nam.each do |dt|
+          tr
+            td align="center" = dt.first
+            td align="right" = number_to_currency(dt.second, locale: :vn)
+h3 TOP KHÁCH HÀNG
+.col-md-6.row
+  table.table.table-bordered.table-ui width="100%"
+    thead
+      th ID
+      th Tên KH
+      th Email
+      th Tổng chi
+    tbody
+      - @top_khach_hang.each do |kh|
+        tr
+          td align="center" = kh.id
+          td= kh.ten_kh
+          td= kh.email
+          td align="right" = number_to_currency(kh.total, locale: :vn)

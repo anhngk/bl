@@ -14,27 +14,24 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
       th Số lượng tồn kho
       th ĐVT
       th Xuất xứ
-      th Giá bán
+      th Giá bán tham khảo
       th Danh mục
       th
   tbody
     - @hang_hoas.each do |hang_hoa|
       tr
-        td
+        td data-link= "#{admin_hang_hoa_path(hang_hoa)}"
           strong
             = hang_hoa.ten_hang
-        td[align="center"]
+        td[align="center" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
           = hang_hoa.so_luong
-        td[align="center"]
+        td[align="center" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
           = hang_hoa.dvt
-        td[align="center"]
+        td[align="center" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
           = hang_hoa.xuat_xu
-        td[align="right"]
-          select.form-control
-            - hang_hoa.gias.each do |gia|
-              option
-                = number_to_currency(gia.gia_ban, locale: :vn)
-        td[align="center"]
+        td[align="right" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
+          = number_to_currency(hang_hoa.gias.last.gia_ban, locale: :vn)
+        td[align="center" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
           = link_to DanhMuc.find(hang_hoa.danh_muc_id).ten_danh_muc, admin_danh_muc_path(hang_hoa.danh_muc_id)
         td[align="center"]
           .dropdown
@@ -47,3 +44,6 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
                 = link_to 'Sửa', edit_admin_hang_hoa_path(hang_hoa)
               li
                 = link_to 'Xóa', admin_hang_hoa_path(hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
+
+javascript:
+  DataTables.init()

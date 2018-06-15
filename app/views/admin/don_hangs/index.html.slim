@@ -1,32 +1,25 @@
-.function-headline
-  h2
-    | Danh sách đơn hàng
+.function-headline.row
+  .col-md-6
+    h1 DANH SÁCH ĐƠN HÀNG
 table.index-table.table.table-hover.data-tables[width="100%"]
   thead
-    th Mã đơn hàng
+    th
     th Người nhận
     th Địa chỉ
     th Điện thoại
     th Kiểu thanh toán
     th Tình trạng
     th Khách hàng
-    th
   tbody
     - @don_hangs.each do |don_hang|
       tr
-        td[align="center"]
-          = don_hang.id
-        td
-          = don_hang.nguoi_nhan
-        td
-          = don_hang.dia_chi
-        td
-          = don_hang.sdt
-        td[align="center"]
-          = don_hang.kieu_thanh_toan
-        td
-          = don_hang.tinh_trang
-        td
-          = don_hang.khach_hang.email if don_hang.khach_hang
-        td
-          = link_to 'Xem', admin_don_hang_path(don_hang)
+        td[align="center" data-link= "#{admin_don_hang_path(don_hang)}"] = don_hang.id
+        td data-link= "#{admin_don_hang_path(don_hang)}" = don_hang.nguoi_nhan
+        td data-link= "#{admin_don_hang_path(don_hang)}" = don_hang.dia_chi
+        td data-link= "#{admin_don_hang_path(don_hang)}" = don_hang.sdt
+        td[align="center" data-link= "#{admin_don_hang_path(don_hang)}"] = don_hang.kieu_thanh_toan
+        td data-link= "#{admin_don_hang_path(don_hang)}" = don_hang.tinh_trang
+        td data-link= "#{admin_don_hang_path(don_hang)}" = don_hang.khach_hang.email if don_hang.khach_hang
+
+javascript:
+  DataTables.init()

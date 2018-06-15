@@ -60,7 +60,7 @@ private
   end
 
   def hoa_don_xuat_params
-    params.require(:hoa_don_xuat).permit(:ngay_xuat, :tong_tien, :ghi_chu, :tinh_trang, :khach_hang_id, cthd_xuats_attributes: [:id, :so_luong_xuat, :hang_hoa_id, :gia_xuat, :_destroy, :thanh_tien])
+    params.require(:hoa_don_xuat).permit(:ngay_xuat, :tong_tien, :ghi_chu, :tinh_trang, :khach_hang_id, cthd_xuats_attributes: [:id, :so_luong_xuat, :hang_hoa_id, :gia_ban, :_destroy, :thanh_tien])
   end
 
 
