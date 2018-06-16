@@ -46,7 +46,7 @@
     overflow: hidden;
     height: 30px;
     position: relative;
-    display: block;
+    display: inline-block;
 }
 
 .bill-form select.dropdown{
@@ -104,9 +104,6 @@
 .bill-form #ncc-select {
   width: 300px;
 }
-.bill-form {
-
-}
 
 .bill-form .remove-cthd-btn {
   border: none;
@@ -139,6 +136,11 @@
 .total-bill h4 {
   font-weight: 300;
   font-size: 1.5em;
+}
+
+.modal-add-btn {
+  position: absolute;
+  padding-left: 15px;
 }
 
 .btn-add-cthd {

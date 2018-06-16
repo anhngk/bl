@@ -20,11 +20,17 @@
       .card-content
         p.card-category Doanh thu tháng này
         h3.card-static
-          strong= number_to_currency(@doanh_thu_theo_thang.to_a.first[1], locale: :vn)
+          - if @doanh_thu_theo_thang.present?
+            strong= number_to_currency(@doanh_thu_theo_thang.to_a.first[1], locale: :vn)
+          - else
+            | N/A
       .card-footer
         .card-footer-info
           p
-            | Tháng #{@doanh_thu_theo_thang.to_a.first[0]}/#{Time.current.year}
+            - if @doanh_thu_theo_thang.present?
+              | Tháng #{@doanh_thu_theo_thang.to_a.first[0]}/#{Time.current.year}
+            - else
+              | N/A
   .yearly-income.col-lg-4.col-md-4.col-sm-4
     .card
       .card-header
@@ -32,11 +38,17 @@
       .card-content
         p.card-category Doanh thu năm nay
         h3.card-static
-          strong= number_to_currency(@doanh_thu_nam.to_a.last[1], locale: :vn)
+          - if @doanh_thu_nam.present?
+            strong= number_to_currency(@doanh_thu_nam.to_a.last[1], locale: :vn)
+          - else
+            | N/A
       .card-footer
         .card-footer-info
           p
-            | Năm #{@doanh_thu_nam.to_a.last[0]}
+            - if @doanh_thu_nam.present?
+              | Năm #{@doanh_thu_nam.to_a.last[0]}
+            - else
+              | N/A
 
 .row.owe
   .owe-supplier.col-md-6
@@ -95,9 +107,10 @@ h3 TOP KHÁCH HÀNG
       th Email
       th Tổng chi
     tbody
-      - @top_khach_hang.each do |kh|
-        tr
-          td align="center" = kh.id
-          td= kh.ten_kh
-          td= kh.email
-          td align="right" = number_to_currency(kh.total, locale: :vn)
+      - if @top_hang_hang.present?
+        - @top_khach_hang.each do |kh|
+          tr
+            td align="center" = kh.id
+            td= kh.ten_kh
+            td= kh.email
+            td align="right" = number_to_currency(kh.total, locale: :vn)

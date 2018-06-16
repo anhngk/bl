@@ -28,6 +28,7 @@
         <%= select_tag(:nha_cung_cap_id, options_for_select(@nha_cung_caps.collect{ |ncc| [ncc.ten_ncc, ncc.id] }), { "v-model" => "hoa_don_nhap.nha_cung_cap_id", class: "dropdown", id:"ncc-select", name:"nha_cung_cap"}) %>
       </div>
     </label>
+    <%= link_to "+ Nhà cung cấp","#", class: "modal-add-btn", "data-toggle"=>"modal", "data-target"=>"#them-nha-cung-cap-modal" %>
     <div class="form-error" v-if="hoa_don_nhap.nha_cung_cap_id == null">
       <i class="fas fa-exclamation-circle"></i> Hãy chọn Nhà cung cấp
     </div>
@@ -80,4 +81,24 @@
   <label>GHI CHÚ</label><br>
   <textarea type="text" v-model="hoa_don_nhap.ghi_chu"></textarea>
   <button v-on:click="saveBill" class="btn btn-default btn-save pull-right" :disabled="!valid">SAVE</button>
+
+<!-- AddNCC Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="addNccModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addNccLabel">Thêm nhà cung cấp</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'add_nha_cung_cap' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- AddNCC Modal -->
 <% end %>
