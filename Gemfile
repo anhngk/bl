@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+gitsource 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 0.18.4'
+gem 'rails_12factor'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -41,7 +42,6 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem "bootstrap-wysihtml5-rails"
 gem 'jquery-datatables-rails', '~> 3.4.0'
-gem 'mailcatcher'
 gem 'webpacker', '~> 3.5', '>= 3.5.3'
 gem 'font-awesome-sass', '~> 5.0.13'
 gem 'quiet_assets'
@@ -52,6 +52,7 @@ gem 'jquery-validation-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'mailcatcher'
   gem 'byebug'
 end
 
@@ -61,6 +62,4 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
-gem "js-routes"
 
