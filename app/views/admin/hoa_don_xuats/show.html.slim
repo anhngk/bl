@@ -1,0 +1,61 @@
+.row
+  .col-lg-9
+    = link_to admin_hoa_don_xuats_path, class: 'back-btn' do
+      i.fas.fa-chevron-left
+      span Danh sách hóa đơn xuất
+    .function-headline
+      h3 Xem hóa đơn
+.row.bill-form
+  .col-md-12
+    h1
+     | HÓA ĐƠN XUẤT #
+     = @hoa_don_xuat.id
+    .bill-logo.pull-right
+      i.fab.fa-bimobject
+    .bill-date
+      h5
+        strong NGÀY XUẤT
+      - if @hoa_don_xuat.ngay_xuat.present?
+        = @hoa_don_xuat.ngay_xuat.strftime("%d/%m/%Y")
+    .bill-owner
+      h5
+        strong KHÁCH HÀNG
+      = KhachHang.find(@hoa_don_xuat.khach_hang_id).ten_kh
+    .bill-details
+      h5
+        strong CHI TIẾT HÓA ĐƠN
+      table.table.table-hover
+        thead
+          tr
+            th
+            th Tên hàng hóa
+            th Số lượng
+            th Giá bán
+            th Thành tiền
+        tbody
+          - @hoa_don_xuat.cthd_xuats.each do |cthd|
+            tr
+              td
+                strong
+              td
+                strong = HangHoa.find(cthd.hang_hoa_id).ten_hang
+              td[align="center"]
+                = cthd.so_luong_xuat
+              td[align="right"]
+                = number_to_currency(cthd.gia_ban, locale: :vn)
+              td[align="right"]
+                =
+              td[align="right"]
+                strong = number_to_currency(cthd.thanh_tien, locale: :vn)
+    .total-bill.pull-right
+      h4
+        strong TỔNG CỘNG
+      . = number_to_currency(@hoa_don_xuat.tong_tien, locale: :vn)
+    .bill-status
+      h5
+        strong Tình trạng thanh toán
+      = tinh_trang_hoa_don(@hoa_don_xuat.tinh_trang)
+    .bill-note
+      h5
+        strong Ghi chú
+      = @hoa_don_xuat.ghi_chu

@@ -5,6 +5,7 @@
   -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.15);
   box-shadow:0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
+  background-color: #fff;
 }
 
 .bill-form input {
@@ -115,6 +116,14 @@
 
 .bill-form h1 {
   font-weight: 900;
+  display: inline-block;
+  color: #7b7de5;
+}
+
+.bill-logo {
+  display: inline-block;
+  font-size: 5em;
+  color: #7b7de5;
 }
 
 .bill-form textarea {
@@ -128,7 +137,7 @@
 }
 
 .total-bill div {
-  color: #4980F9;
+  color: #7b7de5;
   font-size: 2.5em;
   font-weight: 600;
 }

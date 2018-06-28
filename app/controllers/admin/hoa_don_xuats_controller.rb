@@ -2,7 +2,7 @@ class Admin::HoaDonXuatsController < Admin::ApplicationController
   before_action :set_hoa_don_xuat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hoa_don_xuats = HoaDonXuat.all.order(id: :desc)
+    @hoa_don_xuats = HoaDonXuat.all.order(ngay_xuat: :desc)
   end
 
   def show

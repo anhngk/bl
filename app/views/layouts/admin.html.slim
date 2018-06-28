@@ -8,6 +8,7 @@ html
     = stylesheet_link_tag    'application', 'https://fonts.googleapis.com/css?family=Muli:300,400,700,900&subset=vietnamese'
     = javascript_pack_tag 'hd_nhap'
     = javascript_pack_tag 'hd_xuat'
+    / = javascript_pack_tag 'add_ncc'
 
     = csrf_meta_tags
   body.admin-body
@@ -15,7 +16,7 @@ html
       .container-fluid
           .navbar-header.col-md-3
             a.navbar-brand[href="#"]
-              = image_tag 'BL-White-Logo.png', class: "navbar-brand-logo"
+              i.fab.fa-bimobject
           .col-md-4
             - if flash[:notice]
               .alert.alert-info
@@ -24,27 +25,27 @@ html
               .alert.alert-warning
                 = flash[:alert]
           ul.nav.navbar-nav.navbar-right
-            li
-              a[href="#"]
-                i.fa.fa-bell[aria-hidden="true"]
-            li.dropdown
-              a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
-                | Kỳ Anh
-                i.fa.fa-user-circle-o[aria-hidden="true"]
-              ul.dropdown-menu
-                li
-                  a[href="#"]
-                    | Action
-                li
-                  a[href="#"]
-                    | Another action
-                li
-                  a[href="#"]
-                    | Something else here
-                li.divider[role="separator"]
-                li
-                  a[href="#"]
-                    | Separated link
+            / li
+            /   a[href="#"]
+            /     i.fa.fa-bell[aria-hidden="true"]
+            / li.dropdown
+            /   a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+            /     | Kỳ Anh
+            /     i.fa.fa-user-circle-o[aria-hidden="true"]
+            /   ul.dropdown-menu
+            /     li
+            /       a[href="#"]
+            /         | Action
+            /     li
+            /       a[href="#"]
+            /         | Another action
+            /     li
+            /       a[href="#"]
+            /         | Something else here
+            /     li.divider[role="separator"]
+            /     li
+            /       a[href="#"]
+            /         | Separated link
             li
               = link_to 'Đăng xuất', logout_path
     .container-fluid
@@ -67,7 +68,7 @@ html
                   li
                     i.fas.fa-list-ul.fa-fw[aria-hidden="true"]
                     p
-                      | Danh mục hàng
+                      | Danh mục
                 = link_to admin_don_hangs_path do
                   li
                     i.fas.fa-clipboard-list.fa-fw[aria-hidden="true"]
@@ -77,12 +78,12 @@ html
                   li
                     i.fas.fa-plus-square.fa-fw[aria-hidden="true"]
                     p
-                      | Hóa đơn nhập
+                      | HĐ Nhập
                 = link_to admin_hoa_don_xuats_path do
                   li
                     i.fas.fa-minus-square.fa-fw[aria-hidden="true"]
                     p
-                      | Hóa đơn xuất
+                      | HĐ Xuất
                 = link_to admin_khach_hangs_path do
                   li
                     i.fa.fa-user-tie.fa-fw[aria-hidden="true"]

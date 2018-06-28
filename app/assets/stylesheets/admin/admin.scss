@@ -4,11 +4,20 @@
 
 /* Dashboard */
 
+$color-bg-blue-grey: #8F96A7;
+$color-bg-dark-blue: #383A48;
+$color-bg-purple: #7b7de5;
+$color-bg-lighter-light-blue: #D1D3E3;
+
+$color-text-light-blue: #9D9EE6;
+$color-text-dark-blue: #383A48;
+
 .admin-body {
+  background-color: #F0F0F4;
 }
 
 .dashboard-wrapper {
-	height: 100%;
+  height: 100%;
 }
 
 .dashboard-content {
@@ -17,7 +26,7 @@
 
 .sidebar {
 	padding: 0;
-	background-color: #fff;
+	background-color: $color-bg-dark-blue;
 	height: calc(100vh - 55px);
   top: 55px;
 	width: 16.66666667%;
@@ -38,81 +47,46 @@
     right: 0;
 }
 
-.navbar-brand-logo {
+/* .navbar-brand-logo {
 	width: 12%;
+}
+ */
+
+.navbar-brand i {
+  font-size: 1.8em;
+  margin-left: 20px;
+  color: #fff
 }
 
 .dashboard-navbar .navbar-brand {
   padding-left: 30px;
 }
 
-.dashboard-menu ul {
-	list-style: none;
-	padding-left: 0;
-	margin-top: 25px;
-}
-
-.dashboard-menu li {
-	margin: 10px;
-	font-size: 1.1em;
-	padding: 12px 15px;
-	font-weight: 300;
-	border-radius: 5px;
-}
-
-.dashboard-menu li:hover {
-	background-color: #6696ff;
-	transition: all 0.5s ease;
-}
-
-.dashboard-menu p {
-	margin-bottom: 0;
-	font-weight: 300;
-}
-
-.dashboard-menu a {
-	text-decoration: none;
-	color: #8b8fa1;
-}
-
-.dashboard-menu a:hover {
-	color: #fff;
-}
-
-.dashboard-menu-active {
-	background-color: #fff;
-	box-shadow: 0 2px 5px rgba(50,50,93,.05), 0 2px 5px rgba(0,0,0,.08);
-}
-
-.dashboard-menu-active a {
-	color: #4980F9;
-}
-
-.dashboard-menu-active a:hover {
-	color: #fff;
-}
-
-.dashboard-menu i {
-	float: left;
-	font-size: 1.2em;
-	margin-right: 15px;
-	text-align: center;
-	vertical-align: middle;
+.dashboard-navbar li {
+  margin-right: 25px;
+  font-weight: 700;
+  & a {
+    padding-top: 5px !important;
+    color: #fff;
+  }
+  & :hover{
+  }
 }
 
 .dashboard-navbar {
-	background-color: #fff;
+  height: 55px;
+  background-color: $color-bg-purple;
   -webkit-box-shadow: 0px 0px 2px 1px rgba(92,92,92,0.1);
   -moz-box-shadow: 0px 0px 2px 1px rgba(92,92,92,0.1);
   box-shadow: 0px 0px 2px 1px rgba(92,92,92,0.1);
 }
 
 .dashboard-navbar .navbar-header {
-	margin-left: 15px !important;
+  margin-left: 15px !important;
 }
 
 .dashboard-navbar .navbar-right {
-	margin: 15px 0 0 0 !important;
+  margin: 15px 0 0 0 !important;
   font-size: 1.1em;
 }
 
@@ -121,7 +95,68 @@
 }
 
 .dashboard-navbar .nav>li>a:hover {
-	background-color: transparent;
+  background-color: transparent;
+  color: $color-text-dark-blue !important;
+}
+
+.dashboard-menu ul {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 50px;
+}
+
+.dashboard-menu li {
+	font-size: 1.1em;
+	padding: 15px 0 15px 30px;
+  color: $color-text-light-blue;
+}
+
+.dashboard-menu li:hover {
+	background-color: #53556C;
+	transition: all 0.5s ease;
+  border-left: 5px solid #7b7de5;
+  font-weight: 700;
+  color: #fff;
+  & p {
+    font-weight: 700;
+  }
+}
+
+.dashboard-menu p {
+	margin-bottom: 0;
+	font-weight: 400;
+}
+
+.dashboard-menu a {
+	text-decoration: none;
+	color: #8b8fa1;
+}
+
+.dashboard-menu-active {
+  background-color: #53556C;
+  transition: all 0.5s ease;
+  border-left: 5px solid #7b7de5;
+  font-weight: 700;
+  color: #fff;
+  & p {
+    font-weight: 700;
+  }
+}
+
+// .dashboard-menu-active a {
+// 	color: #fff;
+// }
+
+// .dashboard-menu-active a:hover {
+// 	color: #fff;
+// }
+
+.dashboard-menu i {
+	float: left;
+	font-size: 1.2em;
+	margin-right: 15px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .dashboard-income-static {
@@ -141,11 +176,11 @@
 
 .card-header {
 	margin: -20px 15px 0;
-	border-radius: 3px;
+	border-radius: 50%;
 	padding: 10px;
 	float: left;
 	text-align: center;
-	background-color: #4980F9;
+	background-color: $color-bg-purple;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15)
 }
 
@@ -227,4 +262,12 @@
 
 .commas {
 	padding: 0 14px !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+  background-color: #7b7de5;
+}
+
+.fa-chevron-left {
+  margin-right: 5px;
 }

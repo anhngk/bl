@@ -12,13 +12,15 @@ class Admin::NhaCungCapsController < Admin::ApplicationController
 
 	def create
 		@nha_cung_cap = NhaCungCap.new(nha_cung_cap_params)
-
-		if @nha_cung_cap.save
-			redirect_to admin_nha_cung_caps_url, notice: 'Thêm nhà cung cấp thành công'
-		else
-			flash[:alert] = 'Có lỗi khi tiến hành thêm nhà cung cấp'
-			render :new
-		end
+    respond_to do |format|
+      if @nha_cung_cap.save
+        format.html { redirect_to admin_nha_cung_caps_url, notice: 'Thêm nhà cung cấp thành công' }
+        format.json { render :show, status: :create, location: admin_nha_cung_cap_url(@nha_cung_cap) }
+  		else
+        format.html { render :new, flash[:alert] = 'Có lỗi khi tiến hành thêm nhà cung cấp' }
+  			format.json { render json: @nha_cung_cap.errors, status: :unprocessable_entity }
+  		end
+    end
 	end
 
 	def edit

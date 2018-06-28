@@ -4,14 +4,19 @@
 
 .hang-hoa-table {
 	word-wrap: break-word;
+
+}
+
+#hang-hoa-table {
+  background-color: #e6e6e6 !important;
 }
 
 .hang-hoa-table th {
-	text-align: center;
+  text-align: center;
 }
 
 .data-tables {
-	background-color: #fff;
+  background-color: #e6e6e6 !important;
 	border-radius: 5px;
 }
 

@@ -6,4 +6,8 @@ module AdminHelper
       falsey
     end
   end
+
+  def active_page(link_path)
+    current_page?(link_path) ? "dasboard-menu-active" : ""
+  end
 end
