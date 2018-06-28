@@ -19,7 +19,6 @@
 //= require bootstrap-wysihtml5
 //= require datatables.min
 //= require responsive.bootstrap.min
-//= require js-routes
 //= require jquery.raty
 //= require ratyrate
 //= require jquery.validate
