@@ -6,6 +6,9 @@
     cthd_nhaps_attributes: hoa_don_nhap.cthd_nhaps.to_json(except: [:created_at, :updated_at]),
   } do %>
   <h1>HÓA ĐƠN NHẬP</h1>
+  <div class="bill-logo pull-right">
+    <i class="fab fa-bimobject"></i>
+  </div>
     <br>
     <label>NGÀY NHẬP</label><br>
     <div class="input-group">
@@ -28,7 +31,7 @@
         <%= select_tag(:nha_cung_cap_id, options_for_select(@nha_cung_caps.collect{ |ncc| [ncc.ten_ncc, ncc.id] }), { "v-model" => "hoa_don_nhap.nha_cung_cap_id", class: "dropdown", id:"ncc-select", name:"nha_cung_cap"}) %>
       </div>
     </label>
-    <%= link_to "+ Nhà cung cấp","#", class: "modal-add-btn", "data-toggle"=>"modal", "data-target"=>"#them-nha-cung-cap-modal" %>
+    <!--<%= link_to "+ Nhà cung cấp","#", class: "modal-add-btn", "data-toggle"=>"modal", "data-target"=>"#add-nha-cung-cap-modal" %>-->
     <div class="form-error" v-if="hoa_don_nhap.nha_cung_cap_id == null">
       <i class="fas fa-exclamation-circle"></i> Hãy chọn Nhà cung cấp
     </div>
@@ -83,7 +86,7 @@
   <button v-on:click="saveBill" class="btn btn-default btn-save pull-right" :disabled="!valid">SAVE</button>
 
 <!-- AddNCC Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="addNccModal">
+<!-- <div class="modal fade" id="add-nha-cung-cap-modal" tabindex="-1" role="dialog" aria-labelledby="addNccModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -91,14 +94,30 @@
         <h4 class="modal-title" id="addNccLabel">Thêm nhà cung cấp</h4>
       </div>
       <div class="modal-body">
-        <%= render 'add_nha_cung_cap' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <%= content_tag :div,
+          id: "add-nha-cung-cap-form",
+          data: {
+            id: nha_cung_cap.id,
+            nha_cung_cap: nha_cung_cap.to_json(except: [:created_at, :updated_at]),
+          } do %>
+            <div class="new-supplier-form">
+              <input class="form-control" type="text" name="ten_ncc" v-model="nha_cung_cap.ten_ncc" placeholder="Tên">
+              <div class="form-error" v-if="nha_cung_cap.ten_ncc == null">
+                <i class="fas fa-exclamation-circle"></i> Hãy nhập tên Nhà cung cấp
+              </div>
+              <input class="form-control" type="text" name="dia_chi" v-mdel="nha_cung_cap.dia_chi" placeholder="Địa chỉ">
+              <input class="form-control" type="text" name="dien_thoai" v-model="nha_cung_cap.dien_thoai" placeholder="Điện thoại"></input>
+              <div class="form-error" v-if="hoa_don_nhap.dien_thoai == null">
+                <i class="fas fa-exclamation-circle"></i> Hãy nhập số điện thoại Nhà cung cấp
+              </div>
+              <input class="form-control" type="text" name="ma_so_thue" v-model="nha_cung_cap.ma_so_thue" placeholder="Mã số thuế"></input>
+              <textarea type="text" v-model="nha_cung_cap.ghi_chu" placeholder="Ghi chú"></textarea>
+              <button v-on:click="saveNhaCungCap" class="btn btn-default btn-save pull-right" :disabled="!valid">SAVE</button>
+            </div>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- AddNCC Modal -->
 <% end %>

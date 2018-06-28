@@ -2,7 +2,7 @@ class Admin::HoaDonNhapsController < Admin::ApplicationController
   before_action :set_hoa_don_nhap, only: [:show, :edit, :update, :destroy]
 
   def index
-    @hoa_don_nhaps = HoaDonNhap.all.order(id: :desc)
+    @hoa_don_nhaps = HoaDonNhap.all.order(ngaynhap: :desc)
   end
 
   def show
@@ -11,6 +11,9 @@ class Admin::HoaDonNhapsController < Admin::ApplicationController
   def new
     @hoa_don_nhap = HoaDonNhap.new
     @nha_cung_caps = NhaCungCap.all
+
+    @nha_cung_cap = NhaCungCap.new
+
     @hang_hoas = HangHoa.all
     @hoa_don_nhap.cthd_nhaps.build
   end

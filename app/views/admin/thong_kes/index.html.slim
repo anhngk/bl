@@ -4,7 +4,7 @@
   .daily-income.col-lg-4.col-md-4.col-sm-4
     .card
       .card-header
-        i.far.fa-calendar aria-hidden="true"
+        i.fas.fa-money-bill-alt aria-hidden="true"
       .card-content
         p.card-category Doanh thu hôm nay
         h3.card-static
@@ -16,7 +16,7 @@
   .monthly-income.col-lg-4.col-md-4.col-sm-4
     .card
       .card-header
-        i.far.fa-calendar aria-hidden="true"
+        i.fas.fa-money-bill aria-hidden="true"
       .card-content
         p.card-category Doanh thu tháng này
         h3.card-static
@@ -34,7 +34,7 @@
   .yearly-income.col-lg-4.col-md-4.col-sm-4
     .card
       .card-header
-        i.far.fa-calendar-alt aria-hidden="true"
+        i.fas.fa-money-bill-wave aria-hidden="true"
       .card-content
         p.card-category Doanh thu năm nay
         h3.card-static
@@ -51,10 +51,10 @@
               | N/A
 
 .row.owe
-  .owe-supplier.col-md-6
+  .owe-supplier.col-md-4
     .card
       .card-header
-        i.far.fa-calendar aria-hidden="true"
+        i.fas.fa-dolly aria-hidden="true"
       .card-content
         p.card-category Nợ nhà cung cấp
         h3.card-static
@@ -63,10 +63,10 @@
         .card-footer-info
           p
             | Tính đến #{Date.today.strftime("%d/%m/%Y")}
-  .owe-customer.col-md-6
+  .owe-customer.col-md-4
     .card
       .card-header
-        i.far.fa-calendar aria-hidden="true"
+        i.fas.fa-user-tie aria-hidden="true"
       .card-content
         p.card-category Khách hàng nợ
         h3.card-static
@@ -104,13 +104,11 @@ h3 TOP KHÁCH HÀNG
     thead
       th ID
       th Tên KH
-      th Email
       th Tổng chi
     tbody
-      - if @top_hang_hang.present?
+      - if @top_khach_hang.present?
         - @top_khach_hang.each do |kh|
           tr
             td align="center" = kh.id
             td= kh.ten_kh
-            td= kh.email
             td align="right" = number_to_currency(kh.total, locale: :vn)

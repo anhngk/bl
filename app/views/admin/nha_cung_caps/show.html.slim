@@ -4,62 +4,65 @@
       i.fas.fa-chevron-left
       span Danh sách nhà cung cấp
 .row.bill-form
-  h1 THÔNG TIN NHÀ CUNG CẤP
-  brCẤP
-  .info-row
-    span.info-label Tên nhà cung cấp
-    span.info
-      strong = @nha_cung_cap.ten_ncc
-  .info-row
-    span.info-label Điện thoại
-    span.info
-      strong = @nha_cung_cap.dien_thoai
-  .info-row
-    span.info-label Địa chỉ
-    span.info
-      strong = @nha_cung_cap.dia_chi
-  .info-row
-    span.info-label Mã số thuế
-    span.info
-      strong = @nha_cung_cap.ma_so_thue
-  .info-row
-    span.info-label Ghi chú
-    span.info
-      strong = @nha_cung_cap.ghi_chu
-  .info-row.pull-right
-    span.info-label
-      strong Nợ nhà cung cấp
-    span.info
-      h4
-        strong = number_to_currency(@nha_cung_cap.tien_no, locale: :vn)
-  br
-  br
-  h3 HÓA ĐƠN NHÀ CUNG CẤP
-  br
-  table.index-table.table.table-hover.data-tables[width="100%"]
-    thead
-      th
-      th Ngày nhập
-      th Tổng tiền
-      th Tình trạng thanh toán
-      th
-    tbody
-      - @nha_cung_cap.hoa_don_nhaps.each do |hoa_don|
-        tr
-          td[align="center"] = hoa_don.id
-          td data-link= "#{admin_hoa_don_nhap_path(hoa_don)}"
-            strong
-              - if hoa_don.ngaynhap.present?
-                = hoa_don.ngaynhap.strftime("%d/%m/%Y")
-          td[align="right" data-link= "#{admin_hoa_don_nhap_path(hoa_don)}"] = number_to_currency(hoa_don.tong_tien, locale: :vn)
-          td[align="center" data-link= "#{admin_hoa_don_nhap_path(hoa_don)}"]
-           strong = tinh_trang_hoa_don(hoa_don.tinh_trang)
-          td[align="center"]
-            .dropdown
-              button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                span ...
-              ul.dropdown-menu.dropdown-menu-right
-                li = link_to 'Sửa', edit_admin_hoa_don_nhap_path(hoa_don)
-                li = link_to 'Xóa', admin_hoa_don_nhap_path(hoa_don), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
+  .col-md-12
+    h1 THÔNG TIN NHÀ CUNG CẤP
+    .bill-logo.pull-right
+          i.fab.fa-bimobject
+    br
+    .info-row
+      span.info-label Tên nhà cung cấp
+      span.info
+        strong = @nha_cung_cap.ten_ncc
+    .info-row
+      span.info-label Điện thoại
+      span.info
+        strong = @nha_cung_cap.dien_thoai
+    .info-row
+      span.info-label Địa chỉ
+      span.info
+        strong = @nha_cung_cap.dia_chi
+    .info-row
+      span.info-label Mã số thuế
+      span.info
+        strong = @nha_cung_cap.ma_so_thue
+    .info-row
+      span.info-label Ghi chú
+      span.info
+        strong = @nha_cung_cap.ghi_chu
+    .info-row.pull-right
+      span.info-label
+        strong Nợ nhà cung cấp
+      span.info
+        h4
+          strong = number_to_currency(@nha_cung_cap.tien_no, locale: :vn)
+    br
+    br
+    h3 HÓA ĐƠN NHÀ CUNG CẤP
+    br
+    table.index-table.table.table-hover.data-tables[width="100%"]
+      thead
+        th
+        th Ngày nhập
+        th Tổng tiền
+        th Tình trạng thanh toán
+        th
+      tbody
+        - @nha_cung_cap.hoa_don_nhaps.each do |hoa_don|
+          tr
+            td[align="center"] = hoa_don.id
+            td data-link= "#{admin_hoa_don_nhap_path(hoa_don)}"
+              strong
+                - if hoa_don.ngaynhap.present?
+                  = hoa_don.ngaynhap.strftime("%d/%m/%Y")
+            td[align="right" data-link= "#{admin_hoa_don_nhap_path(hoa_don)}"] = number_to_currency(hoa_don.tong_tien, locale: :vn)
+            td[align="center" data-link= "#{admin_hoa_don_nhap_path(hoa_don)}"]
+             strong = tinh_trang_hoa_don(hoa_don.tinh_trang)
+            td[align="center"]
+              .dropdown
+                button.btn.btn-xs.dropdown-toggle type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  span ...
+                ul.dropdown-menu.dropdown-menu-right
+                  li = link_to 'Sửa', edit_admin_hoa_don_nhap_path(hoa_don)
+                  li = link_to 'Xóa', admin_hoa_don_nhap_path(hoa_don), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
 javascript:
   DataTables.init()
