@@ -2,10 +2,10 @@
   .col-md-3
     h1 Kho hàng
   .col-md-4.pull-right.headline-btn
-    = link_to new_admin_hang_hoa_path do
-    button.btn.btn-success[type="button"]
-      i.fa.fa-plus[aria-hidden="true"]
-      |  Thêm hàng
+    = link_to new_admin_hang_hoa_path, "data-toggle"=>"modal", "data-target"=>"#new-hang-hoa" do
+      button.btn.btn-success[type="button"]
+        i.fa.fa-plus[aria-hidden="true"]
+        |  Thêm hàng
 
 table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
   thead
@@ -14,7 +14,6 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
       th Số lượng tồn kho
       th ĐVT
       th Xuất xứ
-      th Giá bán tham khảo
       th Danh mục
       th
   tbody
@@ -29,8 +28,6 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
           = hang_hoa.dvt
         td[align="center" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
           = hang_hoa.xuat_xu
-        td[align="right" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
-          = number_to_currency(hang_hoa.gias.last.gia_ban, locale: :vn)
         td[align="center" data-link= "#{admin_hang_hoa_path(hang_hoa)}" ]
           = link_to DanhMuc.find(hang_hoa.danh_muc_id).ten_danh_muc, admin_danh_muc_path(hang_hoa.danh_muc_id)
         td[align="center"]
@@ -44,6 +41,19 @@ table#hang-hoa-table.index-table.table.table-hover.data-tables[width="100%"]
                 = link_to 'Sửa', edit_admin_hang_hoa_path(hang_hoa)
               li
                 = link_to 'Xóa', admin_hang_hoa_path(hang_hoa), method: :delete, data: {confirm: 'Bạn chắc chắn chứ?'}
+
+.modal.fade#new-hang-hoa[tabindex="-1" role="dialog"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]
+            | ×
+        h3.modal-title
+          strong
+            | Thêm hàng hoá
+      .modal-body
+        = render partial: 'form', locals: { danh_mucs: @danh_mucs }
 
 javascript:
   DataTables.init()

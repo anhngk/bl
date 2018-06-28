@@ -4,11 +4,11 @@ class HoaDonXuat < ActiveRecord::Base
   accepts_nested_attributes_for :cthd_xuats, allow_destroy: true
 
   def self.doanh_thu_nam
-    HoaDonXuat.group('year(ngay_xuat)').order('year(ngay_xuat) DESC').where(tinh_trang: true).sum(:tong_tien)
+    HoaDonXuat.group("date_part('year',ngay_xuat)").order("date_part('year',ngay_xuat)").where(tinh_trang: true).sum(:tong_tien)
   end
 
   def self.doanh_thu_theo_thang
-    HoaDonXuat.group('month(ngay_xuat)').order('month(ngay_xuat) DESC').where(tinh_trang: true).sum(:tong_tien)
+    HoaDonXuat.group("date_part('month',ngay_xuat)").order("date_part('month',ngay_xuat)").where(tinh_trang: true).sum(:tong_tien)
   end
 
   def self.doanh_thu_hom_nay

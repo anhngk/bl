@@ -1,0 +1,49 @@
+= form_for [:admin, HangHoa.new], html: { multipart: true, class: 'form-horizontal custom-form' } do |f|
+  .form-group
+    = f.label "Tên hàng", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_field :ten_hang, class: 'form-control'
+  .form-group
+    = f.label "Số lượng", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_field :so_luong, class: 'form-control'
+  .form-group
+    = f.label "Đơn vị tính", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_field :dvt, class: 'form-control'
+  =  f.fields_for :gias do |gia|
+    .form-group
+      = f.label "Giá bán", class: 'control-label col-md-3'
+      .col-md-9.commas.input-group
+        = gia.text_field :gia_ban, class: 'form-control'
+        span.input-group-addon
+          | đ
+  .form-group
+    = f.label "Xuất xứ", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_field :xuat_xu, class: 'form-control'
+  .form-group
+    = f.label "Quy cách", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_field :quy_cach, class: 'form-control'
+  br
+  .form-group
+    = f.label "Ghi chú", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_area :ghi_chu, class: 'form-control wysihtml5', as: :wysihtml5
+  br
+  .form-group
+    = f.label "Danh mục", class: 'control-label col-md-3'
+    .col-md-9
+      = f.select(:danh_muc_id, options_from_collection_for_select(DanhMuc.all, :id, :ten_danh_muc) , {prompt: 'Chọn danh mục'}, { class: 'form-control'} )
+  .form-group
+    = f.label "Hình ảnh", class: 'control-label col-md-3'
+    .col-md-9
+      = f.file_field :image, class: 'form-control'
+  .form-group
+    = f.label "Mô tả chi tiết hàng hoá", class: 'control-label col-md-3'
+    .col-md-9
+      = f.text_area :chi_tiet, class: 'form-control wysihtml5', as: :wysihtml5
+  .form-group
+    .col-md-offset-3.col-md-9
+      = f.submit "Cập nhật", class: 'btn btn-success pull-right'
