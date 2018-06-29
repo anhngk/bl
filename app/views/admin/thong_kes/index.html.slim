@@ -58,7 +58,8 @@
       .card-content
         p.card-category Nợ nhà cung cấp
         h3.card-static
-          strong= number_to_currency(@no_nha_cung_cap, locale: :vn)
+          - if @no_nha_cung_cap.present?
+            strong= number_to_currency(@no_nha_cung_cap, locale: :vn)
       .card-footer
         .card-footer-info
           p
@@ -70,7 +71,8 @@
       .card-content
         p.card-category Khách hàng nợ
         h3.card-static
-          strong= number_to_currency(@khach_hang_no, locale: :vn)
+          -if @khach_hang_no.present?
+            strong= number_to_currency(@khach_hang_no, locale: :vn)
       .card-footer
         .card-footer-info
           p
@@ -83,10 +85,11 @@
         th Tháng
         th Doanh thu
       tbody
-        - @doanh_thu_theo_thang.each do |dt|
-          tr
-            td align="center" = dt.first
-            td align="right" = number_to_currency(dt.second, locale: :vn)
+        - if @doanh_thu_theo_thang.present?
+          - @doanh_thu_theo_thang.each do |dt|
+            tr
+              td align="center" = dt.first
+              td align="right" = number_to_currency(dt.second, locale: :vn)
   .col-md-6
     h3 DOANH THU NĂM
     table.table.table-bordered.table-ui width="100%"
@@ -94,10 +97,11 @@
         th Năm
         th Doanh thu
       tbody
-        - @doanh_thu_nam.each do |dt|
-          tr
-            td align="center" = dt.first
-            td align="right" = number_to_currency(dt.second, locale: :vn)
+        - if @doanh_thu_nam.present?
+          - @doanh_thu_nam.each do |dt|
+            tr
+              td align="center" = dt.first
+              td align="right" = number_to_currency(dt.second, locale: :vn)
 h3 TOP KHÁCH HÀNG
 .col-md-6.row
   table.table.table-bordered.table-ui width="100%"
