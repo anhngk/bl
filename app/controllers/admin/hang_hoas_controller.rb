@@ -5,6 +5,7 @@ class Admin::HangHoasController < Admin::ApplicationController
   end
 
   def new
+    layout false
     @hang_hoa = HangHoa.new
     @danh_mucs = DanhMuc.all.map{|c| [c.ten_danh_muc, c.id]}
     @hang_hoa.gias.build.build_hang_hoa
