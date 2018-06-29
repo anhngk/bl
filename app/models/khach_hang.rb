@@ -15,6 +15,6 @@ class KhachHang < ActiveRecord::Base
   end
 
   def self.top_khach_hang
-    KhachHang.joins(:hoa_don_xuats).select('SUM(tong_tien) as total', 'khach_hangs.id', 'khach_hangs.email', 'khach_hangs.ten_kh').group(:khach_hang_id).order('total desc').limit(10)
+    KhachHang.joins(:hoa_don_xuats).select('SUM(tong_tien) as total', 'khach_hangs.id', 'khach_hangs.email', 'khach_hangs.ten_kh').group('khach_hangs.id').order('total desc').limit(10)
   end
 end
